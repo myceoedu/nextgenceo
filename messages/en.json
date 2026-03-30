@@ -1,0 +1,379 @@
+{
+  "Metadata": {
+    "siteTitle": "NextGen CEO Challenge 2026",
+    "siteDescription": "NextGen CEO Challenge 2026 by MyCEO Education — Pitch. Strategize. Win!"
+  },
+  "Nav": {
+    "home": "Home",
+    "competition": "Competition",
+    "contact": "Contact",
+    "overview": "Overview",
+    "register": "Register",
+    "competitionPages": "Competition pages",
+    "mobileCompetition": "Competition — choose a page",
+    "youAreAt": "You are on:",
+    "currentPageLabel": "Current page:",
+    "mobileOverview": "Competition overview",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "navMain": "Main",
+    "menu": {
+      "about": "About",
+      "aboutUs": "About us",
+      "howTo": "How to participate",
+      "awards": "Awards",
+      "terms": "Terms & conditions",
+      "judging": "Judging",
+      "timeline": "Timeline",
+      "registration": "Registration"
+    },
+    "menuSub": {
+      "about": "Program overview & links",
+      "aboutUs": "Organiser & programme story",
+      "howTo": "Steps & flow",
+      "awards": "Grand prize & recognition",
+      "terms": "Official rules",
+      "judging": "Structure & weighting",
+      "timeline": "Key dates",
+      "registration": "Register your school"
+    }
+  },
+  "Footer": {
+    "ctaLine1": "Ready to become a",
+    "ctaLine2": "NextGen CEO",
+    "ctaQ": "?",
+    "joinCta": "Join The Challenge!",
+    "company": "MyCEO Education Sdn. Bhd.",
+    "quote": "This is not just a competition — it is a process.",
+    "linkHome": "Home",
+    "linkCompetition": "Competition",
+    "linkContact": "Contact"
+  },
+  "Contact": {
+    "eyebrow": "Contact us",
+    "title": "Contact",
+    "intro": "For questions about registration and the programme, reach us through the official channels below.",
+    "igTitle": "Instagram",
+    "igDesc": "Explore programme impact & school testimonials.",
+    "challengeTitle": "Join The Challenge",
+    "challengeDesc": "Official documents & competition information.",
+    "challengeCta": "Open link",
+    "regTitle": "Registration",
+    "regDesc": "Official registration page with a short summary of terms.",
+    "regCta": "Go to registration"
+  },
+  "meta": {
+    "home": {
+      "title": "NextGen CEO Challenge 2026",
+      "description": "NextGen CEO Challenge 2026 by MyCEO Education — Pitch. Strategize. Win!"
+    },
+    "contact": {
+      "title": "Contact | NextGen CEO Challenge 2026",
+      "description": "Contact MyCEO Education — NextGen CEO Challenge 2026."
+    },
+    "competition": {
+      "title": "Competition | NextGen CEO Challenge 2026",
+      "description": "Overview of NextGen CEO Challenge 2026 — for educators, what the programme is, and links to all competition information."
+    },
+    "howTo": {
+      "title": "How to participate | NextGen CEO Challenge 2026",
+      "description": "Participation steps for NextGen CEO Challenge 2026 — from invitation to awards."
+    },
+    "awards": {
+      "title": "Awards | NextGen CEO Challenge 2026",
+      "description": "Grand prize and benefits for students — NextGen CEO Challenge 2026."
+    },
+    "terms": {
+      "title": "Terms & conditions | NextGen CEO Challenge 2026",
+      "description": "Official terms and conditions of NextGen CEO Challenge 2026 and benefits for schools."
+    },
+    "judging": {
+      "title": "Judging | NextGen CEO Challenge 2026",
+      "description": "Judging structure for NextGen CEO Challenge 2026 — weighting and criteria."
+    },
+    "timeline": {
+      "title": "Timeline | NextGen CEO Challenge 2026",
+      "description": "Key dates and timeline for NextGen CEO Challenge 2026."
+    },
+    "registration": {
+      "title": "Registration | NextGen CEO Challenge 2026",
+      "description": "Official registration for NextGen CEO Challenge 2026 — MyCEO Education channels."
+    },
+    "about": {
+      "title": "About us | NextGen CEO Challenge 2026",
+      "description": "MyCEO Education shapes young leaders with entrepreneurial wisdom—creative, confident, ready to drive Malaysia forward."
+    }
+  },
+  "Countdown": {
+    "finaleLabel": "Countdown to finale (Jun 2026)",
+    "days": "Days",
+    "hours": "Hours",
+    "min": "Min",
+    "sec": "Sec",
+    "completed": "Countdown completed."
+  },
+  "CompetitionPageHero": {
+    "eyebrow": "NextGen CEO Challenge 2026"
+  },
+  "HomeHero": {
+    "badge": "Student leadership & entrepreneurship programme • Malaysia",
+    "pitchLine": "Pitch. Strategize. Win!",
+    "body": "A prestigious platform shaping students to think like leaders, act like innovators, and pitch ideas like young CEOs.",
+    "statNat": "National recognition",
+    "statNatVal": "Certificate + PAJSK",
+    "statGrand": "Grand prize",
+    "statTime": "Timeline",
+    "statTimeVal": "Mar–Jun 2026",
+    "highlight": "Highlight",
+    "grandPrize": "GRAND PRIZE",
+    "yearBadge": "2026",
+    "certLine": "+ National Certificate & PAJSK Recognition",
+    "hashtag": "#NextGenCEOChallenge2026",
+    "ctaRegister": "Register your school",
+    "ctaCompetition": "Competition",
+    "miniMac": "Mar",
+    "miniMei": "May",
+    "miniJun": "Jun",
+    "miniReg": "Registration",
+    "miniBoot": "Bootcamp",
+    "miniPitch": "Sales & pitch"
+  },
+  "HomeVideo": {
+    "eyebrow": "Video teaser",
+    "title": "Feel the NextGen CEO energy",
+    "subtitle": "A short look at the challenge — teams, pitching, and momentum on stage.",
+    "videoHint": "The clip may start muted — use the player controls to turn sound on.",
+    "posterLabel": "Poster",
+    "posterAlt": "NextGen CEO Challenge — poster",
+    "infographicLabel": "Infographic",
+    "infographicAlt": "NextGen CEO Challenge — infographic overview"
+  },
+  "HomeTrust": {
+    "organiser": "Organiser",
+    "edition": "Edition",
+    "recognition": "Recognition",
+    "hashtag": "Hashtag",
+    "organiserVal": "MyCEO Education",
+    "editionVal": "Challenge 2026",
+    "recognitionVal": "National Certificate & PAJSK",
+    "hashtagVal": "#NextGenCEOChallenge2026"
+  },
+  "ImportantDates": {
+    "label": "Important dates",
+    "title": "At a glance — NextGen CEO Challenge 2026"
+  },
+  "HomePreview": {
+    "kicker": "Competition",
+    "title": "Explore the competition",
+    "subtitle": "All official details live on the Competition hub — pick a topic below.",
+    "view": "View →",
+    "fullCta": "Full competition overview"
+  },
+  "HomeApaItu": {
+    "title": "What is Next Gen CEO?",
+    "beforeBrand": "An initiative by ",
+    "between": " to support ",
+    "afterPak": " and open hands-on leadership & entrepreneurship learning.",
+    "pill1": "Critical thinking",
+    "pill2": "Leadership",
+    "pill3": "Strategic thinking",
+    "readMore": "Read more"
+  },
+  "GrandPrize": {
+    "title": "GRAND PRIZE",
+    "cert": "+ National Certificate & PAJSK Recognition",
+    "tagline": "Is your school among the very best?",
+    "hashtag": "#NextGenCEOChallenge2026"
+  },
+  "ManfaatPelajar": {
+    "title": "Benefits for students",
+    "grandTitle": "Grand prize {amount}",
+    "grandDesc": "Certificate of recognition & access to professional mentors",
+    "c2Title": "Leadership experience",
+    "c2Desc": "Students are tested on strategy, problem-solving, and real pitching like young CEOs.",
+    "c3Title": "Competitive platform",
+    "c3Desc": "Compete with selected students nationwide and strengthen your profile.",
+    "c4Title": "Critical & creative skills",
+    "c4Desc": "Sharpened to think critically, decide quickly, and collaborate as a team.",
+    "c5Title": "Networking & future opportunities",
+    "c5Desc": "Meet professional mentors, industry judges, and talented peers — and open future doors."
+  },
+  "ManfaatSekolah": {
+    "title": "Benefits for schools",
+    "m1t": "National-level recognition",
+    "m1d": "Official participation that boosts credibility and national standing.",
+    "m2t": "Stronger image & reputation",
+    "m2d": "Build a positive perception as an active, progressive, competitive school.",
+    "m3t": "Strengthen entrepreneurship / innovation clubs",
+    "m3d": "A enrichment platform that supports co-curricular development strategically.",
+    "m4t": "Industry exposure & access",
+    "m4d": "Students and schools access professional mentors, entrepreneurs, and partners.",
+    "m5t": "Student leaders who create impact",
+    "m5d": "Participants can return as peer mentors and drivers of leadership culture."
+  },
+  "Terma": {
+    "title": "Competition terms & conditions",
+    "i1h": "Eligibility",
+    "i1p": "Open to selected invited secondary schools.",
+    "i2h": "Registration",
+    "i2p": "All registrations must go through the organiser’s official channels.",
+    "i3h": "Teams",
+    "i3p": "The team of four must be maintained throughout the programme.",
+    "i4h": "Terms",
+    "i4p": "Each team must complete every judging component during the competition.",
+    "i5h": "Composition",
+    "i5p": "Each team must have four lower secondary students with one teacher chaperone. Schools may enter more than one team.",
+    "i6h": "Information",
+    "i6p": "Information must be complete & accurate. The organiser may reject invalid entries.",
+    "i7h": "Changes",
+    "i7p": "Member changes require organiser approval.",
+    "i8h": "Results",
+    "i8p": "Judged by a panel; decisions are final."
+  },
+  "Penilaian": {
+    "title": "Judging structure — NextGen CEO Challenge 2026",
+    "s1h": "Teamwork",
+    "s1p": "Team energy, collaboration, communication, and task sharing.",
+    "s2h": "Idea & creativity",
+    "s2p": "Originality of product/idea, value add, and innovation potential.",
+    "s3h": "Real market execution (sales)",
+    "s3p": "Sales effectiveness, promotion, and real customer interaction.",
+    "s4h": "Final pitch (judges’ panel)",
+    "s4p": "Delivery, confidence, pitch structure, and Q&A with the judges."
+  },
+  "Timeline": {
+    "title": "Competition timeline",
+    "s1when": "Mar 2026",
+    "s1title": "Registration",
+    "s1desc": "Register via official channels & confirm your team.",
+    "s2when": "May 2026",
+    "s2title": "Creativity & teamwork bootcamp",
+    "s2desc": "Team collaboration and innovative ideas are assessed.",
+    "s3when": "Jun 2026",
+    "s3title": "Sales & pitching carnival",
+    "s3desc": "Mini sales & final pitch: real-market performance and how you present your idea."
+  },
+  "Registration": {
+    "kicker": "Official registration",
+    "title": "Register your school",
+    "bodyBefore": "All registrations must be made through the",
+    "bodyStrong": "official channels",
+    "bodyAfter": "of the organiser. Information must be complete & accurate.",
+    "footnote": "*Limited intake to maintain mentor guidance quality.",
+    "join": "Join The Challenge!",
+    "ig": "Contact / official IG"
+  },
+  "Sponsor": {
+    "title": "Past sponsors",
+    "alt": "Featured sponsor"
+  },
+  "HowToParticipate": {
+    "title": "How to participate",
+    "intro": "A simple flow from invitation to recognition. See Terms & conditions for full details.",
+    "stepLabel": "Step",
+    "s1t": "Receive invitation",
+    "s1d": "Selected secondary schools receive an official invitation.",
+    "s2t": "Register your team",
+    "s2d": "Complete registration through the organiser’s official channels.",
+    "s3t": "Bootcamp",
+    "s3d": "Creativity, teamwork & pitch preparation.",
+    "s4t": "Sales / execution",
+    "s4d": "Test your idea and sales in a real-world setting.",
+    "s5t": "Final pitch",
+    "s5d": "Present to the judges’ panel and answer questions.",
+    "s6t": "Awards",
+    "s6d": "Recognition, certificates & winners announced.",
+    "termsCta": "Terms & conditions",
+    "regCta": "Registration"
+  },
+  "Educator": {
+    "kicker": "The evolution of leadership education",
+    "h1a": "Beyond academics:",
+    "h1b": "Shaping future leaders.",
+    "p1": "As educators, we know true excellence is no longer measured by exam papers alone.",
+    "p2Lead": "NextGen CEO is designed to complement your school ecosystem with",
+    "p2Hot": "High-Order Thinking Skills (HOTS)",
+    "p2Tail": "and real-world application. We help teachers spot and sharpen hidden leadership talent—turning passive potential into active competence.",
+    "quote": "Our job isn’t only to teach—it’s to build a platform where every student can think like a leader and act like an innovator.",
+    "igCta": "Explore programme impact & school testimonials",
+    "sideTitle": "Strategic school integration",
+    "li1": "Alignment with PAK21 skills",
+    "li2": "Exposure to senior mentors",
+    "li3": "Recognition of student profile & growth",
+    "register": "Register your school",
+    "footnote": "*Limited intake to maintain mentor guidance quality.",
+    "powered": "Powered by MyCEO Education"
+  },
+  "ApaItu": {
+    "title": "What is Next Gen CEO?",
+    "lead": "Next Gen CEO is an initiative by MyCEO Education to support the Malaysia Education Development Plan and 21st Century Skills (PAK21) while giving high-potential students practical leadership and entrepreneurship experience.",
+    "c1t": "CRITICAL THINKING",
+    "c1d": "Helps students analyse, evaluate, and solve problems wisely.",
+    "c2t": "LEADERSHIP",
+    "c2d": "Builds confidence and leadership in real situations.",
+    "c3t": "STRATEGIC THINKING",
+    "c3d": "Sharpens planning and high-impact decision-making."
+  },
+  "CompetitionPages": {
+    "overviewTitle": "Competition",
+    "overviewSubtitle": "A student leadership and entrepreneurship programme by MyCEO Education. Explore every part of the competition via the links below.",
+    "howToTitle": "How to participate",
+    "howToSubtitle": "A concise flow for school teams. See Terms & conditions for official details.",
+    "awardsTitle": "Awards",
+    "awardsSubtitle": "Grand prize, recognition, and growth opportunities for students.",
+    "termsTitle": "Terms & conditions",
+    "termsSubtitle": "Official rules for participation, teams, and judging.",
+    "judgingTitle": "Judging structure",
+    "judgingSubtitle": "Official judging components and weighting.",
+    "timelineTitle": "Timeline",
+    "timelineSubtitle": "Registration, bootcamp, and Sales & Pitching Carnival phases.",
+    "registrationTitle": "Registration",
+    "registrationSubtitle": "Register through official channels. Information must be complete and accurate."
+  },
+  "AboutPage": {
+    "title": "About us",
+    "subtitle": "MyCEO — shaping a new generation bold enough to lead tomorrow's economy.",
+    "imageAlt": "MyCEO Education — developing young leaders",
+    "kicker": "Here, young minds are forged with entrepreneurial wisdom—creative, confident, commanding—so they are not merely employees, but employers and catalysts of change for the era ahead.",
+    "body1": "Welcome to MyCEO—a space where the next generation is shaped into business leaders with a sharp entrepreneurial mindset: sharp thinking, brave creation, confident action, and authoritative leadership. Beyond that, they are mentored systematically to carry the baton as employers and drivers of innovation in the economic landscape of the future.",
+    "body2": "Through MyCEO's entrepreneurship education programme, each child's interests, talents, and multiple intelligences are surfaced, refined, and developed so their potential is maximised with purpose. From an early age, they are introduced step by step to the world of business—not only to know it, but to care deeply—so that entrepreneurship becomes a serious, meaningful career choice when they enter adulthood. Alongside this, they are trained to become confident, strategic, and skilled leaders ready for real-world challenges.",
+    "body3": "Our ambition is clear: to nurture a generation of genius—leaders who succeed not only in the economy, but who propel society and the nation toward sustainable progress, so Malaysia stands shoulder to shoulder in global competition and sets the pace in innovation and entrepreneurship.",
+    "historyEyebrow": "Our journey",
+    "historyTitle": "How did MyCEO begin?",
+    "historyIntro": "Three chapters in our journey building generations of young entrepreneurs.",
+    "historyMilestone1Label": "2014",
+    "historyMilestone1Body": "Since 2014, MyCEO (Malaysia Children Entrepreneurship Orientation Program) has been a pioneer in nurturing a generation of young people with an entrepreneurial spirit. Beginning as a CSR project, MyCEO has successfully run numerous programmes with strong support from leading organisations including the Ministry of Education Malaysia, Ministry of Youth & Sports, DPMM, UPSI, UPM, SME Corp, Bursa Malaysia, RHB Bank, and many more.",
+    "historyMilestone2Label": "MyCEO Academy",
+    "historyMilestone2Body": "The outstanding response from parents and teachers every year encouraged us to go further. The result was MyCEO Academy, which now offers innovative programmes tailored to children and teenagers in the world of entrepreneurship.",
+    "historyMilestone3Label": "March 2020",
+    "historyMilestone3Body": "In March 2020, this journey continued with the establishment of MyCEO Education Sdn Bhd—a decisive step to broaden our impact and reach even more young people.",
+    "programsEyebrow": "What we offer",
+    "programsTitle": "Program MyCEO",
+    "programsSubtitle": "Structured experiences that introduce children and teens to business, money, and real-world selling—in a fun, age-appropriate way.",
+    "programsCta": "Learn more",
+    "programBucTitle": "Bengkel Usahawan Cilik",
+    "programBucDesc": "A hands-on school-holiday workshop where children learn business basics, build confidence, and practise real buying and selling in a lively, supportive setting.",
+    "programBucImageAlt": "Bengkel Usahawan Cilik — school holiday sales and pitching programme",
+    "programMskTitle": "Money Smart Kids",
+    "programMskDesc": "A structured programme that teaches children to manage money, understand needs versus wants, and build strong financial habits from an early age.",
+    "programMskImageAlt": "Money Smart Kids — financial literacy for children",
+    "programKkucTitle": "Kem & Karnival Usahawan Cilik",
+    "programKkucDesc": "An interactive camp and carnival where kids become “little bosses”—handling capital, selling products, and trading in a real-world mini bazaar atmosphere.",
+    "programKkucImageAlt": "Kem & Karnival Usahawan Cilik — children’s entrepreneurship showcase",
+    "galleryEyebrow": "Gallery",
+    "galleryTitle": "MyCEO in action",
+    "gallerySubtitle": "Highlights from our programmes, events, and community—moments that capture the spirit of young leadership and entrepreneurship.",
+    "galleryExpand": "View",
+    "galleryClose": "Close",
+    "galleryPrev": "Previous image",
+    "galleryNext": "Next image",
+    "galleryLightboxAria": "Enlarged gallery image",
+    "galleryOpenAria": "Open gallery image {index}",
+    "galleryImageAlt": "MyCEO programme photo {index}",
+    "galleryCounter": "{current} / {total}",
+    "partnersTitle": "Our sponsors & partners",
+    "partnersSubtitle": "Together nurturing the entrepreneurs of tomorrow",
+    "partnersLogosAlt": "Official partner logos: Yayasan Uniti, Bursa Malaysia, Encorp, PPAS, and YAWAS.",
+    "partnersBannerAlt": "Partner logos: Yayasan Uniti, Bursa Malaysia, Encorp, PPAS (Perbadanan Perpustakaan Awam Selangor), and YAWAS (Yayasan Warisan Anak Selangor)."
+  }
+}
