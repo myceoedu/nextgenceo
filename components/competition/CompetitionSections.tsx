@@ -2,19 +2,24 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { ArrowUpRight } from "lucide-react";
 import { Countdown } from "@/components/Countdown";
 import { item, sectionY, ViewIn, viewIn } from "@/components/motion-ui";
 import { Link } from "@/i18n/navigation";
+import { HomeGrandPrizeRm } from "@/components/home/HomeGrandPrizeRm";
+import { PreviewTopicIcon } from "@/components/home/PreviewTopicIcons";
 import {
   DRIVE_CHALLENGE_URL,
-  GOLD,
+  GEP_HERO_FLOAT_IMAGES,
   GOLD_DEEP,
   GRAND_PRIZE_LABEL,
-  HOME_TEASER_INFOGRAPHIC_IMAGE_SRC,
-  HOME_TEASER_POSTER_IMAGE_SRC,
-  HOME_TEASER_POSTER_SRC,
+  HOME_HERO_BACKGROUND_SRC,
+  HOME_OUTCOMES_SIDE_IMAGES,
   HOME_TEASER_VIDEO_SRC,
+  HOME_TEASER_YOUTUBE_VIDEO_ID,
+  LOGO_SRC,
   NAVY,
   NAVY_DEEP,
   SPONSOR_SRC,
@@ -494,108 +499,342 @@ export function TimelineSection() {
   );
 }
 
+export function ImportantDatesSectionWithVisual() {
+  return (
+    <section className="relative overflow-hidden bg-[#f4f4f3] px-5 py-14 md:px-8 md:py-20">
+      <ViewIn className="relative mx-auto max-w-6xl">
+        <ImportantDatesCard />
+      </ViewIn>
+    </section>
+  );
+}
+
+const DATE_CARD_THEMES = {
+  coral: {
+    border: "border-rose-600",
+    badge: "bg-rose-600 shadow-[0_4px_16px_rgba(225,29,72,0.4)]",
+    month: "text-rose-600",
+  },
+  navy: {
+    border: "border-[#001F3F]",
+    badge: "bg-[#001F3F] shadow-[0_4px_16px_rgba(0,31,63,0.35)]",
+    month: "text-[#c9a227]",
+  },
+  gold: {
+    border: "border-amber-500",
+    badge: "bg-gradient-to-r from-amber-500 to-amber-600 shadow-[0_4px_16px_rgba(217,119,6,0.35)]",
+    month: "text-amber-800",
+  },
+} as const;
+
 export function ImportantDatesCard() {
   const t = useTranslations("ImportantDates");
   const tt = useTranslations("Timeline");
-  const timelineStages = [
-    { when: tt("s1when"), title: tt("s1title"), desc: tt("s1desc") },
-    { when: tt("s2when"), title: tt("s2title"), desc: tt("s2desc") },
-    { when: tt("s3when"), title: tt("s3title"), desc: tt("s3desc") },
+  const stages = [
+    {
+      when: tt("s1when"),
+      title: tt("s1title"),
+      desc: tt("s1desc"),
+      tier: "coral" as keyof typeof DATE_CARD_THEMES,
+      badge: t("badgeStandard"),
+    },
+    {
+      when: tt("s2when"),
+      title: tt("s2title"),
+      desc: tt("s2desc"),
+      tier: "navy" as keyof typeof DATE_CARD_THEMES,
+      badge: t("badgeStandard"),
+    },
+    {
+      when: tt("s3when"),
+      title: tt("s3title"),
+      desc: tt("s3desc"),
+      tier: "gold" as keyof typeof DATE_CARD_THEMES,
+      badge: t("badgeFeatured"),
+    },
   ];
+
   return (
-    <div className="mx-auto max-w-5xl rounded-3xl border border-[#001F3F]/10 bg-gradient-to-br from-white to-[#f6f7fb] p-6 shadow-[0_30px_80px_rgba(0,31,63,0.12)] md:p-10">
-      <div className="mb-8 text-center">
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-[#001F3F]/60">
+    <div className="w-full">
+      <header className="mx-auto max-w-3xl text-center">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-rose-600 md:text-xs">
           {t("label")}
         </p>
-        <h2 className="mt-2 text-2xl font-black tracking-tight text-[#001F3F] md:text-3xl">
+        <h2 className="mt-3 text-balance text-2xl font-black uppercase tracking-tight text-stone-900 md:text-[1.85rem] md:leading-[1.12]">
           {t("title")}
         </h2>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-        {timelineStages.map((x) => (
-          <div
-            key={x.when}
-            className="rounded-2xl border border-[#001F3F]/10 bg-white/80 p-6 text-left"
-          >
-            <div className="text-xs font-black uppercase tracking-[0.18em] text-[#B8860B]">
-              {x.when}
-            </div>
-            <div className="mt-2 text-lg font-black text-[#001F3F]">{x.title}</div>
-            <p className="mt-2 text-sm font-medium leading-relaxed text-[#001F3F]/75">
-              {x.desc}
-            </p>
-          </div>
-        ))}
-      </div>
+        <span
+          aria-hidden
+          className="mx-auto mt-4 block h-1 w-14 rounded-full bg-rose-600"
+        />
+        <p className="mx-auto mt-5 max-w-2xl text-pretty text-sm leading-relaxed text-stone-600 md:text-base">
+          {t("sectionLead")}
+        </p>
+      </header>
+
+      <ul className="mt-10 grid list-none gap-6 p-0 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        {stages.map((x) => {
+          const th = DATE_CARD_THEMES[x.tier];
+          const featured = x.tier === "gold";
+          return (
+            <li
+              key={x.when}
+              className={[
+                "relative flex min-h-[100%] flex-col rounded-2xl border-2 bg-white px-5 pb-7 pt-10 text-center shadow-[0_14px_40px_rgba(0,0,0,0.06)]",
+                th.border,
+                featured ? "ring-1 ring-amber-400/25 lg:scale-[1.02]" : "",
+              ].join(" ")}
+            >
+              <div
+                className={[
+                  "absolute -top-3 left-1/2 max-w-[92%] -translate-x-1/2 rounded-md px-3 py-1.5 text-[9px] font-bold uppercase leading-tight tracking-[0.12em] text-white sm:text-[10px]",
+                  th.badge,
+                ].join(" ")}
+              >
+                {x.badge}
+              </div>
+              <h3 className="text-[13px] font-bold uppercase tracking-wide text-stone-900 md:text-sm">
+                {x.title}
+              </h3>
+              <p
+                className={[
+                  "mt-5 text-[1.75rem] font-black uppercase leading-none tracking-tight sm:text-4xl md:text-[2.25rem]",
+                  th.month,
+                ].join(" ")}
+              >
+                {x.when}
+              </p>
+              <p className="mt-4 flex-1 pb-1 text-left text-sm leading-[1.65] text-stone-600 md:text-center md:text-[15px]">
+                {x.desc}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+
+      <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-stone-500 md:text-sm">
+        {t("footnote")}
+      </p>
     </div>
   );
 }
 
-export function RegistrationSection() {
-  const t = useTranslations("Registration");
+type GepCtaTarget = { label: string; href: string; external?: boolean };
+
+function GepFloatTile({
+  src,
+  className = "",
+  rotateClass = "",
+}: {
+  src: string;
+  className?: string;
+  rotateClass?: string;
+}) {
   return (
-    <section
-      className={`relative overflow-hidden ${sectionY} px-6 text-center md:px-10`}
-      style={{
-        background: `linear-gradient(180deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
-      }}
-    >
+    <div className={["w-full max-w-[7.25rem]", rotateClass, className].filter(Boolean).join(" ")}>
+      {/* Native img so each tile hugs its real aspect ratio (no fixed-height “card”). */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="block h-auto w-full rounded-xl shadow-[0_14px_32px_rgba(0,31,63,0.12)] ring-1 ring-[#001F3F]/[0.08]"
+      />
+    </div>
+  );
+}
+
+function GepHeroCtaButton({ cta, className }: { cta: GepCtaTarget; className: string }) {
+  const inner = (
+    <>
+      {cta.label}
+      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+        <ArrowUpRight className="h-4 w-4 text-[#FF7F32]" aria-hidden />
+      </span>
+    </>
+  );
+  if (cta.external) {
+    return (
+      <a href={cta.href} target="_blank" rel="noreferrer" className={className}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link href={cta.href} className={className}>
+      {inner}
+    </Link>
+  );
+}
+
+function GepOutreachHero({
+  variant,
+  pill,
+  title,
+  lead,
+  footnote,
+  heroCta,
+  termsLinkLabel,
+  heading,
+  titleUppercase = false,
+}: {
+  variant: "registration" | "home";
+  pill: string;
+  title: ReactNode;
+  lead: string;
+  footnote?: string | null;
+  heroCta: GepCtaTarget;
+  termsLinkLabel: string;
+  heading: "h1" | "h2";
+  titleUppercase?: boolean;
+}) {
+  const t = useTranslations("Registration");
+  const gepLeft = GEP_HERO_FLOAT_IMAGES.slice(0, 2);
+  const gepRight = GEP_HERO_FLOAT_IMAGES.slice(2);
+
+  const sectionPad =
+    variant === "registration"
+      ? "relative isolate overflow-x-clip bg-white px-6 pb-10 pt-[calc(var(--ngc-header-h)+var(--ngc-hero-top-gap)+1.25rem)] md:px-10 md:pb-14 md:pt-[calc(var(--ngc-header-h)+var(--ngc-hero-top-gap)+1.75rem)]"
+      : "relative isolate overflow-x-clip bg-white px-6 py-12 md:px-10 md:py-14";
+
+  const titleCls = [
+    "mt-5 font-black leading-[1.1] tracking-tight sm:text-3xl md:mt-6 md:text-4xl md:leading-[1.08] lg:text-[2.65rem]",
+    titleUppercase ? "text-[1.55rem] uppercase" : "text-[1.65rem] md:text-[2.25rem] lg:text-[2.5rem]",
+  ].join(" ");
+
+  return (
+    <section className={sectionPad}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.25), transparent 50%)",
-        }}
+        className="pointer-events-none absolute -left-32 top-1/4 hidden h-[min(420px,55vw)] w-[min(420px,55vw)] rounded-full border-[3px] border-[#FF7F32]/25 md:block"
       />
-      <ViewIn className="relative mx-auto max-w-3xl text-white">
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD700]">
-          {t("kicker")}
-        </p>
-        <h2 className="mt-4 text-3xl font-black leading-tight md:text-[40px]">
-          {t("title")}
-        </h2>
-        <p className="mt-5 font-semibold leading-8 text-white/75">
-          {t("bodyBefore")}{" "}
-          <strong className="text-white">{t("bodyStrong")}</strong>{" "}
-          {t("bodyAfter")}
-        </p>
-        <p className="mt-4 text-sm italic text-white/55">{t("footnote")}</p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href={DRIVE_CHALLENGE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-2xl px-10 py-4 font-black uppercase tracking-wider text-[#0B0B32] transition hover:-translate-y-0.5 sm:w-auto"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,215,0,1) 0%, rgba(230,230,0,1) 50%, rgba(255,255,255,0.95) 100%)",
-              boxShadow: "0 24px 70px rgba(0,0,0,0.35)",
-            }}
-          >
-            {t("join")}
-          </a>
-          <a
-            href="https://www.instagram.com/myceo_"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 font-black uppercase tracking-wider text-white/90 transition hover:bg-white/10 sm:w-auto"
-          >
-            {t("ig")}
-          </a>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-32 top-1/3 hidden h-[min(380px,50vw)] w-[min(380px,50vw)] rounded-full border-[3px] border-[#FF7F32]/22 md:block"
+      />
+      <ViewIn className="relative z-10 mx-auto w-full max-w-7xl md:px-2">
+        {/* Side photos: absolute so tall stacks don’t stretch the section (removes huge gap under copy). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-0 top-2 z-[1] hidden flex-col gap-5 xl:flex 2xl:gap-6"
+        >
+          {gepLeft.map((src, i) => (
+            <GepFloatTile
+              key={src}
+              src={src}
+              rotateClass={i % 2 === 0 ? "-rotate-6" : "rotate-3"}
+            />
+          ))}
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-6 z-[1] hidden flex-col gap-5 xl:flex 2xl:gap-6"
+        >
+          {gepRight.map((src, i) => (
+            <GepFloatTile
+              key={src}
+              src={src}
+              rotateClass={i % 2 === 0 ? "rotate-6" : "-rotate-3"}
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-xl px-1 text-center md:max-w-2xl xl:max-w-2xl">
+          <span className="inline-flex rounded-full border border-[#001F3F]/10 bg-[#f8fafc] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#001F3F]/80 md:text-xs">
+            {pill}
+          </span>
+          {heading === "h1" ? (
+            <h1 className={titleCls}>{title}</h1>
+          ) : (
+            <h2 className={titleCls}>{title}</h2>
+          )}
+          <p className="mx-auto mt-5 max-w-lg text-[15px] font-medium leading-relaxed text-[#001F3F]/58 md:mt-6 md:max-w-xl md:text-lg">
+            {lead}
+          </p>
+          {footnote ? (
+            <p className="mt-3 text-xs italic text-[#001F3F]/40 md:text-sm">{footnote}</p>
+          ) : null}
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-7">
+            <GepHeroCtaButton
+              cta={heroCta}
+              className="inline-flex items-center gap-3 rounded-full bg-[#FF7F32] px-8 py-3.5 text-[12px] font-black uppercase tracking-[0.14em] text-white shadow-[0_14px_36px_rgba(255,127,50,0.35)] transition hover:brightness-105 md:px-10 md:py-4 md:text-[13px]"
+            />
+          </div>
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:mt-7 md:gap-6">
+            <Link
+              href="/competition/terms"
+              className="text-sm font-medium text-[#001F3F]/75 underline decoration-[#001F3F]/25 underline-offset-[6px] transition hover:text-[#001F3F] hover:decoration-[#001F3F]/45 md:text-[15px]"
+            >
+              {termsLinkLabel}
+            </Link>
+            <a
+              href="https://www.instagram.com/myceo_"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-semibold text-[#001F3F]/45 transition hover:text-[#001F3F]/70 md:text-sm"
+            >
+              {t("ig")}
+            </a>
+          </div>
         </div>
       </ViewIn>
     </section>
   );
 }
 
+export function RegistrationSection() {
+  const t = useTranslations("Registration");
+  const tf = useTranslations("HomeFinalCta");
+  const heroTitle = t("gepHeroTitle");
+  const titleMatch = heroTitle.match(/^(.+?)\s+(\d{4})$/);
+  const titleNode =
+    titleMatch != null ? (
+      <>
+        <span className="text-[#001F3F]">{titleMatch[1].trim()}</span>{" "}
+        <span className="text-[#FF7F32]">{titleMatch[2]}</span>
+      </>
+    ) : (
+      <span className="text-[#001F3F]">{heroTitle}</span>
+    );
+
+  return (
+    <GepOutreachHero
+      variant="registration"
+      pill={t("gepHeroPill")}
+      title={titleNode}
+      lead={t("gepHeroLead")}
+      footnote={t("footnote")}
+      heroCta={{
+        label: t("gepRegister"),
+        href: DRIVE_CHALLENGE_URL,
+        external: true,
+      }}
+      termsLinkLabel={tf("termsLink")}
+      heading="h1"
+      titleUppercase
+    />
+  );
+}
+
 export function SponsorStrip() {
   const t = useTranslations("Sponsor");
   return (
-    <section className={`bg-white ${sectionY} px-6 text-center md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl text-[#001F3F]">
-        <h2 className="mb-10 text-3xl font-black md:text-[44px]">{t("title")}</h2>
+    <section
+      className={`relative overflow-hidden bg-gradient-to-b from-white via-[#f3f6fb] to-[#e8edf5] ${sectionY} px-6 text-center md:px-10`}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.14), transparent 50%)",
+        }}
+      />
+      <ViewIn className="relative mx-auto max-w-6xl text-[#001F3F]">
+        <h2 className="mb-10 text-3xl font-black leading-tight md:text-[40px] md:leading-[1.15]">
+          {t("title")}
+        </h2>
         <div className="flex justify-center">
           <Image
             src={SPONSOR_SRC}
@@ -665,473 +904,445 @@ export function HowToParticipateSection() {
   );
 }
 
-function GlassCard({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={[
-        "relative rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl",
-        "shadow-[0_30px_80px_rgba(0,0,0,0.35)]",
-        className,
-      ].join(" ")}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-3xl opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 10%, rgba(255,255,255,0.22), transparent 45%), radial-gradient(circle at 90% 65%, rgba(87,227,255,0.16), transparent 52%)",
-        }}
-      />
-      <div className="relative">{children}</div>
-    </div>
+    <span className="inline-flex max-w-full items-center gap-1.5 border border-white/20 bg-white/[0.06] px-2.5 py-1 text-[10px] font-semibold uppercase leading-snug tracking-[0.16em] text-white/85 backdrop-blur-[2px] md:px-3 md:py-1.5 md:text-[11px] md:tracking-[0.18em]">
+      <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
+      {children}
+    </span>
   );
 }
 
-function Badge({ children }: { children: React.ReactNode }) {
+function HeroPrizeDetailRow({
+  icon,
+  children,
+  inverted,
+  compact,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+  /** High-contrast row on dark band (grand prize footer). */
+  inverted?: boolean;
+  /** Tighter row for compact grand prize module. */
+  compact?: boolean;
+}) {
+  if (inverted) {
+    return (
+      <div className={compact ? "flex gap-2" : "flex gap-3"}>
+        <span
+          className={[
+            "flex shrink-0 items-center justify-center rounded-lg bg-[#FFD700] text-[#0B0B32] shadow-sm",
+            compact
+              ? "h-7 w-7 md:h-8 md:w-8"
+              : "h-9 w-9 md:h-10 md:w-10 md:rounded-xl",
+          ].join(" ")}
+        >
+          {icon}
+        </span>
+        <p
+          className={[
+            "min-w-0 font-semibold leading-snug text-white",
+            compact
+              ? "pt-0.5 text-[11px] leading-tight md:text-xs"
+              : "pt-1.5 text-[13px] md:text-sm",
+          ].join(" ")}
+        >
+          {children}
+        </p>
+      </div>
+    );
+  }
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white/90 md:text-xs">
-      <span
-        aria-hidden
-        className="h-2 w-2 rounded-full"
-        style={{ background: GOLD_DEEP }}
-      />
-      {children}
-    </span>
+    <div className="flex gap-2.5">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#001F3F]/90 text-[#FFD700] ring-1 ring-[#FFD700]/25 md:h-9 md:w-9 md:rounded-xl">
+        {icon}
+      </span>
+      <p className="min-w-0 pt-1 text-[13px] font-medium leading-snug text-white/92 md:text-sm">{children}</p>
+    </div>
   );
 }
 
 export function HomeHeroBlock() {
   const t = useTranslations("HomeHero");
   const tc = useTranslations("Countdown");
-  const stats = [
-    { k: t("statNat"), v: t("statNatVal"), grand: false },
-    { k: t("statGrand"), v: GRAND_PRIZE_LABEL, grand: true },
-    { k: t("statTime"), v: t("statTimeVal"), grand: false },
-  ];
   const mini = [
     { k: t("miniMac"), v: t("miniReg") },
     { k: t("miniMei"), v: t("miniBoot") },
     { k: t("miniJun"), v: t("miniPitch") },
   ];
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative flex min-h-[100dvh] min-h-[100svh] w-full max-w-[100vw] flex-col overflow-x-clip">
+      <div className="pointer-events-none absolute inset-0 z-0">        <Image
+          src={HOME_HERO_BACKGROUND_SRC}
+          alt=""
+          fill
+          priority
+          unoptimized
+          sizes="100vw"
+          className="ngc-hero-bg object-cover object-[center_32%] md:object-center"
+        />
+      </div>
+      {/* Wider neutral scrim: busy HUD backgrounds need a deeper read zone on the left. */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-[1]"
         style={{
-          background: `radial-gradient(circle at 20% 15%, rgba(255,215,0,0.22), transparent 45%), radial-gradient(circle at 78% 70%, rgba(87,227,255,0.18), transparent 45%), linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 55%, #0B0B32 100%)`,
+          background: `linear-gradient(102deg, rgba(3,5,14,0.94) 0%, rgba(3,5,14,0.78) 28%, rgba(3,5,14,0.48) 42%, rgba(3,5,14,0.14) 56%, transparent 72%)`,
         }}
       />
-      <motion.div
-        aria-hidden
-        className="absolute -left-24 -top-24 h-[320px] w-[320px] rounded-full opacity-70 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 30% 30%, rgba(255,215,0,0.9), rgba(255,215,0,0.0) 60%)",
-        }}
-        animate={{ x: [0, 40, 0], y: [0, 24, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-28 -right-28 h-[380px] w-[380px] rounded-full opacity-60 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 30% 30%, rgba(87,227,255,0.75), rgba(87,227,255,0.0) 62%)",
-        }}
-        animate={{ x: [0, -36, 0], y: [0, -26, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div className="absolute inset-0 opacity-[0.10] [background-image:linear-gradient(to_right,rgba(255,255,255,0.22)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.22)_1px,transparent_1px)] [background-size:80px_80px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-black/22 md:hidden" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 z-[1] hidden bg-gradient-to-r from-black/25 via-transparent to-transparent md:block"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-black/10 to-transparent"
+      />
+
+      {/* Reserve fixed header + gap so hero content lives in exactly the remaining viewport. */}
+      <div
+        aria-hidden
+        className="shrink-0"
         style={{
-          background:
-            "radial-gradient(ellipse 90% 70% at 50% 35%, transparent 0%, rgba(0,0,0,0.45) 100%)",
+          height: "calc(var(--ngc-header-h) + var(--ngc-hero-top-gap))",
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-[6.5rem] md:px-10 md:pb-32 md:pt-[7.5rem]">
-        <motion.div
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.08, delayChildren: 0.06 } },
-          }}
-          initial="hidden"
-          animate="show"
-          className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]"
-        >
+      <div className="ngc-hero-main relative z-10 flex w-full min-h-0 flex-1 flex-col justify-center py-3 md:py-4">
+        <div className="flex w-full min-w-0 flex-1 flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <motion.div
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.06, delayChildren: 0.04 } },
+            }}
+            initial="hidden"
+            animate="show"
+            className="grid w-full min-w-0 items-start gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,1fr)] lg:items-start lg:gap-10 xl:gap-14 2xl:gap-16"
+          >
           <div className="text-white">
-            <motion.div variants={item}>
-              <Badge>{t("badge")}</Badge>
-            </motion.div>
+              <div className="w-full min-w-0 lg:max-w-none xl:pr-2">
+                <motion.div variants={item}>
+                  <Badge>{t("badge")}</Badge>
+                </motion.div>
 
-            <motion.h1
-              variants={item}
-              className="mt-7 text-[40px] font-black uppercase leading-[1.02] tracking-[0.12em] md:text-[78px]"
-            >
-              NextGen CEO{" "}
-              <span
-                className="relative inline-block"
-                style={{
-                  color: GOLD,
-                  textShadow:
-                    "0 26px 70px rgba(0,0,0,0.55), 0 0 38px rgba(255,215,0,0.20)",
-                }}
-              >
-                Challenge 2026
-                <span
-                  aria-hidden
-                  className="absolute -bottom-4 left-0 h-[5px] w-full rounded"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(255,215,0,0) 0%, rgba(255,215,0,1) 22%, rgba(230,230,0,1) 58%, rgba(255,215,0,0) 100%)",
-                    boxShadow: "0 0 24px rgba(255,215,0,0.25)",
-                  }}
-                />
-              </span>
-            </motion.h1>
+                <motion.div variants={item} className="mt-5 flex gap-3 sm:mt-6 sm:gap-5 md:gap-6">
+                  <div
+                    aria-hidden
+                    className="mt-1 hidden w-[3px] shrink-0 rounded-full bg-gradient-to-b from-[#FFD700] via-[#ffe566] to-[#FFD700]/40 shadow-[0_0_20px_rgba(255,215,0,0.45)] sm:block sm:min-h-[7.5rem] md:mt-1.5 md:min-h-[9rem] lg:min-h-[10.5rem]"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold uppercase tracking-[0.34em] text-white/90 md:text-base md:tracking-[0.38em] [text-shadow:0_2px_20px_rgba(0,0,0,0.92)]">
+                      NextGen
+                    </p>
+                    <h1 className="mt-1 text-[clamp(3.25rem,11vw,8.5rem)] font-black leading-[0.82] tracking-[-0.045em] [text-shadow:0_4px_36px_rgba(0,0,0,0.95),0_2px_12px_rgba(0,0,0,0.88)] md:mt-0.5">
+                      CEO
+                    </h1>
+                    <p
+                      className="mt-2 text-[clamp(1.2rem,3.8vw,2.35rem)] font-black uppercase tracking-[0.14em] [text-shadow:0_2px_24px_rgba(0,0,0,0.88)] md:mt-3 md:tracking-[0.18em]"
+                      style={{ color: GOLD_DEEP }}
+                    >
+                      Challenge 2026
+                    </p>
+                  </div>
+                </motion.div>
 
-            <motion.p
-              variants={item}
-              className="mt-5 text-[16px] font-extrabold tracking-[0.16em] md:text-[22px]"
-              style={{ color: GOLD_DEEP }}
-            >
-              {t("pitchLine")}
-            </motion.p>
-
-            <motion.p
-              variants={item}
-              className="mt-7 max-w-2xl font-semibold leading-8 text-white/75"
-            >
-              {t("body")}
-            </motion.p>
-
-            <motion.div variants={item} className="mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
-              {stats.map((x) => (
-                <div
-                  key={x.k}
-                  className={[
-                    "rounded-3xl p-4",
-                    x.grand
-                      ? "relative overflow-hidden ring-2 ring-[#FFD700]/80 ring-offset-2 ring-offset-transparent"
-                      : "",
-                  ].join(" ")}
-                  style={
-                    x.grand
-                      ? {
-                          background:
-                            "linear-gradient(155deg, rgba(255,237,150,0.95) 0%, rgba(255,215,0,0.92) 42%, rgba(212,175,55,0.88) 100%)",
-                          border: "1px solid rgba(255,248,220,0.95)",
-                          boxShadow:
-                            "0 0 32px rgba(255,215,0,0.45), 0 16px 40px rgba(0,31,63,0.25), inset 0 1px 0 rgba(255,255,255,0.65)",
-                        }
-                      : {
-                          background: "rgba(255,255,255,0.06)",
-                          border: "1px solid rgba(255,255,255,0.14)",
-                        }
-                  }
+                <motion.p
+                  variants={item}
+                  className="mt-6 max-w-2xl border-l-[3px] border-[#FFD700] pl-4 text-base font-bold tracking-wide text-balance [text-shadow:0_2px_16px_rgba(0,0,0,0.88)] md:mt-7 md:pl-5 md:text-lg lg:max-w-3xl xl:max-w-[40rem]"
+                  style={{ color: GOLD_DEEP }}
                 >
-                  {x.grand ? (
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 opacity-40"
-                      style={{
-                        background:
-                          "linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.7) 50%, transparent 60%)",
-                      }}
-                    />
-                  ) : null}
-                  <div
-                    className={[
-                      "text-[11px] font-black uppercase tracking-[0.20em]",
-                      x.grand ? "relative text-[#001F3F]/55" : "text-white/60",
-                    ].join(" ")}
-                  >
-                    {x.k}
-                  </div>
-                  <div
-                    className={[
-                      "relative mt-2 font-black",
-                      x.grand ? "text-[#001F3F]" : "text-white",
-                    ].join(" ")}
-                    style={
-                      x.grand
-                        ? {
-                            textShadow:
-                              "0 1px 0 rgba(255,255,255,0.5), 0 12px 28px rgba(0,31,63,0.12)",
-                          }
-                        : undefined
-                    }
-                  >
-                    {x.v}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+                  {t("pitchLine")}
+                </motion.p>
 
-            <motion.div variants={item} className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/competition/registration"
-                className="inline-flex items-center justify-center rounded-2xl px-7 py-3 font-black uppercase tracking-wider text-[#0B0B32] transition hover:-translate-y-0.5"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,215,0,1) 0%, rgba(230,230,0,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 24px 70px rgba(0,0,0,0.38)",
-                }}
-              >
-                {t("ctaRegister")}
-              </Link>
-              <Link
-                href="/competition"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-7 py-3 font-black uppercase tracking-wider text-white/90 transition hover:bg-white/10"
-              >
-                {t("ctaCompetition")}
-              </Link>
-            </motion.div>
+                <motion.p
+                  variants={item}
+                  className="mt-5 max-w-2xl text-sm leading-relaxed text-white/95 md:mt-6 md:text-[15px] md:leading-[1.65] [text-shadow:0_2px_16px_rgba(0,0,0,0.92)] lg:max-w-3xl xl:max-w-[44rem]"
+                >
+                  {t("body")}
+                </motion.p>
+
+                {/* Grand prize spotlight — compact so the title lockup stays the hero focus. */}
+                <motion.div
+                  variants={item}
+                  className="mt-6 max-w-[15.5rem] sm:max-w-[16.5rem] md:mt-7 md:max-w-[17.5rem]"
+                >
+                  <div
+                    className="overflow-hidden rounded-xl md:rounded-2xl"
+                    style={{
+                      boxShadow:
+                        "0 0 0 1.5px rgba(255,215,0,0.85), 0 0 32px rgba(255,215,0,0.14), 0 16px 40px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    <div className="bg-gradient-to-br from-[#FFD700] via-[#fff59a] to-[#FFD700] px-3.5 py-3 md:px-4 md:py-3.5">
+                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#001F3F] md:text-[10px]">
+                        {t("prizeEyebrow")}
+                      </p>
+                      <p className="mt-1 text-[clamp(1.35rem,4vw,1.85rem)] font-black leading-[0.95] tracking-[-0.02em] text-[#0B0B32]">
+                        <HomeGrandPrizeRm />
+                      </p>
+                      <p className="mt-1 text-[10px] font-bold uppercase leading-snug tracking-[0.12em] text-[#001F3F] md:text-[11px]">
+                        {t("prizeSub")}
+                      </p>
+                    </div>
+                    <div className="space-y-2.5 border-t-2 border-[#FFD700] bg-[#0B0B32] px-3.5 py-3 md:space-y-3 md:px-4 md:py-3.5">
+                      <HeroPrizeDetailRow
+                        inverted
+                        compact
+                        icon={
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
+                            <path
+                              d="M8 6V4h8v2M8 6h8v14H8V6zM8 10h8M10 14h4"
+                              stroke="currentColor"
+                              strokeWidth="1.6"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                        }
+                      >
+                        {t("prizeDetailCerts")}
+                      </HeroPrizeDetailRow>
+                      <HeroPrizeDetailRow
+                        inverted
+                        compact
+                        icon={
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
+                            <path
+                              d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.9 7.2 17.9l.9-5.4L4.2 8.7l5.4-.8L12 3z"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        }
+                      >
+                        {t("prizeDetailPajsk")}
+                      </HeroPrizeDetailRow>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={item}
+                  className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5 md:mt-9"
+                >
+                  <Link
+                    href="/competition/registration"
+                    className="inline-flex min-h-[44px] min-w-[180px] items-center justify-center rounded-lg px-6 py-2.5 text-[13px] font-bold uppercase tracking-[0.1em] text-[#0B0B32] transition hover:brightness-105 md:min-h-[46px] md:px-7 md:text-sm"
+                    style={{
+                      background: "linear-gradient(135deg, #FFD700 0%, #e6e600 100%)",
+                      boxShadow:
+                        "0 14px 36px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.12) inset",
+                    }}
+                  >
+                    {t("ctaRegister")}
+                  </Link>
+                  <Link
+                    href="/competition/terms"
+                    className="text-sm font-medium text-white/90 underline decoration-[#FFD700]/40 underline-offset-[5px] transition hover:text-white hover:decoration-[#FFD700]/70 md:text-[15px] [text-shadow:0_1px_10px_rgba(0,0,0,0.85)]"
+                  >
+                    {t("ctaSecondary")}
+                  </Link>
+                </motion.div>
+              </div>
           </div>
 
-          <motion.div variants={item} className="lg:justify-self-end">
-            <GlassCard className="p-7 md:p-8">
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <div
-                    className="text-xs font-black uppercase tracking-[0.22em]"
-                    style={{
-                      color: GOLD_DEEP,
-                      textShadow: "0 0 18px rgba(255,215,0,0.35)",
-                    }}
-                  >
-                    {t("highlight")}
-                  </div>
-                  <div
-                    className="mt-2 bg-gradient-to-r from-[#FFF8DC] via-[#FFD700] to-[#D4AF37] bg-clip-text text-2xl font-black text-transparent md:text-3xl"
-                    style={{
-                      filter: "drop-shadow(0 2px 12px rgba(255,215,0,0.35))",
-                    }}
-                  >
-                    {t("grandPrize")}
-                  </div>
-                </div>
-                <div
-                  className="rounded-2xl px-4 py-2 font-black tracking-wide"
-                  style={{
-                    background:
-                      "linear-gradient(145deg, rgba(255,248,220,0.95), rgba(255,215,0,0.55))",
-                    color: "#001F3F",
-                    border: "1px solid rgba(255,237,150,0.9)",
-                    boxShadow:
-                      "0 0 20px rgba(255,215,0,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
-                  }}
-                >
-                  {t("yearBadge")}
-                </div>
-              </div>
-
-              <motion.div
-                className="relative mt-6 overflow-hidden rounded-3xl p-6 md:p-7"
-                style={{
-                  background:
-                    "linear-gradient(145deg, #FFEF9F 0%, #FFD700 28%, #E6C200 55%, #FFD700 78%, #FFF4B8 100%)",
-                  border: "2px solid rgba(255,248,220,0.95)",
-                  boxShadow:
-                    "0 0 0 1px rgba(0,31,63,0.12), 0 8px 0 rgba(184,134,11,0.35), 0 28px 60px rgba(255,215,0,0.45), inset 0 2px 0 rgba(255,255,255,0.75), inset 0 -14px 28px rgba(184,134,11,0.15)",
-                }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-8 -top-12 h-40 w-40 rounded-full opacity-50 blur-2xl"
-                  style={{ background: "rgba(255,255,255,0.85)" }}
-                />
-                <div
-                  className="relative text-[52px] font-black leading-none text-[#001F3F] md:text-[64px]"
-                  style={{
-                    textShadow:
-                      "0 2px 0 rgba(255,255,255,0.5), 0 14px 36px rgba(0,31,63,0.2)",
-                  }}
-                >
-                  {GRAND_PRIZE_LABEL}
-                </div>
-                <div className="relative mt-3 font-bold text-[#001F3F]/90">
-                  {t("certLine")}
-                </div>
-                <div className="relative mt-3 text-sm font-semibold text-[#001F3F]/65">
-                  {t("hashtag")}
-                </div>
-              </motion.div>
-
-              <div className="mt-6">
-                <Countdown
-                  targetIso="2026-06-30T00:00:00+08:00"
-                  label={tc("finaleLabel")}
-                />
-              </div>
-
-              <div className="mt-6 grid grid-cols-3 gap-3">
+          <motion.div
+            variants={item}
+            className="h-full w-full min-w-0 -translate-y-1 rounded-2xl border border-white/[0.14] bg-black/50 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:-translate-y-2 sm:p-5 md:p-6 lg:h-auto lg:-translate-y-6 lg:rounded-3xl lg:border-l lg:border-white/[0.18] lg:bg-black/45 lg:pl-8 lg:shadow-[0_16px_50px_rgba(0,0,0,0.4)] xl:-translate-y-8 xl:pl-10 xl:pr-8"
+          >
+            <div>
+              <Countdown
+                targetIso="2026-09-30T00:00:00+08:00"
+                label={tc("finaleLabel")}
+                embedded
+              />
+            </div>
+            <div className="mt-6 border-t border-white/[0.14] pt-5 md:mt-7 md:pt-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60 md:text-[11px] md:tracking-[0.2em] [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
+                {t("timelineEyebrow")}
+              </p>
+              <div className="mt-3 flex flex-col gap-2.5 text-[13px] leading-snug text-white/85 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2 md:text-sm [text-shadow:0_1px_8px_rgba(0,0,0,0.85)]">
                 {mini.map((x) => (
-                  <div
-                    key={x.k}
-                    className="rounded-2xl p-4 text-center"
-                    style={{
-                      background: "rgba(255,255,255,0.06)",
-                      border: "1px solid rgba(255,255,255,0.12)",
-                    }}
-                  >
-                    <div className="font-black text-white">{x.k}</div>
-                    <div className="mt-1 text-[11px] font-bold text-white/70">{x.v}</div>
-                  </div>
+                  <span key={x.k}>
+                    <span className="font-semibold text-white">{x.k}</span>
+                    <span className="text-white/45"> — </span>
+                    {x.v}
+                  </span>
                 ))}
               </div>
-            </GlassCard>
+              <p className="mt-5 font-mono text-[10px] tracking-wide text-[#FFD700]/75 md:mt-6 md:text-xs [text-shadow:0_1px_6px_rgba(0,0,0,0.75)]">
+                {t("hashtag")}
+              </p>
+            </div>
           </motion.div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-function HomeVideoSubLabel({ children }: { children: React.ReactNode }) {
+function HomeVideoAsideCheck() {
   return (
-    <div className="mb-3 flex items-center gap-3 md:mb-4">
-      <span className="h-px w-6 shrink-0 bg-[#B8860B] md:w-8" aria-hidden />
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#001F3F]/75 md:text-[11px]">
-        {children}
-      </span>
+    <span
+      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-sm"
+      aria-hidden
+    >
+      <svg className="h-3.5 w-3.5" viewBox="0 0 12 10" fill="none">
+        <path
+          d="M1 5l3.5 3.5L11 1"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+/** MP4 fallback: avoids showing another programme’s first frame as a “poster”; user opts in to play. */
+function HomeMp4TeaserPlayer() {
+  const t = useTranslations("HomeVideo");
+  const [started, setStarted] = useState(false);
+
+  if (!started) {
+    return (
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#0a1628]">
+        <button
+          type="button"
+          onClick={() => setStarted(true)}
+          className="flex h-full w-full flex-col items-center justify-center gap-4 px-6 py-10 text-center transition hover:bg-[#0d1d35] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFD700]"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFD700]/90">
+            {t("fallbackOverlayKicker")}
+          </span>
+          <span className="max-w-md font-sans text-lg font-semibold leading-snug text-white md:text-xl">
+            {t("fallbackOverlayTitle")}
+          </span>
+          <span className="max-w-md font-sans text-sm leading-relaxed text-white/72 md:text-[15px]">
+            {t("fallbackOverlayBody")}
+          </span>
+          <span className="mt-1 inline-flex items-center gap-2 rounded-full bg-[#FFD700] px-6 py-2.5 text-sm font-bold tracking-wide text-[#001F3F] shadow-sm">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            {t("fallbackPlay")}
+          </span>
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black">
+      <video
+        className="h-full w-full object-contain"
+        controls
+        playsInline
+        preload="metadata"
+        autoPlay
+      >
+        <source src={HOME_TEASER_VIDEO_SRC} type="video/mp4" />
+      </video>
     </div>
   );
 }
 
 export function HomeVideoTeaser() {
   const t = useTranslations("HomeVideo");
-  const hasPoster = Boolean(HOME_TEASER_POSTER_IMAGE_SRC);
-  const hasInfographic = Boolean(HOME_TEASER_INFOGRAPHIC_IMAGE_SRC);
+  const ytId = HOME_TEASER_YOUTUBE_VIDEO_ID.trim();
+  const useYoutube = Boolean(ytId);
 
-  const sectionEyebrow =
-    "text-xs font-black uppercase tracking-[0.22em] text-[#B8860B]";
-  const mediaShell =
-    "overflow-hidden rounded-2xl border border-[#001F3F]/10 bg-white shadow-[0_16px_48px_rgba(0,31,63,0.09)] ring-1 ring-[#001F3F]/[0.04]";
-  const videoShell =
-    "overflow-hidden rounded-2xl border border-[#001F3F]/15 bg-[#0a0a18] shadow-[0_24px_64px_rgba(0,31,63,0.18)] ring-1 ring-black/20";
+  const asidePoints = [
+    { title: t("aside1t"), desc: t("aside1d") },
+    { title: t("aside2t"), desc: t("aside2d") },
+    { title: t("aside3t"), desc: t("aside3d") },
+    { title: t("aside4t"), desc: t("aside4d") },
+    { title: t("aside5t"), desc: t("aside5d") },
+  ];
 
   return (
-    <section className="relative overflow-hidden bg-[#f6f7fb] px-6 py-14 md:px-10 md:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.5]"
-        style={{
-          background:
-            "radial-gradient(circle at 88% 12%, rgba(255,215,0,0.2), transparent 42%), radial-gradient(circle at 6% 88%, rgba(0,31,63,0.07), transparent 48%)",
-        }}
-      />
-      <ViewIn className="relative mx-auto max-w-7xl">
+    <section
+      className="bg-white px-6 py-14 font-sans md:px-10 md:py-20"
+      aria-labelledby="home-video-heading"
+    >
+      <ViewIn className="mx-auto max-w-7xl">
         <motion.div
           variants={viewIn}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.08 }}
-          className="rounded-3xl border border-[#001F3F]/10 bg-white/95 p-6 shadow-[0_28px_90px_rgba(0,31,63,0.08)] backdrop-blur-sm md:p-8 md:backdrop-blur-none lg:p-10"
+          className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14"
         >
-          <div className="max-w-3xl border-b border-[#001F3F]/[0.08] pb-8 md:pb-10">
-            <p className={sectionEyebrow}>{t("eyebrow")}</p>
-            <h2 className="mt-3 text-2xl font-black tracking-tight text-[#001F3F] md:text-4xl">
-              {t("title")}
-            </h2>
-            <p className="mt-4 text-sm font-medium leading-relaxed text-[#001F3F]/70 md:text-base">
-              {t("subtitle")}
-            </p>
-          </div>
+          <motion.div
+            variants={viewIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.12 }}
+            className="min-w-0 lg:col-span-7"
+          >
+            <div className="relative aspect-video w-full overflow-hidden bg-black">
+              {useYoutube ? (
+                <iframe
+                  title={t("youtubeIframeTitle")}
+                  src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytId)}?rel=0`}
+                  className="absolute inset-0 h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              ) : (
+                <HomeMp4TeaserPlayer />
+              )}
+            </div>
+            {useYoutube ? (
+              <p className="mt-3 text-xs text-[#64748b]">{t("videoHintYoutube")}</p>
+            ) : (
+              <p className="mt-3 text-xs text-[#64748b]">{t("videoHintMp4")}</p>
+            )}
+          </motion.div>
 
-          <div className="mt-8 flex flex-col items-stretch gap-10 md:mt-10 lg:flex-row lg:items-center lg:gap-10 xl:gap-12">
-            <motion.div
-              variants={viewIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.12 }}
-              className="min-w-0 flex-1"
-            >
-              <div className={videoShell}>
-                <div className="relative aspect-video w-full">
-                  <video
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    preload="auto"
-                    {...(HOME_TEASER_POSTER_SRC ? { poster: HOME_TEASER_POSTER_SRC } : {})}
-                  >
-                    <source src={HOME_TEASER_VIDEO_SRC} type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-              <p className="mt-3 text-center text-[11px] font-medium leading-snug text-[#001F3F]/55 md:mt-3.5 md:text-left md:text-xs">
-                {t("videoHint")}
+          <motion.aside
+            variants={viewIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.12 }}
+            className="min-w-0 lg:col-span-5 lg:pt-0"
+          >
+            <div className="text-center lg:text-left">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#B8860B] md:text-xs">
+                {t("eyebrow")}
               </p>
-            </motion.div>
-
-            {hasPoster ? (
-              <motion.div
-                variants={viewIn}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.12 }}
-                className="mx-auto w-full max-w-[260px] shrink-0 sm:max-w-[280px] lg:mx-0 lg:w-[min(22vw,240px)] lg:max-w-[240px]"
+              <h2
+                id="home-video-heading"
+                className="mt-3 text-balance text-3xl font-black uppercase leading-[1.05] tracking-tight text-[#001B3D] md:text-[38px] md:leading-[1.08]"
               >
-                <HomeVideoSubLabel>{t("posterLabel")}</HomeVideoSubLabel>
-                <div
-                  className={`${mediaShell} shadow-[0_12px_40px_rgba(0,31,63,0.1)]`}
-                >
-                  <div className="relative aspect-[3/4] w-full">
-                    <Image
-                      src={HOME_TEASER_POSTER_IMAGE_SRC}
-                      alt={t("posterAlt")}
-                      fill
-                      sizes="(max-width: 1024px) 280px, 240px"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ) : null}
-          </div>
-
-          {hasInfographic ? (
-            <>
-              <div
-                className="my-10 h-px w-full bg-gradient-to-r from-transparent via-[#001F3F]/12 to-transparent md:my-12"
+                {t("asideHead")}
+              </h2>
+              <span
                 aria-hidden
+                className="mx-auto mt-4 block h-1 w-14 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] lg:mx-0"
               />
-              <motion.div
-                variants={viewIn}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.08 }}
-              >
-                <HomeVideoSubLabel>{t("infographicLabel")}</HomeVideoSubLabel>
-                <div
-                  className={`${mediaShell} mx-auto max-w-5xl bg-[#f8fafc] px-3 py-4 sm:px-5 sm:py-5 md:px-8 md:py-6`}
-                >
-                  <Image
-                    src={HOME_TEASER_INFOGRAPHIC_IMAGE_SRC}
-                    alt={t("infographicAlt")}
-                    width={1600}
-                    height={2200}
-                    className="mx-auto h-auto w-full max-h-[min(85vh,880px)] object-contain"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1024px"
-                  />
-                </div>
-              </motion.div>
-            </>
-          ) : null}
+            </div>
+            <p className="mt-5 text-pretty text-[15px] font-normal leading-relaxed text-[#4B5563] md:text-base">
+              {t("asideIntro")}
+            </p>
+            <ul className="mt-8 space-y-5">
+              {asidePoints.map((row) => (
+                <li key={row.title} className="flex gap-3.5 text-left">
+                  <HomeVideoAsideCheck />
+                  <div className="min-w-0">
+                    <p className="text-[15px] font-bold leading-snug text-[#334155] md:text-base">
+                      {row.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{row.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.aside>
         </motion.div>
       </ViewIn>
     </section>
@@ -1148,18 +1359,18 @@ export function HomeTrustStrip() {
   ];
   return (
     <section
-      className="relative border-y border-white/10 px-6 py-5 md:px-10 md:py-6"
+      className="relative border-y border-white/10 px-6 py-7 md:px-10 md:py-9"
       style={{
         background: `linear-gradient(90deg, ${NAVY_DEEP} 0%, ${NAVY} 50%, ${NAVY_DEEP} 100%)`,
       }}
     >
-      <div className="mx-auto flex max-w-7xl flex-col flex-wrap items-center justify-center gap-4 text-center md:flex-row md:gap-10">
+      <div className="mx-auto flex max-w-7xl flex-col flex-wrap items-center justify-center gap-6 text-center sm:gap-7 md:flex-row md:gap-12">
         {rows.map((x) => (
-          <div key={x.k} className="flex min-w-[140px] flex-col gap-0.5">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#FFD700]/80">
+          <div key={x.k} className="flex min-w-[160px] max-w-[280px] flex-col gap-1">
+            <span className="text-xs font-bold uppercase leading-snug tracking-[0.14em] text-[#FFD700]/85">
               {x.k}
             </span>
-            <span className="text-sm font-black text-white md:text-base">{x.v}</span>
+            <span className="text-base font-bold leading-snug text-white md:text-lg">{x.v}</span>
           </div>
         ))}
       </div>
@@ -1195,46 +1406,61 @@ export function HomeCompetitionPreview() {
   const tn = useTranslations("Nav");
   const tp = useTranslations("HomePreview");
   return (
-    <section className="bg-white px-6 py-20 md:px-10 md:py-28">
-      <ViewIn className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#001F3F]/45">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f9fc] via-white to-[#eef2f9] px-6 py-20 md:px-10 md:py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-[#FFD700]/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#001F3F]/[0.06] blur-3xl"
+      />
+      <ViewIn className="relative mx-auto max-w-6xl">
+        <div className="mb-14 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#001F3F]/55 md:text-[13px]">
             {tp("kicker")}
           </p>
-          <h2 className="mt-2 text-3xl font-black text-[#001F3F] md:text-[44px]">
+          <h2 className="mt-3 text-3xl font-black leading-tight text-[#001F3F] md:text-[40px] md:leading-[1.15]">
             {tp("title")}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-[#001F3F]/65 md:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-base font-normal leading-[1.65] text-[#001F3F]/75 md:text-lg">
             {tp("subtitle")}
           </p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PREVIEW_MENU.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="group rounded-3xl border border-[#001F3F]/10 bg-gradient-to-br from-white to-slate-50/80 p-8 text-left shadow-[0_20px_50px_rgba(0,31,63,0.08)] transition hover:-translate-y-1 hover:border-[#B8860B]/30 hover:shadow-[0_28px_70px_rgba(0,31,63,0.12)]"
+            <div
+              key={l.id}
+              className="rounded-3xl border border-[#001F3F]/[0.1] bg-gradient-to-br from-white via-white to-[#f1f4fa] p-7 text-left shadow-[0_18px_50px_rgba(0,31,63,0.07)] ring-1 ring-[#001F3F]/[0.04] md:p-8"
             >
-              <div className="text-lg font-black text-[#001F3F] group-hover:text-[#B8860B]">
-                {tn(`menu.${l.id}`)}
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFF8DC] to-[#FFD700]/40 shadow-inner ring-1 ring-[#001F3F]/10">
+                  <PreviewTopicIcon menuId={l.id} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#B8860B]">
+                    {tp("cardEyebrow")}
+                  </div>
+                  <div className="mt-2 text-xl font-black leading-snug tracking-tight text-[#001F3F]">
+                    {tn(`menu.${l.id}`)}
+                  </div>
+                </div>
               </div>
-              <div className="mt-1 text-sm font-semibold text-[#001F3F]/55">
+              <div className="mt-4 border-t border-[#001F3F]/[0.06] pt-4 text-base font-normal leading-[1.6] text-[#001F3F]/72">
                 {tn(`menuSub.${l.id}`)}
               </div>
-              <div className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#B8860B]">
-                {tp("view")}
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
-        <div className="mt-12 text-center">
+        <p className="mx-auto mt-14 max-w-2xl text-center text-base font-normal leading-[1.65] text-[#001F3F]/68">
+          {tp("hubHint")}{" "}
           <Link
-            href="/competition"
-            className="inline-flex rounded-full border-2 border-[#001F3F] px-8 py-3.5 text-sm font-black uppercase tracking-wider text-[#001F3F] transition hover:bg-[#001F3F] hover:text-white"
+            href="/#competition-hub"
+            className="font-semibold text-[#001F3F] underline decoration-[#001F3F]/30 underline-offset-[6px] transition hover:text-[#B8860B] hover:decoration-[#B8860B]/45"
           >
-            {tp("fullCta")}
+            {tp("hubLink")}
           </Link>
-        </div>
+        </p>
       </ViewIn>
     </section>
   );
@@ -1245,37 +1471,231 @@ export function HomeApaItuTeaser() {
   const pills = [t("pill1"), t("pill2"), t("pill3")];
   return (
     <section
-      className="px-6 py-20 text-white md:px-10 md:py-28"
+      className="relative overflow-hidden px-6 py-20 text-white md:px-10 md:py-28"
       style={{
         background: `linear-gradient(180deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
       }}
     >
-      <ViewIn className="mx-auto max-w-4xl text-center">
-        <h2 className="text-3xl font-black md:text-[40px]">{t("title")}</h2>
-        <p className="mt-6 text-base font-semibold leading-8 text-white/80 md:text-lg">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-25"
+        style={{
+          background:
+            "radial-gradient(circle at 80% 20%, rgba(255,215,0,0.35), transparent 45%), radial-gradient(circle at 10% 80%, rgba(87,227,255,0.2), transparent 40%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        }}
+      />
+      <ViewIn className="relative mx-auto max-w-3xl text-center">
+        <div className="mx-auto mb-8 flex justify-center">
+          <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.35)] ring-2 ring-[#FFD700]/30 sm:h-24 sm:w-24">
+            <Image
+              src={LOGO_SRC}
+              alt={t("logoAlt")}
+              fill
+              className="object-contain p-1"
+              sizes="96px"
+            />
+          </div>
+        </div>
+        <h2 className="text-3xl font-black leading-tight md:text-[38px] md:leading-[1.2]">
+          {t("title")}
+        </h2>
+        <p className="mt-6 text-base font-medium leading-[1.65] text-white/90 md:text-lg">
           {t("beforeBrand")}
-          <strong>MyCEO Education</strong>
+          <strong className="font-bold text-white">MyCEO Education</strong>
           {t("between")}
-          <strong>PAK21</strong>
+          <strong className="font-bold text-white">PAK21</strong>
           {t("afterPak")}
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {pills.map((label) => (
             <div
               key={label}
-              className="rounded-2xl border border-white/15 bg-white/5 px-4 py-5 text-sm font-black uppercase tracking-wider"
+              className="rounded-2xl border border-white/18 bg-white/8 px-4 py-4 text-sm font-bold leading-snug tracking-normal text-white/95 sm:py-5"
             >
               {label}
             </div>
           ))}
         </div>
         <Link
-          href="/competition"
-          className="mt-10 inline-flex rounded-full bg-white px-8 py-3.5 text-sm font-black uppercase tracking-wider text-[#001F3F] transition hover:bg-[#FFD700]"
+          href="/#competition-hub"
+          className="mt-10 inline-block text-base font-semibold text-[#FFD700] underline decoration-[#FFD700]/45 underline-offset-[7px] transition hover:text-white hover:decoration-white/55"
         >
           {t("readMore")}
         </Link>
       </ViewIn>
     </section>
+  );
+}
+
+export function HomeOutcomesSection() {
+  const t = useTranslations("HomeOutcomes");
+  const items = [
+    { title: t("o1t"), desc: t("o1d") },
+    { title: t("o2t"), desc: t("o2d") },
+    { title: t("o3t"), desc: t("o3d") },
+    { title: t("o4t"), desc: t("o4d") },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f5f7fc] via-white to-[#eef1f8] px-6 py-20 md:px-10 md:py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.5]"
+        style={{
+          background:
+            "radial-gradient(circle at 12% 20%, rgba(255,215,0,0.14), transparent 45%), radial-gradient(circle at 92% 80%, rgba(0,31,63,0.05), transparent 42%)",
+        }}
+      />
+      <ViewIn className="relative mx-auto max-w-6xl">
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B8860B] md:text-[13px] lg:hidden">
+              {t("kicker")}
+            </p>
+            <div className="mt-4 flex flex-col gap-3 sm:gap-4 lg:mt-0">
+              {HOME_OUTCOMES_SIDE_IMAGES.map((src, i) => (
+                <div
+                  key={src}
+                  className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#001F3F]/10 shadow-[0_20px_50px_rgba(0,31,63,0.1)] sm:aspect-[5/3]"
+                >
+                  <Image
+                    src={src}
+                    alt={t("sideImageAlt", { n: i + 1 })}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 45vw, 560px"
+                    quality={95}
+                    unoptimized={src.startsWith("/home/")}
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#001F3F]/25 to-transparent"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <header className="mb-10 text-center lg:mb-12 lg:text-left">
+              <p className="hidden text-xs font-bold uppercase tracking-[0.16em] text-[#B8860B] md:text-[13px] lg:block">
+                {t("kicker")}
+              </p>
+              <h2 className="mt-0 text-balance text-3xl font-black uppercase leading-[1.05] tracking-tight text-[#001F3F] lg:mt-3 md:text-[42px] md:leading-[1.08]">
+                {t("title")}
+              </h2>
+              <span
+                aria-hidden
+                className="mx-auto mt-4 block h-1 w-14 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] lg:mx-0"
+              />
+              <p className="mt-4 text-base font-normal leading-[1.65] text-[#001F3F]/75 md:text-lg">
+                {t("subtitle")}
+              </p>
+            </header>
+            <div className="grid gap-6 sm:grid-cols-2 sm:gap-6">
+              {items.map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-2xl border border-[#001F3F]/[0.08] bg-white/90 p-7 shadow-[0_14px_40px_rgba(0,31,63,0.06)] backdrop-blur-sm md:p-8"
+                >
+                  <div className="h-1 w-12 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B]" />
+                  <h3 className="mt-5 text-lg font-black leading-snug text-[#001F3F] md:text-xl">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-base font-normal leading-[1.65] text-[#001F3F]/78">
+                    {c.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ViewIn>
+    </section>
+  );
+}
+
+export function HomeFaqSection() {
+  const t = useTranslations("HomeFaq");
+  const ids = [1, 2, 3, 4, 5] as const;
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#d2dae8] via-[#e4eaf4] to-[#dce3ef] px-6 py-20 md:px-10 md:py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.45]"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.12), transparent 55%), radial-gradient(circle at 0% 100%, rgba(0,31,63,0.06), transparent 45%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,31,63,0.12) 1px, transparent 0)`,
+          backgroundSize: "28px 28px",
+        }}
+      />
+      <ViewIn className="relative mx-auto max-w-2xl">
+        <p className="text-center text-xs font-bold uppercase tracking-[0.16em] text-[#001F3F]/55 md:text-[13px]">
+          {t("kicker")}
+        </p>
+        <h2 className="mt-3 text-center text-3xl font-black leading-tight tracking-tight text-[#001F3F] md:text-[36px]">
+          {t("title")}
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-center text-base font-normal leading-[1.6] text-[#001F3F]/72">
+          {t("subtitle")}
+        </p>
+        <div className="mt-12 space-y-4">
+          {ids.map((i) => (
+            <details
+              key={i}
+              className="group rounded-2xl border border-[#001F3F]/[0.1] bg-white px-6 shadow-[0_8px_28px_rgba(0,31,63,0.04)] open:shadow-[0_14px_40px_rgba(0,31,63,0.08)]"
+            >
+              <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-base font-bold leading-snug text-[#001F3F] outline-none ring-[#B8860B] ring-offset-2 ring-offset-white focus-visible:ring-2 [&::-webkit-details-marker]:hidden">
+                <span className="pr-2">{t(`q${i}`)}</span>
+                <span
+                  className="shrink-0 text-xs font-bold leading-none text-[#B8860B] transition-transform duration-200 group-open:rotate-180"
+                  aria-hidden
+                >
+                  ▼
+                </span>
+              </summary>
+              <p className="border-t border-[#001F3F]/[0.08] pb-5 pt-4 text-base font-normal leading-[1.65] text-[#001F3F]/80">
+                {t(`a${i}`)}
+              </p>
+            </details>
+          ))}
+        </div>
+      </ViewIn>
+    </section>
+  );
+}
+
+export function HomeFinalCta() {
+  const th = useTranslations("HomeFinalCta");
+  const tr = useTranslations("Registration");
+  const titleNode = <span className="text-[#001F3F]">{th("title")}</span>;
+
+  return (
+    <GepOutreachHero
+      variant="home"
+      pill={th("kicker")}
+      title={titleNode}
+      lead={th("body")}
+      footnote={tr("footnote")}
+      heroCta={{
+        label: th("cta"),
+        href: "/competition/registration",
+        external: false,
+      }}
+      termsLinkLabel={th("termsLink")}
+      heading="h2"
+    />
   );
 }

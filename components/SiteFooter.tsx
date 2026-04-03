@@ -81,7 +81,7 @@ export async function SiteFooter() {
             {t("linkHome")}
           </Link>
           <span aria-hidden>·</span>
-          <Link href="/competition" className="hover:text-[#FFD700]">
+          <Link href="/#competition-hub" className="hover:text-[#FFD700]">
             {t("linkCompetition")}
           </Link>
           <span aria-hidden>·</span>

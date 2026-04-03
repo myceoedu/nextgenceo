@@ -7,6 +7,31 @@
   --ngc-navy-deep: #001f3f;
   --ngc-gold: #e6e600;
   --ngc-gold-deep: #ffd700;
+  /** Fixed {@link SiteHeader}: keep hero content below bar + breathing room */
+  --ngc-header-h: 5.25rem;
+  --ngc-hero-top-gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --ngc-header-h: 5.75rem;
+    --ngc-hero-top-gap: 1.5rem;
+  }
+}
+
+/** Home hero: remaining viewport below fixed header + gap (fills one full screen). */
+.ngc-hero-main {
+  min-height: calc(100dvh - var(--ngc-header-h) - var(--ngc-hero-top-gap));
+  min-height: calc(100svh - var(--ngc-header-h) - var(--ngc-hero-top-gap));
+}
+
+/**
+ * Hero background photo: stable compositing layer (avoids some subpixel blur in Chrome).
+ * Pair with `unoptimized` on the hero `<Image>` so the browser uses your full file, not a resized derivative.
+ */
+.ngc-hero-bg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @theme inline {
@@ -28,6 +53,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto,
     Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {

@@ -5,6 +5,7 @@ import { AboutProgramsSection } from "@/components/about/AboutProgramsSection";
 import { AboutHistorySection } from "@/components/about/AboutHistorySection";
 import { AboutPartnersSection } from "@/components/about/AboutPartnersSection";
 import { CompetitionPageHero } from "@/components/competition/CompetitionPageHero";
+import { SponsorStrip } from "@/components/competition/CompetitionSections";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -30,6 +31,7 @@ export default async function AboutPage({ params }: Props) {
       <AboutProgramsSection />
       <AboutGallerySection />
       <AboutPartnersSection />
+      <SponsorStrip />
     </>
   );
 }

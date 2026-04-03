@@ -1,14 +1,14 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ViewIn } from "@/components/motion-ui";
+import { CompetitionHubDeck } from "@/components/competition/CompetitionHubDeck";
 import {
-  HomeApaItuTeaser,
-  HomeCompetitionPreview,
+  HomeFinalCta,
   HomeHeroBlock,
+  HomeOutcomesSection,
   HomeTrustStrip,
   HomeVideoTeaser,
-  ImportantDatesCard,
-  SponsorStrip,
+  ImportantDatesSectionWithVisual,
 } from "@/components/competition/CompetitionSections";
+import { HomeGalleryStrip } from "@/components/home/HomeGalleryStrip";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -26,18 +26,15 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="overflow-x-hidden bg-white">
+    <div className="overflow-x-clip bg-gradient-to-b from-[#e4e9f2] via-[#f0f3fa] to-[#e8ecf4]">
       <HomeHeroBlock />
-      <HomeVideoTeaser />
       <HomeTrustStrip />
-      <section className="bg-[#f6f7fb] px-6 py-10 md:py-14">
-        <ViewIn>
-          <ImportantDatesCard />
-        </ViewIn>
-      </section>
-      <HomeCompetitionPreview />
-      <HomeApaItuTeaser />
-      <SponsorStrip />
+      <HomeVideoTeaser />
+      <HomeGalleryStrip />
+      <HomeOutcomesSection />
+      <CompetitionHubDeck variant="full" homeHeadlines sectionId="competition-hub" />
+      <ImportantDatesSectionWithVisual />
+      <HomeFinalCta />
     </div>
   );
 }

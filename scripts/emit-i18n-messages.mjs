@@ -121,9 +121,14 @@ const ms = {
       description:
         "MyCEO Education membentuk pemimpin muda dengan minda keusahawanan — kreatif, yakin, sedia memacu Malaysia ke hadapan.",
     },
+    brochure: {
+      title: "Brosur digital | NextGen CEO Challenge 2026",
+      description:
+        "Layari panduan penuh NextGen CEO Challenge 2026 — program, langkah, anugerah, jadual, penilaian, dan terma dalam satu buku flip.",
+    },
   },
   Countdown: {
-    finaleLabel: "Kira detik ke Grand Finale (Jun 2026)",
+    finaleLabel: "Kira detik ke Grand Finale (Sep 2026)",
     days: "Hari",
     hours: "Jam",
     min: "Minit",
@@ -134,22 +139,18 @@ const ms = {
     eyebrow: "NextGen CEO Challenge 2026",
   },
   HomeHero: {
-    badge: "Program Kepimpinan & Keusahawanan Pelajar • Malaysia",
+    badge: "Kepimpinan & keusahawanan pelajar · Malaysia",
     pitchLine: "Pitch. Strategize. Win!",
     body:
-      "Platform pertandingan berprestij untuk membentuk pelajar yang berfikir seperti pemimpin, bertindak seperti inovator, dan menyampaikan idea seperti CEO muda.",
-    statNat: "Pengiktirafan kebangsaan",
-    statNatVal: "Sijil + PAJSK",
-    statGrand: "Grand Prize",
-    statTime: "Gelanggang masa",
-    statTimeVal: "Mac–Jun 2026",
-    highlight: "Sorotan",
-    grandPrize: "GRAND PRIZE",
-    yearBadge: "2026",
-    certLine: "+ National Certificate & PAJSK Recognition",
+      "Program kebangsaan untuk sekolah menengah — kepimpinan, keusahawanan, pentas akhir dinilai.",
+    prizeEyebrow: "Hadiah utama",
+    prizeSub: "Anugerah tunai · pasukan pemenang",
+    prizeDetailCerts: "Sijil kebangsaan untuk peserta",
+    prizeDetailPajsk: "Pengiktirafan sekolah selaras PAJSK",
+    timelineEyebrow: "Ringkasan musim",
     hashtag: "#NextGenCEOChallenge2026",
     ctaRegister: "Daftarkan Sekolah Anda",
-    ctaCompetition: "Competition",
+    ctaSecondary: "Terma & kelayakan",
     miniMac: "Mac",
     miniMei: "Mei",
     miniJun: "Jun",
@@ -164,10 +165,35 @@ const ms = {
       "Cuplikan ringkas pertandingan — pasukan, pitching, dan momentum di pentas.",
     videoHint:
       "Klip mungkin dimainkan tanpa bunyi — gunakan kawalan pemain untuk menghidupkan audio.",
-    posterLabel: "Poster",
+    videoHintMp4: "Gunakan pemain untuk bunyi dan skrin penuh.",
+    videoHintYoutube: "Pemain YouTube: bunyi, kualiti, skrin penuh.",
+    fallbackOverlayKicker: "Pratonton program",
+    fallbackOverlayTitle: "Tonton sorotan ringkas program MyCEO",
+    fallbackOverlayBody:
+      "Kami elakkan thumbnail salah dipaparkan secara automatik. Tekan di bawah apabila anda sedia menonton.",
+    fallbackPlay: "Main video",
+    youtubeIframeTitle: "NextGen CEO Challenge — video program",
+    asideHead: "Hasil pembelajaran",
+    asideIntro:
+      "Pelajar membina kepimpinan dan keusahawanan dunia sebenar — analisis, kerjasama, pitching. Selepas cabaran, pasukan akan:",
+    aside1t: "Berfikir secara strategik",
+    aside1d: "Analisis masalah, keputusan dalam kekangan, justifikasi.",
+    aside2t: "Berkerjasama berpasukan",
+    aside2d: "Empat pelajar + pendidik — bootcamp hingga pelaksanaan pasaran.",
+    aside3t: "Pitch dengan yakin",
+    aside3d: "Panel hakim, soal jawab, kehadiran profesional.",
+    aside4t: "Laksana di pasaran",
+    aside4d: "Jual, belajar, ulang — bukan slaid sahaja.",
+    aside5t: "Capai pengiktirafan",
+    aside5d: "Sijil kebangsaan · rekod sekolah selaras PAJSK.",
     posterAlt: "NextGen CEO Challenge — poster",
-    infographicLabel: "Infografik",
-    infographicAlt: "NextGen CEO Challenge — gambaran infografik",
+  },
+  HomeGallery: {
+    kicker: "Di lapangan",
+    title: "Pelajar belajar melalui tindakan",
+    subtitle:
+      "Bengkel, kerja berpasukan, dan pitching — tenaga sekolah apabila menyertai cabaran ini.",
+    imageAlt: "Foto program MyCEO {n}",
   },
   HomeTrust: {
     organiser: "Penganjur",
@@ -181,17 +207,73 @@ const ms = {
   },
   ImportantDates: {
     label: "Tarikh Penting",
-    title: "Jadual Ringkas NextGen CEO Challenge 2026",
+    title: "Laluan musim 2026 anda — tiga detik utama",
+    sectionLead:
+      "Pilih fasa yang ingin difahami — bulan dipapar jelas; setiap kad membuka jadual penuh.",
+    badgeStandard: "Fasa musim",
+    badgeFeatured: "Klimaks musim",
+    footnote:
+      "Tarikh muktamad tertakluk kepada pengesahan rasmi penganjur — rujuk Terma & Syarat untuk butiran.",
+    visualFallback:
+      "Karya rasmi dan poster dikongsi dengan sekolah berdaftar — terokai halaman Competition untuk visual penuh.",
   },
   HomePreview: {
-    kicker: "Competition",
-    title: "Terokai Pertandingan",
+    kicker: "Gambaran program",
+    title: "Apa yang ada di halaman Competition",
     subtitle:
-      "Semua butiran rasmi dalam halaman Competition — pilih topik di bawah.",
-    view: "Lihat →",
-    fullCta: "Gambaran penuh Competition",
+      "Setiap tajuk di bawah ada dokumentasi penuh di halaman Competition — disusun untuk pendidik dan pihak sekolah.",
+    cardEyebrow: "Bahagian hub",
+    hubHint:
+      "Peraturan, kriteria penilaian, anugerah, dan pendaftaran berada di satu tempat.",
+    hubLink: "Buka halaman Competition",
+  },
+  HomeOutcomes: {
+    kicker: "Hasil",
+    title: "Kepimpinan sebenar untuk sekolah",
+    subtitle: "Program kebangsaan—bukan acara sekali sahaja.",
+    sideImageAlt: "Foto aktiviti program MyCEO / NextGen CEO {n}",
+    o1t: "Berfikir strategik",
+    o1d:
+      "Pelajar latih merancang, berkomunikasi, dan membuat keputusan—kemahiran kekal selepas kelas.",
+    o2t: "Pengiktirafan rasmi",
+    o2d: "Sijil dan rekod selaras PAJSK—bukti jelas untuk keluarga dan sekolah.",
+    o3t: "Mentor & industri",
+    o3d: "Pasukan berjumpa mentor dan juri perniagaan; bina keyakinan dengan bimbingan.",
+    o4t: "Tarikh jelas",
+    o4d:
+      "Dari pendaftaran ke pentas akhir—tanda masa mudah diselaraskan dengan tahun persekolahan.",
+  },
+  HomeFaq: {
+    kicker: "Soalan lazim",
+    title: "Soalan pihak sekolah",
+    subtitle:
+      "Jawapan langsung tentang struktur, pengiktirafan, dan di mana butiran rasmi berada.",
+    q1: "Untuk siapa NextGen CEO Challenge?",
+    a1:
+      "Program ini direka untuk pelajar menengah dan sekolah yang mahukan pengalaman keusahawanan dan kepimpinan peringkat kebangsaan yang mantap. Sekolah mendaftar sebagai institusi penyertaan; pelajar bersaing sebagai pasukan dengan sokongan pendidik.",
+    q2: "Apakah pengiktirafan untuk pelajar dan sekolah?",
+    a2:
+      "Peserta layak memperoleh sijil kebangsaan dan pengiktirafan berkaitan PAJSK seperti dinyatakan dalam anugerah dan terma rasmi. Kategori dan syarat tepat diterbitkan di halaman Competition untuk dikongsi dengan pihak atasan dan ibu bapa.",
+    q3: "Berapa masa yang diperlukan?",
+    a3:
+      "Musim bermula dari pendaftaran, bootcamp, pencapaian pitching, hingga tetingkap grand finale. Halaman timeline menyenaraikan tarikh penting untuk merancang komitmen guru dan pasukan pelajar.",
+    q4: "Di mana peraturan rasmi dan kriteria penilaian?",
+    a4:
+      "Semua dokumen — terma, pecahan penilaian, dan langkah penyertaan — berada di bahagian Competition laman ini. Satu hub supaya anda tidak mencari merata PDF atau salinan tidak rasmi.",
+    q5: "Bagaimana mendaftar?",
+    a5:
+      "Gunakan “Daftarkan Sekolah Anda” untuk alur pendaftaran rasmi. Jika perlu penjelasan sebelum komit, gunakan halaman Contact dan kami akan salurkan melalui saluran rasmi penganjur.",
+  },
+  HomeFinalCta: {
+    kicker: "Langkah seterusnya",
+    title: "Tempah kedudukan sekolah anda di pentas kebangsaan",
+    body:
+      "Sertai sekolah-sekolah yang melabur dalam kepimpinan, keusahawanan, dan pencapaian beriktiraf untuk pelajar.",
+    cta: "Daftarkan sekolah anda",
+    termsLink: "Baca terma & kelayakan",
   },
   HomeApaItu: {
+    logoAlt: "Logo MyCEO Education",
     title: "Apa Itu Next Gen CEO?",
     beforeBrand: "Inisiatif ",
     between: " untuk menyokong ",
@@ -282,14 +364,14 @@ const ms = {
   },
   Timeline: {
     title: "Timeline Pertandingan",
-    s1when: "Mac 2026",
+    s1when: "April 2026",
     s1title: "Pendaftaran",
     s1desc:
       "Daftar melalui saluran rasmi & sahkan penyertaan pasukan.",
-    s2when: "Mei 2026",
+    s2when: "Ogos 2026",
     s2title: "Bootcamp Kreativiti & Teamwork",
     s2desc: "Kerjasama pasukan dan idea inovatif dinilai.",
-    s3when: "Jun 2026",
+    s3when: "September 2026",
     s3title: "Sales & Pitching Karnival",
     s3desc:
       "Mini Sales & Final Pitching: prestasi pasaran sebenar & kemampuan menyampaikan idea.",
@@ -303,6 +385,23 @@ const ms = {
     footnote: "*Kemasukan terhad bagi mengekalkan kualiti bimbingan mentor.",
     join: "Join The Challenge!",
     ig: "Hubungi / IG Rasmi",
+    gepHeroPill: "Inovasi. Inspirasi. Impak.",
+    gepHeroTitle: "NextGen CEO Challenge 2026",
+    gepHeroLead:
+      "Program kebangsaan untuk sekolah menengah — kepimpinan, keusahawanan, dan pentas akhir dinilai. Pasukan pitch, strategi, dan laksana di pasaran sebenar dengan sokongan mentor.",
+    gepCardStarts: "Bermula dari",
+    gepCardHeadline: "Kemasukan rasmi",
+    gepCardMetaDate: "Musim April – September 2026",
+    gepCardMetaAudience: "Pasukan sekolah menengah (sekolah terjemputan)",
+    gepCardMetaLocation: "Malaysia · pentas kebangsaan",
+    gepBrochure: "Muat turun brosur",
+    gepRegister: "Daftarkan sekolah anda",
+    datesTitle: "Tarikh musim",
+    datesYear: "2026",
+    datesAvailability: "Masih ada tempat",
+    datesPhase: "Fasa musim",
+    datesBook: "Daftar sekarang",
+    datesPrizeLine: "Kumpulan hadiah utama {amount}",
   },
   Sponsor: {
     title: "Rakan Penaja Terdahulu",
@@ -362,6 +461,70 @@ const ms = {
     c3t: "STRATEGIC THINKING",
     c3d:
       "Mengasah kemampuan merancang dan membuat keputusan berimpak tinggi",
+  },
+  CompetitionBrochure: {
+    heroTitle: "Brosur digital",
+    heroSubtitle:
+      "Balikkan halaman untuk cerita penuh pertandingan — maklumat sama seperti halaman Competition, dalam satu panduan.",
+    homeSectionKicker: "Panduan program lengkap",
+    homeSectionTitle: "Panduan pertandingan — layari setiap butiran",
+    homeSectionSubtitle:
+      "Langkah, anugerah, manfaat, jadual, penilaian, terma, integrasi pendidik, FAQ, hubungi, dan pendaftaran — setanding halaman Competition, dalam satu buku di laman utama.",
+    flipHint:
+      "Seret sudut atau ketik tepi halaman untuk membalik. Gunakan butang di bawah pada mana-mana peranti.",
+    coverKicker: "Panduan rasmi",
+    coverTitle: "NextGen CEO Challenge 2026",
+    coverSubtitle:
+      "Kepimpinan & keusahawanan pelajar — pitch, strategi, dan bersaing di pentas kebangsaan.",
+    sectionWelcome: "Selamat datang",
+    syncNote:
+      "Untuk teks terkini dan PDF, rujuk halaman Competition yang berasingan.",
+    syncNoteLanding:
+      "Halaman Competition kekal sebagai rujukan rasmi untuk PDF dan kemas kini akhir minit.",
+    howToContinued: "Sambungan",
+    educatorPageEyebrow: "Untuk pendidik",
+    faqPageEyebrow: "Soalan lazim",
+    resourcesEyebrow: "Jawapan lanjut & pautan",
+    resourcesIntro: "Buka halaman penuh bila-bila masa:",
+    learnMoreOnPages:
+      "Setiap halaman hub membawa bahagian yang sama dalam bentuk panjang apabila anda perlu kongsi pautan terus.",
+    loadingBook: "Menyediakan buku flip…",
+    registerCta: "Daftarkan sekolah anda",
+    backToHub: "Halaman Competition",
+    backToGuideTop: "Kembali ke atas panduan ini",
+    redirectingToGuide: "Membawa anda ke panduan pertandingan di laman utama…",
+    prev: "Halaman sebelum",
+    next: "Halaman seterus",
+    bannerCta: "Buka brosur digital",
+    bannerSub:
+      "Semua maklumat pertandingan dalam buku flip — seperti panduan program yang boleh dilayari.",
+  },
+  CompetitionHub: {
+    kicker: "Panduan program",
+    title: "Topik pertandingan, langkah demi langkah",
+    subtitle:
+      "Setiap kad merangkum satu bahagian. Gunakan pautan untuk halaman rasmi, PDF, atau kongsi satu topik dengan pihak sekolah.",
+    dragHint:
+      "Swipe, seret, ketik anak panah, atau gunakan kekunci ← →. Sama pada telefon, tablet, dan komputer meja.",
+    prevAria: "Topik sebelumnya",
+    nextAria: "Topik seterusnya",
+    announcer: "Topik {current} daripada {total}",
+    termsSnapshotNote:
+      "Untuk teks undang-undang lengkap, buka Terma & Syarat.",
+    exploreFullHub: "Lihat semua topik di laman utama",
+    homeKicker: "Untuk pasukan sekolah yang sibuk",
+    homeTitle: "Musim 2026 dalam beberapa kad",
+    homeSubtitle:
+      "Sembilan topik ringkas — daripada “apa ini?” hingga pendaftaran. Ayat mudah dibaca, tarikh penting, dan langkah seterus. Buka pautan bila perlukan halaman rasmi penuh.",
+    slideIntroLabel: "Pengenalan",
+    slideWhatLabel: "Apa itu",
+    slideHowLabel: "Cara penyertaan",
+    slideAwardsLabel: "Anugerah",
+    slideJudgingLabel: "Penilaian",
+    slideTimelineLabel: "Timeline",
+    slideTermsLabel: "Terma ringkas",
+    slideRegisterLabel: "Daftar",
+    timelineTablePhase: "Fasa musim — tarikh & fokus",
   },
   CompetitionPages: {
     overviewTitle: "Competition",
@@ -566,9 +729,14 @@ const en = {
       description:
         "MyCEO Education shapes young leaders with entrepreneurial wisdom—creative, confident, ready to drive Malaysia forward.",
     },
+    brochure: {
+      title: "Digital brochure | NextGen CEO Challenge 2026",
+      description:
+        "Flip through the full NextGen CEO Challenge 2026 guide — programme, steps, awards, timeline, judging, and terms in one place.",
+    },
   },
   Countdown: {
-    finaleLabel: "Countdown to finale (Jun 2026)",
+    finaleLabel: "Countdown to finale (Sep 2026)",
     days: "Days",
     hours: "Hours",
     min: "Min",
@@ -579,25 +747,21 @@ const en = {
     eyebrow: "NextGen CEO Challenge 2026",
   },
   HomeHero: {
-    badge: "Student leadership & entrepreneurship programme • Malaysia",
+    badge: "Student leadership & entrepreneurship · Malaysia",
     pitchLine: "Pitch. Strategize. Win!",
     body:
-      "A prestigious platform shaping students to think like leaders, act like innovators, and pitch ideas like young CEOs.",
-    statNat: "National recognition",
-    statNatVal: "Certificate + PAJSK",
-    statGrand: "Grand prize",
-    statTime: "Timeline",
-    statTimeVal: "Mar–Jun 2026",
-    highlight: "Highlight",
-    grandPrize: "GRAND PRIZE",
-    yearBadge: "2026",
-    certLine: "+ National Certificate & PAJSK Recognition",
+      "National programme for secondary schools — leadership, entrepreneurship, judged finale.",
+    prizeEyebrow: "Grand prize",
+    prizeSub: "Cash award · winning team",
+    prizeDetailCerts: "National certificates for participants",
+    prizeDetailPajsk: "PAJSK-aligned school recognition",
+    timelineEyebrow: "Season overview",
     hashtag: "#NextGenCEOChallenge2026",
     ctaRegister: "Register your school",
-    ctaCompetition: "Competition",
-    miniMac: "Mar",
-    miniMei: "May",
-    miniJun: "Jun",
+    ctaSecondary: "Terms & eligibility",
+    miniMac: "April",
+    miniMei: "August",
+    miniJun: "Sep",
     miniReg: "Registration",
     miniBoot: "Bootcamp",
     miniPitch: "Sales & pitch",
@@ -609,10 +773,35 @@ const en = {
       "A short look at the challenge — teams, pitching, and momentum on stage.",
     videoHint:
       "The clip may start muted — use the player controls to turn sound on.",
-    posterLabel: "Poster",
+    videoHintMp4: "Use the player for sound and full screen.",
+    videoHintYoutube: "YouTube player: sound, quality, full screen.",
+    fallbackOverlayKicker: "Programme preview",
+    fallbackOverlayTitle: "Watch a short teaser from MyCEO programmes",
+    fallbackOverlayBody:
+      "We keep this slot clean so the wrong thumbnail is not shown at a glance. Tap below when you are ready to play.",
+    fallbackPlay: "Play video",
+    youtubeIframeTitle: "NextGen CEO Challenge — programme video",
+    asideHead: "Learning outcomes",
+    asideIntro:
+      "Students build real-world leadership and entrepreneurship — analyse, collaborate, pitch. By the end of the challenge, teams will:",
+    aside1t: "Think strategically",
+    aside1d: "Analyse problems, decide under constraints, justify choices.",
+    aside2t: "Collaborate as a team",
+    aside2d: "Four students + educator — bootcamp through market execution.",
+    aside3t: "Pitch with confidence",
+    aside3d: "Judges’ panel, Q&A, professional presence.",
+    aside4t: "Execute in the market",
+    aside4d: "Sell, learn, iterate — beyond slides.",
+    aside5t: "Earn recognised outcomes",
+    aside5d: "National certificates · PAJSK-aligned school records.",
     posterAlt: "NextGen CEO Challenge — poster",
-    infographicLabel: "Infographic",
-    infographicAlt: "NextGen CEO Challenge — infographic overview",
+  },
+  HomeGallery: {
+    kicker: "On the ground",
+    title: "Students learning by doing",
+    subtitle:
+      "Workshops, teamwork, and pitching — the energy schools bring when they join the challenge.",
+    imageAlt: "MyCEO programme photo {n}",
   },
   HomeTrust: {
     organiser: "Organiser",
@@ -626,17 +815,75 @@ const en = {
   },
   ImportantDates: {
     label: "Important dates",
-    title: "At a glance — NextGen CEO Challenge 2026",
+    title: "Your 2026 season path — three milestones",
+    sectionLead:
+      "Each card highlights a phase and the month window — tap through for the full timeline.",
+    badgeStandard: "Season phase",
+    badgeFeatured: "Finale phase",
+    footnote:
+      "Final dates may be confirmed by the organiser — see Terms & conditions for official detail.",
+    visualFallback:
+      "Official artwork and posters are shared with registered schools — explore the Competition hub for full visuals.",
   },
   HomePreview: {
-    kicker: "Competition",
-    title: "Explore the competition",
+    kicker: "Programme overview",
+    title: "What you will find on the Competition hub",
     subtitle:
-      "All official details live on the Competition hub — pick a topic below.",
-    view: "View →",
-    fullCta: "Full competition overview",
+      "Every section below is documented in full on the official Competition pages — structured for educators and school leaders.",
+    cardEyebrow: "Hub section",
+    hubHint:
+      "Rules, judging criteria, awards, and registration are all in one place.",
+    hubLink: "Open the Competition hub",
+  },
+  HomeOutcomes: {
+    kicker: "Outcomes",
+    title: "Real leadership for schools",
+    subtitle: "A national programme—not a one-off event.",
+    sideImageAlt: "MyCEO / NextGen CEO programme activity photo {n}",
+    o1t: "Strategic thinking",
+    o1d:
+      "Students practise planning, communicating, and deciding under pressure—skills that last beyond the classroom.",
+    o2t: "Official recognition",
+    o2d:
+      "Certificates and PAJSK-aligned records give families and schools clear proof of participation.",
+    o3t: "Mentors & industry",
+    o3d:
+      "Teams meet business mentors and judges and build confidence with guided support.",
+    o4t: "Clear dates",
+    o4d:
+      "From registration to finale—key milestones you can map to the school year.",
+  },
+  HomeFaq: {
+    kicker: "FAQ",
+    title: "Questions school leaders ask",
+    subtitle:
+      "Straight answers about structure, recognition, and where to find official detail.",
+    q1: "Who is NextGen CEO Challenge for?",
+    a1:
+      "The programme is designed for secondary students and schools that want a rigorous, national-level entrepreneurship and leadership experience. Your school registers as the participating institution; students compete as teams with educator support.",
+    q2: "What recognition do students and schools receive?",
+    a2:
+      "Participants can earn national certificates and PAJSK-related recognition as outlined in the official awards and terms. Exact categories and conditions are published on the Competition hub so you can share them with leadership and parents.",
+    q3: "How much time does the programme take?",
+    a3:
+      "The season runs from registration through bootcamp, pitching milestones, and the grand finale window. The timeline page lists key dates so you can map commitments for teachers and student teams.",
+    q4: "Where are the official rules and judging criteria?",
+    a4:
+      "All governing documents — terms, judging breakdown, and participation steps — live on the Competition section of this site. We keep a single hub so you are never hunting across PDFs or unofficial copies.",
+    q5: "How do we register?",
+    a5:
+      "Use “Register your school” to reach the official registration flow. If you need clarification before committing, use the Contact page and we will route you through the organiser’s official channels.",
+  },
+  HomeFinalCta: {
+    kicker: "Next step",
+    title: "Secure your school’s place on the national stage",
+    body:
+      "Join a cohort of schools investing in leadership, entrepreneurship, and recognised achievement for their students.",
+    cta: "Register your school",
+    termsLink: "Read terms & eligibility",
   },
   HomeApaItu: {
+    logoAlt: "MyCEO Education logo",
     title: "What is Next Gen CEO?",
     beforeBrand: "An initiative by ",
     between: " to support ",
@@ -722,13 +969,13 @@ const en = {
   },
   Timeline: {
     title: "Competition timeline",
-    s1when: "Mar 2026",
+    s1when: "April 2026",
     s1title: "Registration",
     s1desc: "Register via official channels & confirm your team.",
-    s2when: "May 2026",
+    s2when: "August 2026",
     s2title: "Creativity & teamwork bootcamp",
     s2desc: "Team collaboration and innovative ideas are assessed.",
-    s3when: "Jun 2026",
+    s3when: "September 2026",
     s3title: "Sales & pitching carnival",
     s3desc:
       "Mini sales & final pitch: real-market performance and how you present your idea.",
@@ -743,6 +990,23 @@ const en = {
       "*Limited intake to maintain mentor guidance quality.",
     join: "Join The Challenge!",
     ig: "Contact / official IG",
+    gepHeroPill: "Innovate. Inspire. Impact.",
+    gepHeroTitle: "NextGen CEO Challenge 2026",
+    gepHeroLead:
+      "A national programme for secondary schools — leadership, entrepreneurship, and a judged finale. Teams pitch, strategize, and execute in the real market with mentor support.",
+    gepCardStarts: "Starts from",
+    gepCardHeadline: "Official intake",
+    gepCardMetaDate: "April – September 2026 season",
+    gepCardMetaAudience: "Secondary school teams (invited schools)",
+    gepCardMetaLocation: "Malaysia · national stage",
+    gepBrochure: "Download brochure",
+    gepRegister: "Register your school",
+    datesTitle: "Season dates",
+    datesYear: "2026",
+    datesAvailability: "Places available",
+    datesPhase: "Season phase",
+    datesBook: "Book now",
+    datesPrizeLine: "{amount} grand prize pool",
   },
   Sponsor: {
     title: "Past sponsors",
@@ -801,6 +1065,70 @@ const en = {
     c2d: "Builds confidence and leadership in real situations.",
     c3t: "STRATEGIC THINKING",
     c3d: "Sharpens planning and high-impact decision-making.",
+  },
+  CompetitionBrochure: {
+    heroTitle: "Digital brochure",
+    heroSubtitle:
+      "Turn the pages for the full competition story — same information as the Competition hub, in one flowing guide.",
+    homeSectionKicker: "Complete programme guide",
+    homeSectionTitle: "Competition guide — flip through every detail",
+    homeSectionSubtitle:
+      "Steps, awards, benefits, timeline, judging, terms, educator integration, FAQ, contact, and registration — the same depth as the Competition hub, in one book on the home page.",
+    flipHint:
+      "Drag corners or tap edges to turn pages. Use the buttons below on any device.",
+    coverKicker: "Official guide",
+    coverTitle: "NextGen CEO Challenge 2026",
+    coverSubtitle:
+      "Student leadership & entrepreneurship — pitch, strategize, and compete on the national stage.",
+    sectionWelcome: "Welcome",
+    syncNote:
+      "For the latest wording and PDFs, always refer to the individual Competition pages.",
+    syncNoteLanding:
+      "Official Competition pages remain the source of truth for PDFs and last-minute updates.",
+    howToContinued: "Continuation",
+    educatorPageEyebrow: "For educators",
+    faqPageEyebrow: "FAQ",
+    resourcesEyebrow: "More answers & links",
+    resourcesIntro: "Open full pages anytime:",
+    learnMoreOnPages:
+      "Each hub page carries the same sections in long form when you need to share a direct link.",
+    loadingBook: "Preparing flipbook…",
+    registerCta: "Register your school",
+    backToHub: "Competition hub",
+    backToGuideTop: "Back to top of this guide",
+    redirectingToGuide: "Taking you to the competition guide on the home page…",
+    prev: "Previous page",
+    next: "Next page",
+    bannerCta: "Open digital brochure",
+    bannerSub:
+      "All competition information in a flipbook — like a downloadable programme guide.",
+  },
+  CompetitionHub: {
+    kicker: "Programme overview",
+    title: "Competition topics, step by step",
+    subtitle:
+      "Each card covers one part of the programme. Use the links for official pages, PDFs, or to share a single topic with your team.",
+    dragHint:
+      "Swipe, drag, use the arrows, or press ← → on your keyboard — the same on phones, tablets, and desktops.",
+    prevAria: "Previous topic",
+    nextAria: "Next topic",
+    announcer: "Topic {current} of {total}",
+    termsSnapshotNote:
+      "For the complete legal text, open Terms & conditions.",
+    exploreFullHub: "See all topics on the home page",
+    homeKicker: "Made for busy school teams",
+    homeTitle: "The 2026 season in a few cards",
+    homeSubtitle:
+      "Nine short topics — from “what is this?” to registration. Plain wording, key dates, and what to do next. Open a link anytime you need the full official page.",
+    slideIntroLabel: "Introduction",
+    slideWhatLabel: "What it is",
+    slideHowLabel: "How to participate",
+    slideAwardsLabel: "Awards",
+    slideJudgingLabel: "Judging",
+    slideTimelineLabel: "Timeline",
+    slideTermsLabel: "Terms snapshot",
+    slideRegisterLabel: "Register",
+    timelineTablePhase: "Season phases — dates & focus",
   },
   CompetitionPages: {
     overviewTitle: "Competition",
