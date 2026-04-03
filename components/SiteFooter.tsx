@@ -76,7 +76,7 @@ export async function SiteFooter() {
           &ldquo;{t("quote")}&rdquo;
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4 text-xs font-semibold text-[#FFD700]/70">
+        <div className="mt-10 flex flex-wrap justify-center gap-x-3 gap-y-2 text-xs font-semibold text-[#FFD700]/70">
           <Link href="/" className="hover:text-[#FFD700]">
             {t("linkHome")}
           </Link>
@@ -87,6 +87,14 @@ export async function SiteFooter() {
           <span aria-hidden>·</span>
           <Link href="/contact" className="hover:text-[#FFD700]">
             {t("linkContact")}
+          </Link>
+          <span aria-hidden>·</span>
+          <Link href="/login" className="hover:text-[#FFD700]">
+            {t("linkSchoolLogin")}
+          </Link>
+          <span aria-hidden>·</span>
+          <Link href="/register" className="hover:text-[#FFD700]">
+            {t("linkSchoolRegister")}
           </Link>
         </div>
       </div>

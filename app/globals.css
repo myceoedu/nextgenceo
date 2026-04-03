@@ -34,6 +34,78 @@
   backface-visibility: hidden;
 }
 
+/** Grand prize card: ceremonial display (Cinzel via root layout variable). */
+.font-grand-display {
+  font-family: var(--font-grand-display), "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+/**
+ * Moving highlight across metallic gold — luxury “shine”.
+ * Disabled when the user prefers reduced motion (see media query below).
+ */
+@keyframes ngc-grand-shimmer {
+  0% {
+    transform: translateX(-130%) skewX(-14deg);
+  }
+  100% {
+    transform: translateX(230%) skewX(-14deg);
+  }
+}
+
+@keyframes ngc-grand-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.03);
+  }
+}
+
+.ngc-grand-prize-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ngc-grand-prize-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 48%;
+  height: 140%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    rgba(255, 252, 235, 0.65) 48%,
+    rgba(255, 255, 255, 0.35) 52%,
+    rgba(255, 248, 210, 0.5) 58%,
+    transparent 100%
+  );
+  animation: ngc-grand-shimmer 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ngc-grand-prize-ambient {
+  animation: ngc-grand-glow-pulse 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ngc-grand-prize-shimmer::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .ngc-grand-prize-ambient {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

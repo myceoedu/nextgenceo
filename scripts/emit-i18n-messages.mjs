@@ -17,6 +17,8 @@ const ms = {
     contact: "Contact",
     overview: "Gambaran",
     register: "Daftar",
+    login: "Log masuk",
+    signUp: "Daftar akaun",
     competitionPages: "Halaman competition",
     mobileCompetition: "Competition — pilih halaman",
     youAreAt: "Anda di:",
@@ -57,6 +59,8 @@ const ms = {
     linkHome: "Home",
     linkCompetition: "Competition",
     linkContact: "Contact",
+    linkSchoolLogin: "Log masuk sekolah",
+    linkSchoolRegister: "Daftar akaun sekolah",
   },
   Contact: {
     eyebrow: "Hubungi Kami",
@@ -115,6 +119,16 @@ const ms = {
       title: "Pendaftaran | NextGen CEO Challenge 2026",
       description:
         "Pendaftaran rasmi NextGen CEO Challenge 2026 — saluran rasmi MyCEO Education.",
+    },
+    login: {
+      title: "Log masuk sekolah | NextGen CEO Challenge 2026",
+      description:
+        "Log masuk akaun sekolah anda untuk NextGen CEO Challenge 2026 — satu sekolah, satu akaun.",
+    },
+    register: {
+      title: "Daftar akaun sekolah | NextGen CEO Challenge 2026",
+      description:
+        "Cipta akaun sekolah untuk NextGen CEO Challenge 2026 — satu sekolah, satu akaun, empat pelajar.",
     },
     about: {
       title: "Tentang kami | NextGen CEO Challenge 2026",
@@ -402,6 +416,44 @@ const ms = {
     datesPhase: "Fasa musim",
     datesBook: "Daftar sekarang",
     datesPrizeLine: "Kumpulan hadiah utama {amount}",
+    alreadyHaveAccount: "Sudah ada akaun sekolah?",
+    loginCta: "Log masuk",
+    newAccountPrompt: "Belum ada akaun sekolah?",
+    signUpCta: "Daftar akaun",
+  },
+  SchoolLogin: {
+    title: "Log masuk sekolah",
+    intro:
+      "Akaun sekolah (satu sekolah, satu log masuk) untuk mengurus pasukan dan empat pelajar akan tersedia di sini tidak lama lagi.",
+    backHome: "Kembali ke laman utama",
+    createAccountPrompt: "Belum ada akaun sekolah?",
+    createAccountCta: "Daftar akaun",
+  },
+  SchoolRegister: {
+    title: "Daftar akaun sekolah",
+    intro:
+      "Satu sekolah, satu akaun. Selepas log masuk dibuka sepenuhnya, anda boleh mengurus pasukan (empat pelajar) dari papan pemuka. Buat masa ini borang ini mengesahkan input sahaja — penyimpanan akaun akan disambungkan tidak lama lagi.",
+    schoolNameLabel: "Nama sekolah",
+    coordinatorLabel: "Nama guru / penyelaras (pilihan)",
+    emailLabel: "E-mel (log masuk)",
+    passwordLabel: "Kata laluan",
+    confirmLabel: "Sahkan kata laluan",
+    submit: "Cipta akaun",
+    submitting: "Menghantar…",
+    loginPrompt: "Sudah ada akaun?",
+    loginCta: "Log masuk",
+    successTitle: "Borang disahkan",
+    successBody:
+      "Butiran anda kelihatan sah. Akaun dalam talian belum diaktifkan — sila ikut saluran pendaftaran rasmi penganjur untuk penyertaan pertandingan. Log masuk berasaskan e-mel akan tersedia di sini tidak lama lagi.",
+    errors: {
+      schoolName: "Masukkan nama sekolah.",
+      email: "Masukkan e-mel.",
+      emailFormat: "Masukkan alamat e-mel yang sah.",
+      password: "Masukkan kata laluan.",
+      passwordShort: "Kata laluan mestilah sekurang-kurangnya 8 aksara.",
+      confirm: "Sahkan kata laluan anda.",
+      mismatch: "Kata laluan tidak sepadan.",
+    },
   },
   Sponsor: {
     title: "Rakan Penaja Terdahulu",
@@ -625,6 +677,8 @@ const en = {
     contact: "Contact",
     overview: "Overview",
     register: "Register",
+    login: "Log in",
+    signUp: "Sign up",
     competitionPages: "Competition pages",
     mobileCompetition: "Competition — choose a page",
     youAreAt: "You are on:",
@@ -665,6 +719,8 @@ const en = {
     linkHome: "Home",
     linkCompetition: "Competition",
     linkContact: "Contact",
+    linkSchoolLogin: "School login",
+    linkSchoolRegister: "Create school account",
   },
   Contact: {
     eyebrow: "Contact us",
@@ -723,6 +779,16 @@ const en = {
       title: "Registration | NextGen CEO Challenge 2026",
       description:
         "Official registration for NextGen CEO Challenge 2026 — MyCEO Education channels.",
+    },
+    login: {
+      title: "School login | NextGen CEO Challenge 2026",
+      description:
+        "Sign in to your school account for NextGen CEO Challenge 2026 — one school, one account.",
+    },
+    register: {
+      title: "Create school account | NextGen CEO Challenge 2026",
+      description:
+        "Create your school account for NextGen CEO Challenge 2026 — one school, one account, four students.",
     },
     about: {
       title: "About us | NextGen CEO Challenge 2026",
@@ -1007,6 +1073,44 @@ const en = {
     datesPhase: "Season phase",
     datesBook: "Book now",
     datesPrizeLine: "{amount} grand prize pool",
+    alreadyHaveAccount: "Already have a school account?",
+    loginCta: "Log in",
+    newAccountPrompt: "Need to create a school account?",
+    signUpCta: "Sign up",
+  },
+  SchoolLogin: {
+    title: "School login",
+    intro:
+      "School accounts (one school, one login) to manage your team and four students will be available here soon.",
+    backHome: "Back to home",
+    createAccountPrompt: "No school account yet?",
+    createAccountCta: "Create an account",
+  },
+  SchoolRegister: {
+    title: "Create school account",
+    intro:
+      "One school, one account. When login is fully enabled, you will manage your team (four students) from a dashboard. For now this form only validates your input — saving accounts will be connected soon.",
+    schoolNameLabel: "School name",
+    coordinatorLabel: "Teacher / coordinator name (optional)",
+    emailLabel: "Email (for login)",
+    passwordLabel: "Password",
+    confirmLabel: "Confirm password",
+    submit: "Create account",
+    submitting: "Submitting…",
+    loginPrompt: "Already have an account?",
+    loginCta: "Log in",
+    successTitle: "Details validated",
+    successBody:
+      "Your details look valid. Online accounts are not active yet — please follow the organiser’s official registration channels for competition entry. Email-based sign-in will be available here soon.",
+    errors: {
+      schoolName: "Enter your school name.",
+      email: "Enter your email.",
+      emailFormat: "Enter a valid email address.",
+      password: "Enter a password.",
+      passwordShort: "Password must be at least 8 characters.",
+      confirm: "Confirm your password.",
+      mismatch: "Passwords do not match.",
+    },
   },
   Sponsor: {
     title: "Past sponsors",

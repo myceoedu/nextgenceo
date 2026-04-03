@@ -32,7 +32,8 @@ export function SiteHeader() {
 
   const isCompetition =
     pathname === "/competition" || pathname.startsWith("/competition/");
-  const isRegistration = pathname === "/competition/registration";
+  const isLogin = pathname === "/login";
+  const isRegisterAccount = pathname === "/register";
 
   const currentMatch = COMPETITION_MENU.find((l) => l.href === pathname);
   const currentCompLabel = currentMatch
@@ -99,19 +100,31 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:flex flex-col items-end gap-1 shrink-0">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <LocaleSwitcher />
             <Link
-              href="/competition/registration"
-              aria-current={isRegistration ? "page" : undefined}
+              href="/login"
+              aria-current={isLogin ? "page" : undefined}
               className={[
-                "rounded-full bg-gradient-to-br from-[#FFD700] via-[#e6e600] to-amber-100 px-6 py-2.5 text-xs font-black uppercase tracking-wider text-[#0B0B32] transition",
-                isRegistration
-                  ? "shadow-[0_0_0_3px_white,0_0_0_5px_#001F3F] ring-2 ring-[#001F3F]"
-                  : "shadow-[0_12px_36px_rgba(0,31,63,0.18)] hover:-translate-y-0.5",
+                "rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition outline-none",
+                isLogin
+                  ? "border-[#001F3F] bg-[#001F3F] text-white shadow-md"
+                  : "border-slate-200 text-[#001F3F] hover:border-[#001F3F]/35 hover:bg-slate-50",
               ].join(" ")}
             >
-              {t("register")}
+              {t("login")}
+            </Link>
+            <Link
+              href="/register"
+              aria-current={isRegisterAccount ? "page" : undefined}
+              className={[
+                "rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition outline-none",
+                isRegisterAccount
+                  ? "border-[#001F3F] bg-[#001F3F] text-white shadow-md"
+                  : "border-slate-200 text-[#001F3F] hover:border-[#001F3F]/35 hover:bg-slate-50",
+              ].join(" ")}
+            >
+              {t("signUp")}
             </Link>
           </div>
           {isCompetition && pathname !== "/competition" ? (
@@ -188,15 +201,28 @@ export function SiteHeader() {
             ) : null}
             <div className="mt-4 flex flex-col gap-2 border-t border-slate-100 pt-4">
               <Link
-                href="/competition/registration"
+                href="/login"
+                aria-current={isLogin ? "page" : undefined}
                 className={[
-                  "rounded-xl py-3.5 text-center text-sm font-black uppercase tracking-wider text-[#0B0B32]",
-                  isRegistration
-                    ? "bg-gradient-to-br from-[#FFD700] to-amber-100 ring-2 ring-[#001F3F]"
-                    : "bg-gradient-to-br from-[#FFD700] to-amber-100",
+                  "rounded-xl py-3 text-center text-sm font-bold",
+                  isLogin
+                    ? "bg-[#001F3F] text-white"
+                    : "border border-slate-200 text-[#001F3F] hover:bg-slate-50",
                 ].join(" ")}
               >
-                {t("register")}
+                {t("login")}
+              </Link>
+              <Link
+                href="/register"
+                aria-current={isRegisterAccount ? "page" : undefined}
+                className={[
+                  "rounded-xl py-3 text-center text-sm font-bold",
+                  isRegisterAccount
+                    ? "bg-[#001F3F] text-white"
+                    : "border border-slate-200 text-[#001F3F] hover:bg-slate-50",
+                ].join(" ")}
+              >
+                {t("signUp")}
               </Link>
             </div>
           </div>

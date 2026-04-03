@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +11,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/** Display serif for grand prize / ceremonial headlines only. */
+const grandDisplay = Cinzel({
+  variable: "--font-grand-display",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${grandDisplay.variable} h-full antialiased`}
       lang="ms"
       suppressHydrationWarning
     >

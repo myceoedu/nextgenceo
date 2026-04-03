@@ -8,7 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Countdown } from "@/components/Countdown";
 import { item, sectionY, ViewIn, viewIn } from "@/components/motion-ui";
 import { Link } from "@/i18n/navigation";
-import { HomeGrandPrizeRm } from "@/components/home/HomeGrandPrizeRm";
+import { HomeGrandPrizeSpotlight } from "@/components/home/HomeGrandPrizeSpotlight";
 import { PreviewTopicIcon } from "@/components/home/PreviewTopicIcons";
 import {
   DRIVE_CHALLENGE_URL,
@@ -503,6 +503,7 @@ export function ImportantDatesSectionWithVisual() {
   return (
     <section className="relative overflow-hidden bg-[#f4f4f3] px-5 py-14 md:px-8 md:py-20">
       <ViewIn className="relative mx-auto max-w-6xl">
+        <HomeGrandPrizeSpotlight />
         <ImportantDatesCard />
       </ViewIn>
     </section>
@@ -799,21 +800,46 @@ export function RegistrationSection() {
     );
 
   return (
-    <GepOutreachHero
-      variant="registration"
-      pill={t("gepHeroPill")}
-      title={titleNode}
-      lead={t("gepHeroLead")}
-      footnote={t("footnote")}
-      heroCta={{
-        label: t("gepRegister"),
-        href: DRIVE_CHALLENGE_URL,
-        external: true,
-      }}
-      termsLinkLabel={tf("termsLink")}
-      heading="h1"
-      titleUppercase
-    />
+    <>
+      <GepOutreachHero
+        variant="registration"
+        pill={t("gepHeroPill")}
+        title={titleNode}
+        lead={t("gepHeroLead")}
+        footnote={t("footnote")}
+        heroCta={{
+          label: t("gepRegister"),
+          href: DRIVE_CHALLENGE_URL,
+          external: true,
+        }}
+        termsLinkLabel={tf("termsLink")}
+        heading="h1"
+        titleUppercase
+      />
+      <section
+        className="border-t border-slate-200/90 bg-slate-50/90 px-6 py-5 text-center md:px-10 md:py-6"
+        aria-label={t("alreadyHaveAccount")}
+      >
+        <p className="mx-auto max-w-lg text-sm font-medium text-[#001F3F]/72 md:text-[15px]">
+          {t("alreadyHaveAccount")}{" "}
+          <Link
+            href="/login"
+            className="font-bold text-[#001F3F] underline decoration-[#001F3F]/25 underline-offset-[5px] transition hover:decoration-[#B8860B]/50"
+          >
+            {t("loginCta")}
+          </Link>
+        </p>
+        <p className="mx-auto mt-3 max-w-lg text-sm font-medium text-[#001F3F]/72 md:text-[15px]">
+          {t("newAccountPrompt")}{" "}
+          <Link
+            href="/register"
+            className="font-bold text-[#001F3F] underline decoration-[#001F3F]/25 underline-offset-[5px] transition hover:decoration-[#B8860B]/50"
+          >
+            {t("signUpCta")}
+          </Link>
+        </p>
+      </section>
+    </>
   );
 }
 
@@ -910,55 +936,6 @@ function Badge({ children }: { children: React.ReactNode }) {
       <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
       {children}
     </span>
-  );
-}
-
-function HeroPrizeDetailRow({
-  icon,
-  children,
-  inverted,
-  compact,
-}: {
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  /** High-contrast row on dark band (grand prize footer). */
-  inverted?: boolean;
-  /** Tighter row for compact grand prize module. */
-  compact?: boolean;
-}) {
-  if (inverted) {
-    return (
-      <div className={compact ? "flex gap-2" : "flex gap-3"}>
-        <span
-          className={[
-            "flex shrink-0 items-center justify-center rounded-lg bg-[#FFD700] text-[#0B0B32] shadow-sm",
-            compact
-              ? "h-7 w-7 md:h-8 md:w-8"
-              : "h-9 w-9 md:h-10 md:w-10 md:rounded-xl",
-          ].join(" ")}
-        >
-          {icon}
-        </span>
-        <p
-          className={[
-            "min-w-0 font-semibold leading-snug text-white",
-            compact
-              ? "pt-0.5 text-[11px] leading-tight md:text-xs"
-              : "pt-1.5 text-[13px] md:text-sm",
-          ].join(" ")}
-        >
-          {children}
-        </p>
-      </div>
-    );
-  }
-  return (
-    <div className="flex gap-2.5">
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#001F3F]/90 text-[#FFD700] ring-1 ring-[#FFD700]/25 md:h-9 md:w-9 md:rounded-xl">
-        {icon}
-      </span>
-      <p className="min-w-0 pt-1 text-[13px] font-medium leading-snug text-white/92 md:text-sm">{children}</p>
-    </div>
   );
 }
 
@@ -1060,66 +1037,6 @@ export function HomeHeroBlock() {
                 >
                   {t("body")}
                 </motion.p>
-
-                {/* Grand prize spotlight — compact so the title lockup stays the hero focus. */}
-                <motion.div
-                  variants={item}
-                  className="mt-6 max-w-[15.5rem] sm:max-w-[16.5rem] md:mt-7 md:max-w-[17.5rem]"
-                >
-                  <div
-                    className="overflow-hidden rounded-xl md:rounded-2xl"
-                    style={{
-                      boxShadow:
-                        "0 0 0 1.5px rgba(255,215,0,0.85), 0 0 32px rgba(255,215,0,0.14), 0 16px 40px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    <div className="bg-gradient-to-br from-[#FFD700] via-[#fff59a] to-[#FFD700] px-3.5 py-3 md:px-4 md:py-3.5">
-                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#001F3F] md:text-[10px]">
-                        {t("prizeEyebrow")}
-                      </p>
-                      <p className="mt-1 text-[clamp(1.35rem,4vw,1.85rem)] font-black leading-[0.95] tracking-[-0.02em] text-[#0B0B32]">
-                        <HomeGrandPrizeRm />
-                      </p>
-                      <p className="mt-1 text-[10px] font-bold uppercase leading-snug tracking-[0.12em] text-[#001F3F] md:text-[11px]">
-                        {t("prizeSub")}
-                      </p>
-                    </div>
-                    <div className="space-y-2.5 border-t-2 border-[#FFD700] bg-[#0B0B32] px-3.5 py-3 md:space-y-3 md:px-4 md:py-3.5">
-                      <HeroPrizeDetailRow
-                        inverted
-                        compact
-                        icon={
-                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
-                            <path
-                              d="M8 6V4h8v2M8 6h8v14H8V6zM8 10h8M10 14h4"
-                              stroke="currentColor"
-                              strokeWidth="1.6"
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                        }
-                      >
-                        {t("prizeDetailCerts")}
-                      </HeroPrizeDetailRow>
-                      <HeroPrizeDetailRow
-                        inverted
-                        compact
-                        icon={
-                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
-                            <path
-                              d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.9 7.2 17.9l.9-5.4L4.2 8.7l5.4-.8L12 3z"
-                              stroke="currentColor"
-                              strokeWidth="1.5"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        }
-                      >
-                        {t("prizeDetailPajsk")}
-                      </HeroPrizeDetailRow>
-                    </div>
-                  </div>
-                </motion.div>
 
                 <motion.div
                   variants={item}
@@ -1349,28 +1266,52 @@ export function HomeVideoTeaser() {
   );
 }
 
+/** Muted champagne gold on navy — readable, formal (not neon yellow). */
+const TRUST_STRIP_GOLD = "#c9b06a";
+
 export function HomeTrustStrip() {
   const t = useTranslations("HomeTrust");
   const rows = [
-    { k: t("organiser"), v: t("organiserVal") },
-    { k: t("edition"), v: t("editionVal") },
-    { k: t("recognition"), v: t("recognitionVal") },
-    { k: t("hashtag"), v: t("hashtagVal") },
+    { k: t("organiser"), v: t("organiserVal"), monoValue: false as const },
+    { k: t("edition"), v: t("editionVal"), monoValue: false as const },
+    { k: t("recognition"), v: t("recognitionVal"), monoValue: false as const },
+    { k: t("hashtag"), v: t("hashtagVal"), monoValue: true as const },
   ];
   return (
     <section
-      className="relative border-y border-white/10 px-6 py-7 md:px-10 md:py-9"
+      className="relative border-y border-white/[0.08] px-4 py-5 antialiased md:px-8 md:py-6"
       style={{
-        background: `linear-gradient(90deg, ${NAVY_DEEP} 0%, ${NAVY} 50%, ${NAVY_DEEP} 100%)`,
+        background: `radial-gradient(ellipse 100% 140% at 50% 0%, ${NAVY} 0%, ${NAVY_DEEP} 52%, #000818 100%)`,
       }}
     >
-      <div className="mx-auto flex max-w-7xl flex-col flex-wrap items-center justify-center gap-6 text-center sm:gap-7 md:flex-row md:gap-12">
-        {rows.map((x) => (
-          <div key={x.k} className="flex min-w-[160px] max-w-[280px] flex-col gap-1">
-            <span className="text-xs font-bold uppercase leading-snug tracking-[0.14em] text-[#FFD700]/85">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+      />
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-4 md:gap-x-0 md:gap-y-0">
+        {rows.map((x, i) => (
+          <div
+            key={x.k}
+            className={[
+              "flex min-h-full flex-col items-center justify-start gap-1 text-center md:px-3 lg:px-5",
+              i > 0 ? "md:border-l md:border-white/[0.12]" : "",
+            ].join(" ")}
+          >
+            <span
+              className="order-1 font-sans text-[9px] font-medium uppercase leading-none tracking-[0.16em] text-balance md:text-[10px] md:tracking-[0.18em]"
+              style={{ color: TRUST_STRIP_GOLD }}
+            >
               {x.k}
             </span>
-            <span className="text-base font-bold leading-snug text-white md:text-lg">{x.v}</span>
+            <span
+              className={[
+                x.monoValue
+                  ? "order-2 max-w-[min(100%,16rem)] font-mono text-[10px] font-medium leading-snug tracking-[0.02em] text-white/95 sm:max-w-[17rem] md:max-w-none md:text-[11px]"
+                  : "order-2 max-w-[min(100%,15rem)] font-sans text-[11px] font-semibold leading-snug tracking-[-0.02em] text-white text-pretty sm:max-w-[16rem] md:max-w-none md:text-xs md:leading-snug",
+              ].join(" ")}
+            >
+              {x.v}
+            </span>
           </div>
         ))}
       </div>

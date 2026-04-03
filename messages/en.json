@@ -9,6 +9,8 @@
     "contact": "Contact",
     "overview": "Overview",
     "register": "Register",
+    "login": "Log in",
+    "signUp": "Sign up",
     "competitionPages": "Competition pages",
     "mobileCompetition": "Competition — choose a page",
     "youAreAt": "You are on:",
@@ -47,7 +49,9 @@
     "quote": "This is not just a competition — it is a process.",
     "linkHome": "Home",
     "linkCompetition": "Competition",
-    "linkContact": "Contact"
+    "linkContact": "Contact",
+    "linkSchoolLogin": "School login",
+    "linkSchoolRegister": "Create school account"
   },
   "Contact": {
     "eyebrow": "Contact us",
@@ -98,6 +102,14 @@
     "registration": {
       "title": "Registration | NextGen CEO Challenge 2026",
       "description": "Official registration for NextGen CEO Challenge 2026 — MyCEO Education channels."
+    },
+    "login": {
+      "title": "School login | NextGen CEO Challenge 2026",
+      "description": "Sign in to your school account for NextGen CEO Challenge 2026 — one school, one account."
+    },
+    "register": {
+      "title": "Create school account | NextGen CEO Challenge 2026",
+      "description": "Create your school account for NextGen CEO Challenge 2026 — one school, one account, four students."
     },
     "about": {
       "title": "About us | NextGen CEO Challenge 2026",
@@ -342,7 +354,42 @@
     "datesAvailability": "Places available",
     "datesPhase": "Season phase",
     "datesBook": "Book now",
-    "datesPrizeLine": "{amount} grand prize pool"
+    "datesPrizeLine": "{amount} grand prize pool",
+    "alreadyHaveAccount": "Already have a school account?",
+    "loginCta": "Log in",
+    "newAccountPrompt": "Need to create a school account?",
+    "signUpCta": "Sign up"
+  },
+  "SchoolLogin": {
+    "title": "School login",
+    "intro": "School accounts (one school, one login) to manage your team and four students will be available here soon.",
+    "backHome": "Back to home",
+    "createAccountPrompt": "No school account yet?",
+    "createAccountCta": "Create an account"
+  },
+  "SchoolRegister": {
+    "title": "Create school account",
+    "intro": "One school, one account. When login is fully enabled, you will manage your team (four students) from a dashboard. For now this form only validates your input — saving accounts will be connected soon.",
+    "schoolNameLabel": "School name",
+    "coordinatorLabel": "Teacher / coordinator name (optional)",
+    "emailLabel": "Email (for login)",
+    "passwordLabel": "Password",
+    "confirmLabel": "Confirm password",
+    "submit": "Create account",
+    "submitting": "Submitting…",
+    "loginPrompt": "Already have an account?",
+    "loginCta": "Log in",
+    "successTitle": "Details validated",
+    "successBody": "Your details look valid. Online accounts are not active yet — please follow the organiser’s official registration channels for competition entry. Email-based sign-in will be available here soon.",
+    "errors": {
+      "schoolName": "Enter your school name.",
+      "email": "Enter your email.",
+      "emailFormat": "Enter a valid email address.",
+      "password": "Enter a password.",
+      "passwordShort": "Password must be at least 8 characters.",
+      "confirm": "Confirm your password.",
+      "mismatch": "Passwords do not match."
+    }
   },
   "Sponsor": {
     "title": "Past sponsors",
