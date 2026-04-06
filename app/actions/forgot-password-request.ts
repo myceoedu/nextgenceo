@@ -18,8 +18,8 @@ export async function requestPasswordReset(
   _prev: ForgotPasswordState,
   formData: FormData,
 ): Promise<ForgotPasswordState> {
-  if (String(formData.get("_hp") ?? "").trim()) {
-    return { status: "success" };
+  if (String(formData.get("website") ?? "").trim()) {
+    return { status: "idle" };
   }
 
   const email = String(formData.get("email") ?? "").trim();

@@ -38,10 +38,10 @@ export function ForgotPasswordForm() {
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
+    <form action={formAction} className="relative flex flex-col gap-5">
       <input type="hidden" name="locale" value={locale} />
-      <div className="sr-only" aria-hidden>
-        <input type="text" name="_hp" tabIndex={-1} autoComplete="off" />
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
       </div>
 
       {state.status === "error" ? (

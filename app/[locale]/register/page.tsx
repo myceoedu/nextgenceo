@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { AuthPageShell } from "@/components/auth/AuthPageShell";
 import { RegisterSchoolForm } from "@/components/auth/RegisterSchoolForm";
+import { redirectIfSchoolAuthenticated } from "@/lib/auth/redirect-if-authenticated";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -17,6 +18,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function SchoolRegisterPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  await redirectIfSchoolAuthenticated(locale);
   const t = await getTranslations("SchoolRegister");
   const tMeta = await getTranslations("Metadata");
   const tLogin = await getTranslations("SchoolLogin");

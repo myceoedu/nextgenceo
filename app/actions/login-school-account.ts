@@ -16,8 +16,7 @@ export type LoginSchoolState =
         | "invalidCredentials"
         | "emailNotConfirmed"
         | "config";
-    }
-  | { status: "success" };
+    };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -32,8 +31,10 @@ export async function loginSchoolAccount(
   _prev: LoginSchoolState,
   formData: FormData,
 ): Promise<LoginSchoolState> {
-  if (String(formData.get("_hp") ?? "").trim()) {
-    return { status: "success" };
+  /* Honeypot: must stay "idle". Returning "success" showed a fake "signed in" UI (e.g. autofill on _hp)
+   * without creating a session — users then opened the dashboard with an old cookie. */
+  if (String(formData.get("website") ?? "").trim()) {
+    return { status: "idle" };
   }
 
   const email = String(formData.get("email") ?? "").trim();
@@ -74,5 +75,5 @@ export async function loginSchoolAccount(
 
   const locale = resolveLocale(formData);
   redirect({ href: "/dashboard", locale });
-  return { status: "success" };
+  return { status: "idle" };
 }

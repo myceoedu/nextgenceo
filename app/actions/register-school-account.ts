@@ -28,8 +28,8 @@ export async function registerSchoolAccount(
   _prev: RegisterSchoolState,
   formData: FormData,
 ): Promise<RegisterSchoolState> {
-  if (String(formData.get("_hp") ?? "").trim()) {
-    return { status: "success" };
+  if (String(formData.get("website") ?? "").trim()) {
+    return { status: "idle" };
   }
 
   const schoolName = String(formData.get("schoolName") ?? "").trim();
