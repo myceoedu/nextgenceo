@@ -110,6 +110,13 @@ export const COMPETITION_HUB_DECK_IMAGES = [
   REGISTRATION_HERO_IMAGE_SRC,
 ] as const;
 
+/** Home-page FlippingBook embed — brochure / programme guide */
+export const FLIPPINGBOOK_EMBED = {
+  viewUrl: "https://online.flippingbook.com/view/454725206/",
+  embedScriptSrc: "https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=454725206",
+  dataFboId: "6f9b22fa66",
+} as const;
+
 /** MyCEO programme tiles (`public/Program MyCEO/`). */
 export const MYCEO_PROGRAMS = [
   {

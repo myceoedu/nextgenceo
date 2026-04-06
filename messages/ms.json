@@ -375,7 +375,8 @@
     "b1": "Satu akaun rasmi bagi setiap sekolah yang menyertai.",
     "b2": "Sehingga empat pelajar bagi pendaftaran pasukan.",
     "b3": "Papan pemuka untuk kemas kini borang pasukan dan maklumat sekolah.",
-    "b4": "Penyertaan pertandingan juga melalui saluran rasmi penganjur mengikut terma rasmi."
+    "b4": "Penyertaan pertandingan juga melalui saluran rasmi penganjur mengikut terma rasmi.",
+    "b5": "Pelajar tidak log masuk ke laman ini—koordinator berkongsi pautan rasmi, jadual, dan arahan melalui kelas atau saluran sekolah anda."
   },
   "SchoolLogin": {
     "title": "Log masuk sekolah",
@@ -424,7 +425,7 @@
   },
   "SchoolRegister": {
     "title": "Daftar akaun sekolah",
-    "intro": "Daftar akaun koordinator sekolah anda di bawah. Selepas pendaftaran, log masuk dengan e-mel dan kata laluan untuk mengurus pasukan.",
+    "intro": "Daftar akaun koordinator sekolah anda di bawah. Tiada log masuk untuk pelajar—anda berkongsi maklumat rasmi dengan pasukan. Selepas pendaftaran, log masuk dengan e-mel dan kata laluan untuk mengurus pasukan.",
     "sectionSchool": "Maklumat sekolah",
     "sectionAccount": "Akaun log masuk",
     "schoolNameLabel": "Nama sekolah",
@@ -473,6 +474,10 @@
     "sessionOk": "Sesi disulitkan dan disambungkan dengan selamat.",
     "emailLabel": "E-mel",
     "userIdLabel": "ID pengguna",
+    "sessionSupportRef": "Rujukan sokongan",
+    "sessionSupportRefHint": "Hanya perlu jika penganjur meminta pengesahan akaun. Jangan kongsi dengan pelajar.",
+    "copyRef": "Salin rujukan",
+    "copied": "Disalin",
     "schoolTitle": "Identiti sekolah",
     "schoolName": "Nama sekolah",
     "coordinatorName": "Nama guru / penyelaras",
@@ -500,6 +505,13 @@
     "rosterCount": "{count} / 4 pelajar",
     "runMigrationsHint": "Pasangkan migrasi dalam `supabase/migrations/` pada projek Supabase anda, kemudian log masuk semula.",
     "cardDecor": "Standard antarabangsa · satu sekolah · satu pasukan",
+    "shareTitle": "Kongsi dengan pasukan pelajar",
+    "shareLead": "Akses laman ini hanya untuk guru / penyelaras rasmi. Pelajar tidak mempunyai akaun—jadikan papan pemuka ini pusat anda, kemudian sebarkan bahan pertandingan kepada pasukan melalui saluran sekolah (kelas, mesyuarat, WhatsApp sekolah, dll.).",
+    "shareB1": "Gunakan Pautan penting di sebelah untuk membuka halaman rasmi (competition, cara penyertaan, pendaftaran, terma).",
+    "shareB2": "Jelaskan timeline dan kriteria penilaian supaya pelajar faham tahap cabaran antarabangsa & HOTS.",
+    "shareB3": "Pastikan empat nama dalam roster sepadan dengan pelajar yang akan mewakili sekolah secara rasmi.",
+    "shareB4": "Untuk pertanyaan rasmi kepada penganjur, gunakan halaman hubungi—kongsi jawapan kepada pasukan jika relevan.",
+    "linkHowTo": "Cara penyertaan",
     "errors": {
       "schoolName": "Masukkan nama sekolah.",
       "saveFailed": "Tidak dapat menyimpan. Cuba lagi.",
@@ -608,6 +620,13 @@
     "slideTermsLabel": "Terma ringkas",
     "slideRegisterLabel": "Daftar",
     "timelineTablePhase": "Fasa musim — tarikh & fokus"
+  },
+  "FlipbookBrochure": {
+    "eyebrow": "Brosur digital",
+    "title": "Layari panduan musim 2026",
+    "openNewTab": "Buka brosur penuh dalam tab baharu",
+    "embedFallback": "Ketik untuk membuka brosur digital",
+    "vendorNote": "Pembaca buku flip disediakan luaran — ala brosur katalog seperti kamp pengayaan global."
   },
   "CompetitionPages": {
     "overviewTitle": "Competition",

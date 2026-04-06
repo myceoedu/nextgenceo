@@ -8,7 +8,7 @@ type Props = {
 
 export async function AuthPageShell({ children }: Props) {
   const t = await getTranslations("AuthSidebar");
-  const bullets = [t("b1"), t("b2"), t("b3"), t("b4")] as const;
+  const bullets = [t("b1"), t("b2"), t("b3"), t("b4"), t("b5")] as const;
 
   return (
     <div className="min-h-[calc(100dvh-4rem)] bg-gradient-to-b from-slate-100 via-[#eef2f9] to-[#e8ecf4]">

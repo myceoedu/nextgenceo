@@ -440,6 +440,8 @@ const ms = {
     b2: "Sehingga empat pelajar bagi pendaftaran pasukan.",
     b3: "Papan pemuka untuk kemas kini borang pasukan dan maklumat sekolah.",
     b4: "Penyertaan pertandingan juga melalui saluran rasmi penganjur mengikut terma rasmi.",
+    b5:
+      "Pelajar tidak log masuk ke laman ini—koordinator berkongsi pautan rasmi, jadual, dan arahan melalui kelas atau saluran sekolah anda.",
   },
   SchoolLogin: {
     title: "Log masuk sekolah",
@@ -493,7 +495,7 @@ const ms = {
   SchoolRegister: {
     title: "Daftar akaun sekolah",
     intro:
-      "Daftar akaun koordinator sekolah anda di bawah. Selepas pendaftaran, log masuk dengan e-mel dan kata laluan untuk mengurus pasukan.",
+      "Daftar akaun koordinator sekolah anda di bawah. Tiada log masuk untuk pelajar—anda berkongsi maklumat rasmi dengan pasukan. Selepas pendaftaran, log masuk dengan e-mel dan kata laluan untuk mengurus pasukan.",
     sectionSchool: "Maklumat sekolah",
     sectionAccount: "Akaun log masuk",
     schoolNameLabel: "Nama sekolah",
@@ -545,6 +547,11 @@ const ms = {
     sessionOk: "Sesi disulitkan dan disambungkan dengan selamat.",
     emailLabel: "E-mel",
     userIdLabel: "ID pengguna",
+    sessionSupportRef: "Rujukan sokongan",
+    sessionSupportRefHint:
+      "Hanya perlu jika penganjur meminta pengesahan akaun. Jangan kongsi dengan pelajar.",
+    copyRef: "Salin rujukan",
+    copied: "Disalin",
     schoolTitle: "Identiti sekolah",
     schoolName: "Nama sekolah",
     coordinatorName: "Nama guru / penyelaras",
@@ -575,6 +582,16 @@ const ms = {
     runMigrationsHint:
       "Pasangkan migrasi dalam `supabase/migrations/` pada projek Supabase anda, kemudian log masuk semula.",
     cardDecor: "Standard antarabangsa · satu sekolah · satu pasukan",
+    shareTitle: "Kongsi dengan pasukan pelajar",
+    shareLead:
+      "Akses laman ini hanya untuk guru / penyelaras rasmi. Pelajar tidak mempunyai akaun—jadikan papan pemuka ini pusat anda, kemudian sebarkan bahan pertandingan kepada pasukan melalui saluran sekolah (kelas, mesyuarat, WhatsApp sekolah, dll.).",
+    shareB1:
+      "Gunakan Pautan penting di sebelah untuk membuka halaman rasmi (competition, cara penyertaan, pendaftaran, terma).",
+    shareB2: "Jelaskan timeline dan kriteria penilaian supaya pelajar faham tahap cabaran antarabangsa & HOTS.",
+    shareB3: "Pastikan empat nama dalam roster sepadan dengan pelajar yang akan mewakili sekolah secara rasmi.",
+    shareB4:
+      "Untuk pertanyaan rasmi kepada penganjur, gunakan halaman hubungi—kongsi jawapan kepada pasukan jika relevan.",
+    linkHowTo: "Cara penyertaan",
     errors: {
       schoolName: "Masukkan nama sekolah.",
       saveFailed: "Tidak dapat menyimpan. Cuba lagi.",
@@ -703,6 +720,14 @@ const ms = {
     slideTermsLabel: "Terma ringkas",
     slideRegisterLabel: "Daftar",
     timelineTablePhase: "Fasa musim — tarikh & fokus",
+  },
+  FlipbookBrochure: {
+    eyebrow: "Brosur digital",
+    title: "Layari panduan musim 2026",
+    openNewTab: "Buka brosur penuh dalam tab baharu",
+    embedFallback: "Ketik untuk membuka brosur digital",
+    vendorNote:
+      "Pembaca buku flip disediakan luaran — ala brosur katalog seperti kamp pengayaan global.",
   },
   CompetitionPages: {
     overviewTitle: "Competition",
@@ -1223,6 +1248,8 @@ const en = {
     b2: "Up to four students on the team roster.",
     b3: "Dashboard to update team forms and school information.",
     b4: "Competition entry also follows the organiser’s official channels and published terms.",
+    b5:
+      "Students do not sign in here—the coordinator shares official links, timelines, and instructions in class or through your school’s channels.",
   },
   SchoolLogin: {
     title: "School login",
@@ -1276,7 +1303,7 @@ const en = {
   SchoolRegister: {
     title: "Create school account",
     intro:
-      "Register your school coordinator account below. After signing up, log in with your email and password to manage your team.",
+      "Register your school coordinator account below. Students do not receive logins—you share official information with your team. After signing up, log in with your email and password to manage your team.",
     sectionSchool: "School details",
     sectionAccount: "Login account",
     schoolNameLabel: "School name",
@@ -1328,6 +1355,11 @@ const en = {
     sessionOk: "Encrypted session — securely connected.",
     emailLabel: "Email",
     userIdLabel: "User ID",
+    sessionSupportRef: "Support reference",
+    sessionSupportRefHint:
+      "Only if organisers ask you to verify this account. Do not share with students.",
+    copyRef: "Copy reference",
+    copied: "Copied",
     schoolTitle: "School identity",
     schoolName: "School name",
     coordinatorName: "Teacher / coordinator name",
@@ -1358,6 +1390,16 @@ const en = {
     runMigrationsHint:
       "Apply the migrations in `supabase/migrations/` on your Supabase project, then sign in again.",
     cardDecor: "International standard · one school · one team",
+    shareTitle: "Share with your student team",
+    shareLead:
+      "Only the official teacher / coordinator uses this website. Students do not have accounts—treat this dashboard as your hub, then pass competition materials to your team through your school channels (class, briefing, school-approved messaging, etc.).",
+    shareB1:
+      "Use Priority links to open official pages (overview, how to participate, registration, terms).",
+    shareB2: "Walk students through the timeline and judging criteria so they feel the international, high-order thinking standard.",
+    shareB3: "Keep the four roster names aligned with the students who will officially represent your school.",
+    shareB4:
+      "For organiser questions, use Contact—share verified answers with your team when appropriate.",
+    linkHowTo: "How to participate",
     errors: {
       schoolName: "Enter the school name.",
       saveFailed: "Could not save. Try again.",
@@ -1485,6 +1527,14 @@ const en = {
     slideTermsLabel: "Terms snapshot",
     slideRegisterLabel: "Register",
     timelineTablePhase: "Season phases — dates & focus",
+  },
+  FlipbookBrochure: {
+    eyebrow: "Digital brochure",
+    title: "Explore the 2026 programme guide",
+    openNewTab: "Open full brochure in a new tab",
+    embedFallback: "Tap to open the digital brochure",
+    vendorNote:
+      "Flipbook viewer provided by FlippingBook — similar to premium programme brochures on international camp sites.",
   },
   CompetitionPages: {
     overviewTitle: "Competition",

@@ -1,7 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { DashboardHero } from "@/components/dashboard/DashboardHero";
+import { CoordinatorShareWithTeamPanel } from "@/components/dashboard/CoordinatorShareWithTeamPanel";
 import { DashboardQuickLinks } from "@/components/dashboard/DashboardQuickLinks";
+import { DashboardSessionCard } from "@/components/dashboard/DashboardSessionCard";
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { SchoolProfileEditor } from "@/components/dashboard/SchoolProfileEditor";
 import { TeamRosterEditor } from "@/components/dashboard/TeamRosterEditor";
@@ -24,10 +26,14 @@ function panelShell({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-white/[0.12] bg-[#001F3F]/40 p-6 shadow-[0_24px_60px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:p-8">
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFD700]/85">{kicker}</p>
-      <h2 className="mt-2 text-xl font-black tracking-tight text-white md:text-2xl">{title}</h2>
-      <div className="mt-6">{children}</div>
+    <section className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-white via-[var(--ngc-dash-surface-elevated)] to-sky-50/40 p-6 shadow-[0_24px_64px_rgba(15,23,42,0.08)] before:pointer-events-none before:absolute before:-right-10 before:-top-8 before:h-44 before:w-44 before:rounded-full before:bg-amber-200/25 before:blur-3xl after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:h-32 after:w-40 after:rounded-full after:bg-sky-200/30 after:blur-3xl md:p-8">
+      <div className="relative z-[1]">
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-700">{kicker}</p>
+        <h2 className="mt-2 font-[family-name:var(--font-grand-display)] text-xl font-bold tracking-tight text-slate-900 md:text-2xl md:leading-snug">
+          {title}
+        </h2>
+        <div className="mt-6">{children}</div>
+      </div>
     </section>
   );
 }
@@ -94,7 +100,7 @@ export default async function SchoolDashboardPage({ params }: Props) {
               kicker: t("cardDecor"),
               title: t("schoolTitle"),
               children: profileError ? (
-                <p className="text-sm font-medium text-red-300">{t("loadError")}</p>
+                <p className="text-sm font-medium text-red-700">{t("loadError")}</p>
               ) : profile ? (
                 <SchoolProfileEditor
                   schoolName={profile.school_name}
@@ -102,9 +108,9 @@ export default async function SchoolDashboardPage({ params }: Props) {
                   coordinatorPhone={profile.coordinator_phone ?? ""}
                 />
               ) : (
-                <div className="rounded-2xl border border-amber-400/30 bg-amber-950/25 px-5 py-5">
-                  <p className="text-sm font-medium leading-relaxed text-amber-100/95">{t("noSchoolRow")}</p>
-                  <p className="mt-3 text-xs font-medium text-amber-200/70">{t("runMigrationsHint")}</p>
+                <div className="rounded-2xl border border-amber-300/60 bg-amber-50 px-5 py-5">
+                  <p className="text-sm font-medium leading-relaxed text-amber-950">{t("noSchoolRow")}</p>
+                  <p className="mt-3 text-xs font-medium text-amber-800/90">{t("runMigrationsHint")}</p>
                 </div>
               ),
             })}
@@ -116,7 +122,7 @@ export default async function SchoolDashboardPage({ params }: Props) {
                   children: (
                     <div className="space-y-6">
                       {rosterCount === 0 ? (
-                        <p className="text-sm font-medium text-slate-400">{t("teamEmpty")}</p>
+                        <p className="text-sm font-medium text-slate-600">{t("teamEmpty")}</p>
                       ) : null}
                       <TeamRosterEditor initialBySlot={initialBySlot} />
                     </div>
@@ -126,22 +132,10 @@ export default async function SchoolDashboardPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col gap-10 lg:col-span-4">
+            <CoordinatorShareWithTeamPanel />
             <DashboardQuickLinks />
 
-            <section className="rounded-3xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-md md:p-7">
-              <h2 className="text-sm font-black uppercase tracking-[0.16em] text-[#FFD700]">{t("sessionTitle")}</h2>
-              <p className="mt-3 text-sm font-medium text-slate-400">{t("sessionOk")}</p>
-              <dl className="mt-5 space-y-3 text-sm">
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t("emailLabel")}</dt>
-                  <dd className="mt-1 break-all font-mono text-[13px] text-slate-200">{user.email ?? "—"}</dd>
-                </div>
-                <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t("userIdLabel")}</dt>
-                  <dd className="mt-1 break-all font-mono text-[11px] leading-relaxed text-slate-500">{user.id}</dd>
-                </div>
-              </dl>
-            </section>
+            <DashboardSessionCard email={user.email ?? null} userId={user.id} />
           </div>
         </div>
       </div>

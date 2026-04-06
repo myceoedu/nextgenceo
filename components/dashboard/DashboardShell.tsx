@@ -9,31 +9,42 @@ export async function DashboardShell({ children }: { children: ReactNode }) {
   const t = await getTranslations("SchoolDashboard");
 
   return (
-    <div className="ngc-dashboard-root min-h-dvh bg-[#050a14]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(184,134,11,0.16),transparent_55%),radial-gradient(ellipse_90%_60%_at_100%_50%,rgba(0,31,63,0.45),transparent_50%),linear-gradient(180deg,#0a1628_0%,#0d1f3d_40%,#050a14_100%)]" />
+    <div className="ngc-dashboard-root min-h-dvh bg-[var(--ngc-dash-bg-deep)] text-slate-800 antialiased">
+      <div
+        className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(168deg,var(--ngc-dash-bg-mid)_0%,var(--ngc-dash-bg)_42%,#cfe4fd_88%,var(--ngc-dash-bg-deep)_100%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_85%_65%_at_85%_0%,rgba(251,191,36,0.2),transparent_55%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_60%_50%_at_10%_100%,rgba(56,189,248,0.16),transparent_52%)]"
+        aria-hidden
+      />
 
-      <header className="relative z-20 border-b border-white/[0.08] bg-[#001F3F]/75 shadow-[0_12px_48px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+      <header
+        className="relative z-20 border-b border-slate-200/90 bg-[var(--ngc-dash-header)] shadow-[0_4px_24px_rgba(15,23,42,0.06)] backdrop-blur-xl"
+      >
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 md:px-8 md:py-5">
           <Link
             href="/"
-            className="group flex items-center gap-3 rounded-xl pr-2 transition hover:bg-white/[0.04]"
+            className="group flex items-center gap-3 rounded-xl pr-2 transition hover:bg-slate-900/[0.04]"
           >
-            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_0_0_1px_rgba(255,215,0,0.25),0_8px_24px_rgba(0,31,63,0.4)] ring-2 ring-[#FFD700]/35 md:h-12 md:w-12">
+            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_4px_20px_rgba(15,23,42,0.1)] ring-2 ring-amber-400/35 md:h-12 md:w-12">
               <Image src={LOGO_SRC} alt="" width={44} height={44} className="h-9 w-9 object-contain md:h-10 md:w-10" />
             </span>
             <span className="min-w-0 text-left">
-              <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFD700]/95">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-amber-700">
                 NextGen CEO
               </span>
-              <span className="block truncate text-sm font-black tracking-wide text-white md:text-base">
-                {t("title")}
-              </span>
+              <span className="block truncate text-sm font-black tracking-wide text-slate-900 md:text-base">{t("title")}</span>
             </span>
           </Link>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <Link
               href="/"
-              className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/90 transition hover:border-[#FFD700]/40 hover:bg-white/[0.1] md:text-sm"
+              className="rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-sm transition hover:border-amber-400/60 hover:bg-amber-50/80 md:text-sm"
             >
               {t("backHome")}
             </Link>

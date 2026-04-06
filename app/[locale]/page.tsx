@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { CompetitionHubDeck } from "@/components/competition/CompetitionHubDeck";
 import {
   HomeFinalCta,
   HomeHeroBlock,
@@ -8,6 +7,7 @@ import {
   HomeVideoTeaser,
   ImportantDatesSectionWithVisual,
 } from "@/components/competition/CompetitionSections";
+import { HomeFlipbookBrochure } from "@/components/home/HomeFlipbookBrochure";
 import { HomeGalleryStrip } from "@/components/home/HomeGalleryStrip";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -26,13 +26,13 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="overflow-x-clip bg-gradient-to-b from-[#e4e9f2] via-[#f0f3fa] to-[#e8ecf4]">
+    <div className="overflow-x-clip overflow-y-visible bg-gradient-to-b from-[#e4e9f2] via-[#f0f3fa] to-[#e8ecf4]">
       <HomeHeroBlock />
       <HomeTrustStrip />
       <HomeVideoTeaser />
       <HomeGalleryStrip />
       <HomeOutcomesSection />
-      <CompetitionHubDeck variant="full" homeHeadlines sectionId="competition-hub" />
+      <HomeFlipbookBrochure sectionId="competition-hub" />
       <ImportantDatesSectionWithVisual />
       <HomeFinalCta />
     </div>

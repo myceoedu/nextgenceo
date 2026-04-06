@@ -375,7 +375,8 @@
     "b1": "One official account per competing school.",
     "b2": "Up to four students on the team roster.",
     "b3": "Dashboard to update team forms and school information.",
-    "b4": "Competition entry also follows the organiser’s official channels and published terms."
+    "b4": "Competition entry also follows the organiser’s official channels and published terms.",
+    "b5": "Students do not sign in here—the coordinator shares official links, timelines, and instructions in class or through your school’s channels."
   },
   "SchoolLogin": {
     "title": "School login",
@@ -424,7 +425,7 @@
   },
   "SchoolRegister": {
     "title": "Create school account",
-    "intro": "Register your school coordinator account below. After signing up, log in with your email and password to manage your team.",
+    "intro": "Register your school coordinator account below. Students do not receive logins—you share official information with your team. After signing up, log in with your email and password to manage your team.",
     "sectionSchool": "School details",
     "sectionAccount": "Login account",
     "schoolNameLabel": "School name",
@@ -473,6 +474,10 @@
     "sessionOk": "Encrypted session — securely connected.",
     "emailLabel": "Email",
     "userIdLabel": "User ID",
+    "sessionSupportRef": "Support reference",
+    "sessionSupportRefHint": "Only if organisers ask you to verify this account. Do not share with students.",
+    "copyRef": "Copy reference",
+    "copied": "Copied",
     "schoolTitle": "School identity",
     "schoolName": "School name",
     "coordinatorName": "Teacher / coordinator name",
@@ -500,6 +505,13 @@
     "rosterCount": "{count} / 4 students",
     "runMigrationsHint": "Apply the migrations in `supabase/migrations/` on your Supabase project, then sign in again.",
     "cardDecor": "International standard · one school · one team",
+    "shareTitle": "Share with your student team",
+    "shareLead": "Only the official teacher / coordinator uses this website. Students do not have accounts—treat this dashboard as your hub, then pass competition materials to your team through your school channels (class, briefing, school-approved messaging, etc.).",
+    "shareB1": "Use Priority links to open official pages (overview, how to participate, registration, terms).",
+    "shareB2": "Walk students through the timeline and judging criteria so they feel the international, high-order thinking standard.",
+    "shareB3": "Keep the four roster names aligned with the students who will officially represent your school.",
+    "shareB4": "For organiser questions, use Contact—share verified answers with your team when appropriate.",
+    "linkHowTo": "How to participate",
     "errors": {
       "schoolName": "Enter the school name.",
       "saveFailed": "Could not save. Try again.",
@@ -608,6 +620,13 @@
     "slideTermsLabel": "Terms snapshot",
     "slideRegisterLabel": "Register",
     "timelineTablePhase": "Season phases — dates & focus"
+  },
+  "FlipbookBrochure": {
+    "eyebrow": "Digital brochure",
+    "title": "Explore the 2026 programme guide",
+    "openNewTab": "Open full brochure in a new tab",
+    "embedFallback": "Tap to open the digital brochure",
+    "vendorNote": "Flipbook viewer provided by FlippingBook — similar to premium programme brochures on international camp sites."
   },
   "CompetitionPages": {
     "overviewTitle": "Competition",

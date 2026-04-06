@@ -7,6 +7,17 @@
   --ngc-navy-deep: #001f3f;
   --ngc-gold: #e6e600;
   --ngc-gold-deep: #ffd700;
+  /** Coordinator dashboard — light “grand hall” (bright sky paper, gold accents) */
+  --ngc-dash-bg-deep: #e8f1fc;
+  --ngc-dash-bg: #dbeafe;
+  --ngc-dash-bg-mid: #eff6ff;
+  --ngc-dash-surface: #ffffff;
+  --ngc-dash-surface-elevated: #f8fafc;
+  --ngc-dash-input: #ffffff;
+  --ngc-dash-input-muted: #f1f5f9;
+  --ngc-dash-header: rgb(255 255 255 / 90%);
+  --ngc-dash-border: rgb(15 23 42 / 12%);
+  --ngc-dash-border-strong: rgb(180 83 9 / 35%);
   /** Fixed {@link SiteHeader}: keep hero content below bar + breathing room */
   --ngc-header-h: 5.25rem;
   --ngc-hero-top-gap: 1.25rem;
@@ -27,6 +38,7 @@ body:has(.ngc-dashboard-root) .ngc-site-footer {
 
 body:has(.ngc-dashboard-root) {
   scroll-behavior: smooth;
+  background-color: var(--ngc-dash-bg-deep);
 }
 
 /** Home hero: remaining viewport below fixed header + gap (fills one full screen). */
