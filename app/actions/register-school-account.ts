@@ -1,5 +1,7 @@
 "use server";
 
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
 export type RegisterSchoolState =
   | { status: "idle" }
   | {
@@ -11,7 +13,12 @@ export type RegisterSchoolState =
         | "password"
         | "passwordShort"
         | "confirm"
-        | "mismatch";
+        | "mismatch"
+        | "terms"
+        | "emailTaken"
+        | "signupFailed"
+        | "weakPassword"
+        | "config";
     }
   | { status: "success" };
 
@@ -26,9 +33,16 @@ export async function registerSchoolAccount(
   }
 
   const schoolName = String(formData.get("schoolName") ?? "").trim();
+  const coordinator = String(formData.get("coordinator") ?? "").trim();
+  const phone = String(formData.get("phone") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
   const confirm = String(formData.get("confirmPassword") ?? "");
+  const terms = String(formData.get("termsAccepted") ?? "");
+
+  if (terms !== "on") {
+    return { status: "error", code: "terms" };
+  }
 
   if (!schoolName) {
     return { status: "error", code: "schoolName" };
@@ -52,6 +66,38 @@ export async function registerSchoolAccount(
     return { status: "error", code: "mismatch" };
   }
 
-  // No persistence yet — connect Supabase / DB here later.
+  let supabase;
+  try {
+    supabase = await createSupabaseServerClient();
+  } catch (e) {
+    if (e instanceof Error && e.message === "MISSING_SUPABASE_ENV") {
+      return { status: "error", code: "config" };
+    }
+    throw e;
+  }
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        school_name: schoolName,
+        ...(coordinator ? { coordinator_name: coordinator } : {}),
+        ...(phone ? { coordinator_phone: phone } : {}),
+      },
+    },
+  });
+
+  if (error) {
+    const msg = error.message.toLowerCase();
+    if (msg.includes("already registered") || msg.includes("already been registered")) {
+      return { status: "error", code: "emailTaken" };
+    }
+    if (msg.includes("password") && (msg.includes("weak") || msg.includes("strength"))) {
+      return { status: "error", code: "weakPassword" };
+    }
+    return { status: "error", code: "signupFailed" };
+  }
+
   return { status: "success" };
 }

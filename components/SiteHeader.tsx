@@ -44,7 +44,7 @@ export function SiteHeader() {
   const isAboutUsPage = pathname === "/about";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/90 bg-white shadow-[0_1px_0_rgba(0,31,63,0.04),0_8px_30px_rgba(0,31,63,0.06)]">
+    <header className="ngc-site-header fixed inset-x-0 top-0 z-50 border-b border-slate-200/90 bg-white shadow-[0_1px_0_rgba(0,31,63,0.04),0_8px_30px_rgba(0,31,63,0.06)]">
       <div className="flex w-full items-center justify-between gap-4 px-5 py-3.5 md:px-8 lg:px-12 xl:px-16 md:py-4">
         <Link href="/" className="flex min-w-0 items-center gap-3 md:gap-4">
           <div className="relative h-13 w-[5.75rem] shrink-0 overflow-visible md:w-[6.25rem]">

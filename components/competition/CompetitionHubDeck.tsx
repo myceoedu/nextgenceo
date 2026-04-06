@@ -172,10 +172,11 @@ export function CompetitionHubDeck({
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
+    const raf = requestAnimationFrame(() => onSelect());
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
     return () => {
+      cancelAnimationFrame(raf);
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
     };

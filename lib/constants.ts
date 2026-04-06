@@ -27,7 +27,7 @@ export const HOME_HERO_BACKGROUND_SRC = "/home/background1.jpg";
  */
 export const REGISTRATION_HERO_IMAGE_SRC = "/home/background.jpg";
 
-/** Home video teaser — used when {@link HOME_TEASER_YOUTUBE_VIDEO_ID} is empty. Add `public/teaser.mp4`. */
+/** MP4 fallback when {@link HOME_TEASER_YOUTUBE_VIDEO_ID} is empty. Place file at this path under `public/` if used. */
 export const HOME_TEASER_VIDEO_SRC = "/teaser.mp4";
 
 /**

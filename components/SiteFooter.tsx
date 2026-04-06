@@ -7,7 +7,7 @@ export async function SiteFooter() {
   const t = await getTranslations("Footer");
 
   return (
-    <footer className="bg-[#001F3F] px-6 py-16 text-center text-[#FFD700] md:px-10">
+    <footer className="ngc-site-footer bg-[#001F3F] px-6 py-16 text-center text-[#FFD700] md:px-10">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-6 text-[22px] font-bold tracking-wide md:text-[28px]">
           {t("ctaLine1")}{" "}

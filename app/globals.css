@@ -19,6 +19,16 @@
   }
 }
 
+/** Full-bleed coordinator dashboard: hide marketing header/footer when focused workspace is open. */
+body:has(.ngc-dashboard-root) .ngc-site-header,
+body:has(.ngc-dashboard-root) .ngc-site-footer {
+  display: none;
+}
+
+body:has(.ngc-dashboard-root) {
+  scroll-behavior: smooth;
+}
+
 /** Home hero: remaining viewport below fixed header + gap (fills one full screen). */
 .ngc-hero-main {
   min-height: calc(100dvh - var(--ngc-header-h) - var(--ngc-hero-top-gap));
@@ -151,4 +161,22 @@ html {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+@layer components {
+  .auth-label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55;
+  }
+
+  .auth-input {
+    @apply w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15;
+  }
+
+  .auth-submit {
+    @apply inline-flex w-full min-h-[48px] items-center justify-center rounded-full bg-[#001F3F] px-6 py-3.5 text-sm font-black uppercase tracking-wider text-white shadow-[0_14px_36px_rgba(0,31,63,0.22)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .auth-section-title {
+    @apply text-[11px] font-black uppercase tracking-[0.18em] text-[#B8860B];
+  }
 }

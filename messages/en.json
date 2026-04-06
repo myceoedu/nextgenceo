@@ -111,6 +111,14 @@
       "title": "Create school account | NextGen CEO Challenge 2026",
       "description": "Create your school account for NextGen CEO Challenge 2026 — one school, one account, four students."
     },
+    "forgotPassword": {
+      "title": "Reset password | NextGen CEO Challenge 2026",
+      "description": "Request a password reset link for your school account — NextGen CEO Challenge 2026."
+    },
+    "dashboard": {
+      "title": "Coordinator dashboard | NextGen CEO Challenge 2026",
+      "description": "Official coordinator workspace: school identity, team of four, and competition links at global standard."
+    },
     "about": {
       "title": "About us | NextGen CEO Challenge 2026",
       "description": "MyCEO Education shapes young leaders with entrepreneurial wisdom—creative, confident, ready to drive Malaysia forward."
@@ -360,27 +368,85 @@
     "newAccountPrompt": "Need to create a school account?",
     "signUpCta": "Sign up"
   },
+  "AuthSidebar": {
+    "kicker": "School account",
+    "title": "One school · one login · four students",
+    "lead": "Your official coordinator account—manage your team and competition details in one secure place.",
+    "b1": "One official account per competing school.",
+    "b2": "Up to four students on the team roster.",
+    "b3": "Dashboard to update team forms and school information.",
+    "b4": "Competition entry also follows the organiser’s official channels and published terms."
+  },
   "SchoolLogin": {
     "title": "School login",
-    "intro": "School accounts (one school, one login) to manage your team and four students will be available here soon.",
+    "intro": "Sign in with your school email and password to manage your team.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "rememberMe": "Remember me on this device",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "forgotPassword": "Forgot password?",
+    "submit": "Log in",
+    "submitting": "Signing in…",
+    "helpBefore": "Need help?",
+    "helpContact": "Contact us",
     "backHome": "Back to home",
     "createAccountPrompt": "No school account yet?",
-    "createAccountCta": "Create an account"
+    "createAccountCta": "Create an account",
+    "goToDashboard": "Go to school dashboard",
+    "successTitle": "Signed in",
+    "successBody": "Welcome back. Continue to your team area or competition information using the site menu.",
+    "errors": {
+      "email": "Enter your email.",
+      "emailFormat": "Enter a valid email address.",
+      "password": "Enter your password.",
+      "passwordShort": "Password must be at least 8 characters.",
+      "invalidCredentials": "Invalid email or password.",
+      "emailNotConfirmed": "This email is not confirmed yet. Check your inbox for a confirmation link or contact support.",
+      "config": "Sign-in is not configured correctly. Please try again later."
+    }
+  },
+  "SchoolForgotPassword": {
+    "title": "Reset password",
+    "intro": "Enter your school account email. We will send you a link to reset your password.",
+    "emailLabel": "School account email",
+    "submit": "Send reset link",
+    "submitting": "Sending…",
+    "backLogin": "Back to login",
+    "successTitle": "Check your email",
+    "successBody": "If that address is registered, reset instructions have been sent. Check your inbox and spam folder.",
+    "errors": {
+      "email": "Enter your email.",
+      "emailFormat": "Enter a valid email address.",
+      "sendFailed": "Could not send the email. Please try again later.",
+      "config": "Service is not configured correctly. Please try again later."
+    }
   },
   "SchoolRegister": {
     "title": "Create school account",
-    "intro": "One school, one account. When login is fully enabled, you will manage your team (four students) from a dashboard. For now this form only validates your input — saving accounts will be connected soon.",
+    "intro": "Register your school coordinator account below. After signing up, log in with your email and password to manage your team.",
+    "sectionSchool": "School details",
+    "sectionAccount": "Login account",
     "schoolNameLabel": "School name",
     "coordinatorLabel": "Teacher / coordinator name (optional)",
+    "phoneLabel": "Coordinator phone (optional)",
+    "phoneHint": "For organiser contact about your team.",
     "emailLabel": "Email (for login)",
     "passwordLabel": "Password",
+    "passwordHint": "At least 8 characters — letters and numbers recommended.",
     "confirmLabel": "Confirm password",
+    "showPassword": "Show",
+    "hidePassword": "Hide",
+    "termsPrefix": "I have read and agree to the",
+    "termsLink": "Terms & conditions",
+    "termsSuffix": " and confirm the school information is accurate.",
+    "privacyNote": "Data is used only for competition administration and official organiser communication.",
     "submit": "Create account",
     "submitting": "Submitting…",
     "loginPrompt": "Already have an account?",
     "loginCta": "Log in",
-    "successTitle": "Details validated",
-    "successBody": "Your details look valid. Online accounts are not active yet — please follow the organiser’s official registration channels for competition entry. Email-based sign-in will be available here soon.",
+    "successTitle": "Account created",
+    "successBody": "Your school coordinator account is ready. Sign in with your email to open your team dashboard and update details for up to four students.",
     "errors": {
       "schoolName": "Enter your school name.",
       "email": "Enter your email.",
@@ -388,7 +454,56 @@
       "password": "Enter a password.",
       "passwordShort": "Password must be at least 8 characters.",
       "confirm": "Confirm your password.",
-      "mismatch": "Passwords do not match."
+      "mismatch": "Passwords do not match.",
+      "terms": "Please accept the terms to continue.",
+      "emailTaken": "This email is already registered. Sign in or use a different email.",
+      "signupFailed": "Registration could not be completed. Try again or contact support.",
+      "weakPassword": "Password is too weak. Use a mix of letters, numbers, or symbols.",
+      "config": "Service is not configured correctly. Please try again later."
+    }
+  },
+  "SchoolDashboard": {
+    "title": "Coordinator dashboard",
+    "heroKicker": "NextGen CEO Challenge · Global standard & HOTS",
+    "heroTitle": "Your leadership command centre for world-ready students",
+    "heroSubtitle": "The official coordinator workspace: keep your school identity current, register up to four students who represent international-calibre leadership thinking, and stay aligned with high-order thinking and global-stage readiness.",
+    "welcomeLine": "Signed in as {email}",
+    "rosterStats": "Team roster",
+    "sessionTitle": "Your account",
+    "sessionOk": "Encrypted session — securely connected.",
+    "emailLabel": "Email",
+    "userIdLabel": "User ID",
+    "schoolTitle": "School identity",
+    "schoolName": "School name",
+    "coordinatorName": "Teacher / coordinator name",
+    "coordinatorPhone": "Coordinator phone",
+    "saveSchool": "Save school details",
+    "saveTeam": "Save team roster",
+    "saving": "Saving…",
+    "schoolSaved": "School details updated.",
+    "teamSaved": "Team roster updated.",
+    "teamHint": "Four slots for your school’s strongest talent — use full legal names. Leave unused slots empty.",
+    "noSchoolRow": "School profile not found yet. Confirm `supabase/migrations` has been applied in Supabase, then create an account or contact your admin.",
+    "loadError": "Could not load your profile. Check your connection and database tables.",
+    "teamTitle": "Student team (maximum 4)",
+    "teamEmpty": "No students listed yet — use the form below.",
+    "slotShort": "Student {slot}",
+    "signOut": "Sign out",
+    "signingOut": "Signing out…",
+    "backHome": "Official home",
+    "quickLinks": "Priority links",
+    "quickLinksIntro": "Fast access to official competition pages.",
+    "linkCompetition": "Competition overview",
+    "linkRegistration": "Registration",
+    "linkTerms": "Terms & conditions",
+    "linkContact": "Contact organisers",
+    "rosterCount": "{count} / 4 students",
+    "runMigrationsHint": "Apply the migrations in `supabase/migrations/` on your Supabase project, then sign in again.",
+    "cardDecor": "International standard · one school · one team",
+    "errors": {
+      "schoolName": "Enter the school name.",
+      "saveFailed": "Could not save. Try again.",
+      "noProfile": "School profile not found."
     }
   },
   "Sponsor": {

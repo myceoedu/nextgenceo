@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useId, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Eye, EyeOff } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
   registerSchoolAccount,
@@ -13,9 +14,12 @@ const initial: RegisterSchoolState = { status: "idle" };
 export function RegisterSchoolForm() {
   const t = useTranslations("SchoolRegister");
   const [state, formAction, isPending] = useActionState(registerSchoolAccount, initial);
+  const [showPw, setShowPw] = useState(false);
+  const pwId = useId();
+  const pw2Id = useId();
 
   return (
-    <div className="mx-auto w-full max-w-md text-left">
+    <div className="text-left">
       {state.status === "success" ? (
         <div
           className="rounded-2xl border border-emerald-200 bg-emerald-50/90 px-5 py-5 shadow-sm md:px-6 md:py-6"
@@ -35,7 +39,7 @@ export function RegisterSchoolForm() {
           </Link>
         </div>
       ) : (
-        <form action={formAction} className="relative flex flex-col gap-4">
+        <form action={formAction} className="relative flex flex-col gap-6">
           <div className="sr-only" aria-hidden>
             <input type="text" name="_hp" tabIndex={-1} autoComplete="off" />
           </div>
@@ -46,96 +50,135 @@ export function RegisterSchoolForm() {
             </p>
           ) : null}
 
-          <div>
-            <label
-              htmlFor="schoolName"
-              className="block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55"
-            >
-              {t("schoolNameLabel")}
-            </label>
+          <div className="space-y-5">
+            <h2 className="auth-section-title">{t("sectionSchool")}</h2>
+            <div>
+              <label htmlFor="schoolName" className="auth-label">
+                {t("schoolNameLabel")}
+              </label>
+              <input
+                id="schoolName"
+                name="schoolName"
+                type="text"
+                required
+                autoComplete="organization"
+                className="auth-input"
+              />
+            </div>
+            <div>
+              <label htmlFor="coordinator" className="auth-label">
+                {t("coordinatorLabel")}
+              </label>
+              <input
+                id="coordinator"
+                name="coordinator"
+                type="text"
+                autoComplete="name"
+                className="auth-input"
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="auth-label">
+                {t("phoneLabel")}
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                className="auth-input"
+              />
+              <p className="mt-1.5 text-xs font-medium text-[#001F3F]/45">{t("phoneHint")}</p>
+            </div>
+          </div>
+
+          <div className="space-y-5 border-t border-slate-100 pt-6">
+            <h2 className="auth-section-title">{t("sectionAccount")}</h2>
+            <div>
+              <label htmlFor="email" className="auth-label">
+                {t("emailLabel")}
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                className="auth-input"
+              />
+            </div>
+            <div>
+              <div className="flex items-center justify-between gap-2">
+                <label htmlFor={pwId} className="auth-label">
+                  {t("passwordLabel")}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowPw((v) => !v)}
+                  className="text-xs font-semibold text-[#001F3F]/65 hover:text-[#001F3F]"
+                >
+                  {showPw ? t("hidePassword") : t("showPassword")}
+                </button>
+              </div>
+              <input
+                id={pwId}
+                name="password"
+                type={showPw ? "text" : "password"}
+                required
+                autoComplete="new-password"
+                minLength={8}
+                className="auth-input"
+              />
+              <p className="mt-1.5 text-xs font-medium text-[#001F3F]/45">{t("passwordHint")}</p>
+            </div>
+            <div>
+              <label htmlFor={pw2Id} className="auth-label">
+                {t("confirmLabel")}
+              </label>
+              <div className="relative">
+                <input
+                  id={pw2Id}
+                  name="confirmPassword"
+                  type={showPw ? "text" : "password"}
+                  required
+                  autoComplete="new-password"
+                  className="auth-input pr-12"
+                />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#001F3F]/35">
+                  {showPw ? (
+                    <EyeOff className="h-4 w-4" aria-hidden />
+                  ) : (
+                    <Eye className="h-4 w-4" aria-hidden />
+                  )}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50/90 px-4 py-4">
             <input
-              id="schoolName"
-              name="schoolName"
-              type="text"
+              type="checkbox"
+              name="termsAccepted"
               required
-              autoComplete="organization"
-              className="mt-1.5 w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15"
+              className="mt-1 h-4 w-4 shrink-0 rounded border-slate-300 text-[#001F3F] focus:ring-[#001F3F]/30"
             />
-          </div>
+            <span className="text-sm font-medium leading-relaxed text-[#001F3F]/82">
+              {t("termsPrefix")}{" "}
+              <Link
+                href="/competition/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[#001F3F] underline decoration-[#001F3F]/30 underline-offset-2 hover:decoration-[#B8860B]/55"
+              >
+                {t("termsLink")}
+              </Link>
+              {t("termsSuffix")}
+            </span>
+          </label>
 
-          <div>
-            <label
-              htmlFor="coordinator"
-              className="block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55"
-            >
-              {t("coordinatorLabel")}
-            </label>
-            <input
-              id="coordinator"
-              name="coordinator"
-              type="text"
-              autoComplete="name"
-              className="mt-1.5 w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15"
-            />
-          </div>
+          <p className="text-xs font-medium leading-relaxed text-[#001F3F]/50">{t("privacyNote")}</p>
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55"
-            >
-              {t("emailLabel")}
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              className="mt-1.5 w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55"
-            >
-              {t("passwordLabel")}
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              autoComplete="new-password"
-              minLength={8}
-              className="mt-1.5 w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-xs font-bold uppercase tracking-wider text-[#001F3F]/55"
-            >
-              {t("confirmLabel")}
-            </label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              required
-              autoComplete="new-password"
-              className="mt-1.5 w-full rounded-xl border border-[#001F3F]/15 bg-white px-4 py-3 text-sm font-medium text-[#001F3F] shadow-sm outline-none transition focus:border-[#001F3F]/35 focus:ring-2 focus:ring-[#001F3F]/15"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isPending}
-            className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-[#001F3F] px-6 py-3.5 text-sm font-black uppercase tracking-wider text-white shadow-[0_12px_32px_rgba(0,31,63,0.22)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
-          >
+          <button type="submit" disabled={isPending} className="auth-submit">
             {isPending ? t("submitting") : t("submit")}
           </button>
 
