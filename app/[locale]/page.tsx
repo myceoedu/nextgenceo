@@ -26,7 +26,7 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="overflow-x-clip overflow-y-visible bg-gradient-to-b from-[#e4e9f2] via-[#f0f3fa] to-[#e8ecf4]">
+    <div className="min-w-0 overflow-x-clip overflow-y-visible bg-slate-50">
       <HomeHeroBlock />
       <HomeTrustStrip />
       <HomeVideoTeaser />

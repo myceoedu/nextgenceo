@@ -27,6 +27,10 @@ const ms = {
     openMenu: "Buka menu",
     closeMenu: "Tutup menu",
     navMain: "Utama",
+    brandName: "NextGen CEO",
+    brandSubtitle: "CABARAN 2026",
+    logoAlt: "Logo MyCEO Education",
+    languageLabel: "Bahasa",
     menu: {
       about: "Gambaran",
       aboutUs: "Tentang kami",
@@ -61,6 +65,13 @@ const ms = {
     linkContact: "Contact",
     linkSchoolLogin: "Log masuk sekolah",
     linkSchoolRegister: "Daftar akaun sekolah",
+    colQuickLinks: "Pautan pantas",
+    colProgramme: "Program",
+    colConnect: "Berhubung",
+    rightsReserved: "Hak cipta terpelihara.",
+    socialFacebook: "Facebook",
+    socialInstagram: "Instagram",
+    socialTiktok: "TikTok",
   },
   Contact: {
     eyebrow: "Hubungi Kami",
@@ -726,8 +737,8 @@ const ms = {
     title: "Layari panduan musim 2026",
     openNewTab: "Buka brosur penuh dalam tab baharu",
     embedFallback: "Ketik untuk membuka brosur digital",
-    vendorNote:
-      "Pembaca buku flip disediakan luaran — ala brosur katalog seperti kamp pengayaan global.",
+    mobileSpreadHint:
+      "Untuk paparan dua muka seperti buku terbuka: putar telefon ke landskap, atau leret ke tepi untuk melihat lebar penuh.",
   },
   CompetitionPages: {
     overviewTitle: "Competition",
@@ -838,6 +849,10 @@ const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     navMain: "Main",
+    brandName: "NextGen CEO",
+    brandSubtitle: "CHALLENGE 2026",
+    logoAlt: "MyCEO Education logo",
+    languageLabel: "Language",
     menu: {
       about: "About",
       aboutUs: "About us",
@@ -872,6 +887,13 @@ const en = {
     linkContact: "Contact",
     linkSchoolLogin: "School login",
     linkSchoolRegister: "Create school account",
+    colQuickLinks: "Quick links",
+    colProgramme: "Programme",
+    colConnect: "Connect",
+    rightsReserved: "All rights reserved.",
+    socialFacebook: "Facebook",
+    socialInstagram: "Instagram",
+    socialTiktok: "TikTok",
   },
   Contact: {
     eyebrow: "Contact us",
@@ -1102,7 +1124,7 @@ const en = {
       "Use “Register your school” to reach the official registration flow. If you need clarification before committing, use the Contact page and we will route you through the organiser’s official channels.",
   },
   HomeFinalCta: {
-    kicker: "Next step",
+    kicker: "NEXT STEP",
     title: "Secure your school’s place on the national stage",
     body:
       "Join a cohort of schools investing in leadership, entrepreneurship, and recognised achievement for their students.",
@@ -1533,8 +1555,8 @@ const en = {
     title: "Explore the 2026 programme guide",
     openNewTab: "Open full brochure in a new tab",
     embedFallback: "Tap to open the digital brochure",
-    vendorNote:
-      "Flipbook viewer provided by FlippingBook — similar to premium programme brochures on international camp sites.",
+    mobileSpreadHint:
+      "For a two-page spread like an open book: rotate your phone to landscape, or swipe sideways to see the full width.",
   },
   CompetitionPages: {
     overviewTitle: "Competition",

@@ -31,8 +31,15 @@ export async function DashboardShell({ children }: { children: ReactNode }) {
             href="/"
             className="group flex items-center gap-3 rounded-xl pr-2 transition hover:bg-slate-900/[0.04]"
           >
-            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_4px_20px_rgba(15,23,42,0.1)] ring-2 ring-amber-400/35 md:h-12 md:w-12">
-              <Image src={LOGO_SRC} alt="" width={44} height={44} className="h-9 w-9 object-contain md:h-10 md:w-10" />
+            <span className="relative flex h-12 shrink-0 items-center justify-center md:h-14">
+              <Image
+                src={LOGO_SRC}
+                alt=""
+                width={637}
+                height={350}
+                className="h-12 w-auto max-w-[11rem] object-contain object-left md:h-14 md:max-w-[13rem]"
+                unoptimized
+              />
             </span>
             <span className="min-w-0 text-left">
               <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-amber-700">

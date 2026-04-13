@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { getPartnersImagePublicPath } from "@/lib/resolve-partners-image";
+import { ui } from "@/lib/ui";
 
 export async function AboutPartnersSection() {
   const t = await getTranslations("AboutPage");
@@ -8,24 +9,24 @@ export async function AboutPartnersSection() {
 
   return (
     <section
-      className="border-t border-[#001F3F]/8 bg-white px-6 py-14 md:px-10 md:py-20"
+      className={`${ui.borderSection} bg-white ${ui.sectionTight}`}
       aria-labelledby="about-partners-heading"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className={ui.marketingContent}>
         <header className="mx-auto max-w-3xl text-center">
           <h2
             id="about-partners-heading"
-            className="text-3xl font-black tracking-tight text-[#001F3F] md:text-4xl"
+            className={ui.displayMd}
           >
             {t("partnersTitle")}
           </h2>
-          <p className="mt-4 text-[0.7rem] font-bold uppercase leading-relaxed tracking-[0.2em] text-[#EA580C] sm:text-xs md:text-sm md:tracking-[0.26em]">
+          <p className={`mt-3 ${ui.eyebrow}`}>
             {t("partnersSubtitle")}
           </p>
         </header>
 
         {logosSrc ? (
-          <div className="mx-auto mt-12 w-full max-w-5xl md:mt-16">
+          <div className="mx-auto mt-10 w-full max-w-5xl md:mt-12">
             <Image
               src={logosSrc}
               alt={t("partnersLogosAlt")}

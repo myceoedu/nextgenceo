@@ -19,6 +19,10 @@
     "openMenu": "Buka menu",
     "closeMenu": "Tutup menu",
     "navMain": "Utama",
+    "brandName": "NextGen CEO",
+    "brandSubtitle": "CABARAN 2026",
+    "logoAlt": "Logo NextGen CEO Challenge 2026",
+    "languageLabel": "Bahasa",
     "menu": {
       "about": "Gambaran",
       "aboutUs": "Tentang kami",
@@ -51,7 +55,14 @@
     "linkCompetition": "Competition",
     "linkContact": "Contact",
     "linkSchoolLogin": "Log masuk sekolah",
-    "linkSchoolRegister": "Daftar akaun sekolah"
+    "linkSchoolRegister": "Daftar akaun sekolah",
+    "colQuickLinks": "Pautan pantas",
+    "colProgramme": "Program",
+    "colConnect": "Berhubung",
+    "rightsReserved": "Hak cipta terpelihara.",
+    "socialFacebook": "Facebook",
+    "socialInstagram": "Instagram",
+    "socialTiktok": "TikTok"
   },
   "Contact": {
     "eyebrow": "Hubungi Kami",
@@ -140,11 +151,11 @@
     "eyebrow": "NextGen CEO Challenge 2026"
   },
   "HomeHero": {
-    "badge": "Kepimpinan & keusahawanan pelajar · Malaysia",
+    "badge": "• Kepimpinan & keusahawanan pelajar • Malaysia",
     "pitchLine": "Pitch. Strategize. Win!",
     "body": "Program kebangsaan untuk sekolah menengah — kepimpinan, keusahawanan, pentas akhir dinilai.",
     "prizeEyebrow": "Hadiah utama",
-    "prizeSub": "Anugerah tunai · pasukan pemenang",
+    "prizeSub": "Anugerah tunai • pasukan pemenang",
     "prizeDetailCerts": "Sijil kebangsaan untuk peserta",
     "prizeDetailPajsk": "Pengiktirafan sekolah selaras PAJSK",
     "timelineEyebrow": "Ringkasan musim",
@@ -626,7 +637,7 @@
     "title": "Layari panduan musim 2026",
     "openNewTab": "Buka brosur penuh dalam tab baharu",
     "embedFallback": "Ketik untuk membuka brosur digital",
-    "vendorNote": "Pembaca buku flip disediakan luaran — ala brosur katalog seperti kamp pengayaan global."
+    "mobileSpreadHint": "Untuk paparan dua muka seperti buku terbuka: putar telefon ke landskap, atau leret ke tepi untuk melihat lebar penuh."
   },
   "CompetitionPages": {
     "overviewTitle": "Competition",

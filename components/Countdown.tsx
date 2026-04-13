@@ -46,7 +46,7 @@ export function Countdown({
     : "rounded-3xl border border-white/14 bg-white/[0.06] p-5 md:p-6";
 
   const cellShell = embedded
-    ? "rounded-lg border border-white/[0.18] bg-black/60 px-1.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] md:px-2 md:py-2.5"
+    ? "rounded-lg border border-white/12 bg-zinc-950/80 px-1.5 py-2.5 md:px-2 md:py-3"
     : "rounded-2xl border border-white/12 bg-white/[0.05] px-3 py-3";
 
   return (
@@ -55,7 +55,7 @@ export function Countdown({
         className={[
           "font-semibold uppercase leading-snug tracking-[0.14em] text-white/82",
           embedded
-            ? "text-[10px] font-bold tracking-[0.14em] text-white/75 md:text-[11px] md:tracking-[0.16em]"
+            ? "text-[10px] font-bold tracking-[0.14em] text-white md:text-[11px] md:tracking-[0.16em]"
             : "text-sm font-bold tracking-[0.12em]",
         ].join(" ")}
       >
@@ -72,9 +72,7 @@ export function Countdown({
             <div
               className={[
                 "font-black leading-none text-white tabular-nums",
-                embedded
-                  ? "text-lg md:text-xl lg:text-2xl [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]"
-                  : "text-2xl md:text-3xl",
+                embedded ? "text-lg text-white md:text-xl lg:text-2xl" : "text-2xl md:text-3xl",
               ].join(" ")}
             >
               {x.v}
@@ -82,7 +80,9 @@ export function Countdown({
             <div
               className={[
                 "mt-2 font-bold uppercase leading-tight tracking-[0.12em] text-white/70",
-                embedded ? "mt-1 text-[9px] sm:text-[10px] md:text-[11px]" : "mt-1.5 text-[10px] sm:text-[11px]",
+                embedded
+                  ? "mt-1 text-[9px] text-white/75 sm:text-[10px] md:text-[11px]"
+                  : "mt-1.5 text-[10px] sm:text-[11px]",
               ].join(" ")}
             >
               {x.k}

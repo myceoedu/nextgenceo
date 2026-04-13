@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useState } from "react";
+import { ui } from "@/lib/ui";
 
 type Props = {
   images: readonly string[];
@@ -48,32 +49,27 @@ export function AboutGalleryClient({ images }: Props) {
   return (
     <>
       <section
-        className="border-t border-[#001F3F]/8 bg-[#f6f7fb] px-6 py-16 md:px-10 md:py-24"
+        className={`${ui.borderSection} bg-slate-50/90 ${ui.section}`}
         aria-labelledby={headingId}
       >
-        <div className="mx-auto max-w-6xl">
+        <div className={ui.marketingContent}>
           <div className="mx-auto max-w-2xl text-center md:mx-0 md:max-w-none md:text-left">
-            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#B8860B]">
-              {t("galleryEyebrow")}
-            </p>
-            <h2
-              id={headingId}
-              className="mt-3 text-3xl font-black tracking-tight text-[#001F3F] md:text-4xl"
-            >
+            <p className={ui.eyebrow}>{t("galleryEyebrow")}</p>
+            <h2 id={headingId} className={`mt-3 ${ui.displayMd}`}>
               {t("galleryTitle")}
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm font-medium leading-relaxed text-[#001F3F]/65 md:mx-0 md:text-base">
+            <p className={`mx-auto mt-3 max-w-xl md:mx-0 ${ui.body}`}>
               {t("gallerySubtitle")}
             </p>
           </div>
 
-          <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 md:gap-5">
+          <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 md:grid-cols-3 md:gap-5">
             {images.map((src, i) => (
               <li key={src}>
                 <button
                   type="button"
                   onClick={() => setOpenIndex(i)}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#001F3F]/5 text-left shadow-[0_8px_32px_rgba(0,31,63,0.08)] ring-1 ring-[#001F3F]/10 transition duration-300 hover:shadow-[0_20px_48px_rgba(0,31,63,0.14)] hover:ring-[#B8860B]/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B8860B]"
+                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 text-left shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
                   aria-label={t("galleryOpenAria", { index: i + 1 })}
                 >
                   <Image
@@ -81,18 +77,18 @@ export function AboutGalleryClient({ images }: Props) {
                     alt=""
                     fill
                     sizes="(min-width: 768px) 33vw, 50vw"
-                    className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
+                    className="object-cover"
                   />
                   <span className="sr-only">{t("galleryImageAlt", { index: i + 1 })}</span>
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#001F3F]/55 via-[#001F3F]/10 to-transparent opacity-80 transition duration-300 group-hover:opacity-95"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/5 to-transparent opacity-75 transition group-hover:opacity-90"
                   />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100"
+                    className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition group-hover:opacity-100"
                   >
-                    <span className="rounded-full border border-white/40 bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    <span className="rounded-full border border-white/35 bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
                       {t("galleryExpand")}
                     </span>
                   </div>
@@ -117,7 +113,7 @@ export function AboutGalleryClient({ images }: Props) {
               e.stopPropagation();
               setOpenIndex(null);
             }}
-            className="absolute right-3 top-3 z-[102] rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:right-5 md:top-5"
+            className="absolute right-3 top-3 z-[102] rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:right-5 md:top-5"
           >
             {t("galleryClose")}
           </button>

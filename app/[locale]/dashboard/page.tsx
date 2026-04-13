@@ -8,6 +8,7 @@ import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { SchoolProfileEditor } from "@/components/dashboard/SchoolProfileEditor";
 import { TeamRosterEditor } from "@/components/dashboard/TeamRosterEditor";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { ui } from "@/lib/ui";
 import type { ReactNode } from "react";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -93,9 +94,9 @@ export default async function SchoolDashboardPage({ params }: Props) {
     <DashboardShell>
       <DashboardHero email={user.email ?? null} schoolName={profile?.school_name ?? null} rosterCount={rosterCount} />
 
-      <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="space-y-10 lg:col-span-8">
+      <div className={`${ui.container} py-10 md:py-14`}>
+        <div className="grid min-w-0 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="min-w-0 space-y-10 lg:col-span-8">
             {panelShell({
               kicker: t("cardDecor"),
               title: t("schoolTitle"),
@@ -131,7 +132,7 @@ export default async function SchoolDashboardPage({ params }: Props) {
               : null}
           </div>
 
-          <div className="flex flex-col gap-10 lg:col-span-4">
+          <div className="flex min-w-0 flex-col gap-10 lg:col-span-4">
             <CoordinatorShareWithTeamPanel />
             <DashboardQuickLinks />
 

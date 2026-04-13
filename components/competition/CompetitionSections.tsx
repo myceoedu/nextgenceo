@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Marketing sections (home + competition). For new UI, prefer tokens in `@/lib/ui`
+ * (container, section padding, cards, buttons) before adding one-off classes.
+ */
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
@@ -8,12 +12,12 @@ import { ArrowUpRight } from "lucide-react";
 import { Countdown } from "@/components/Countdown";
 import { item, sectionY, ViewIn, viewIn } from "@/components/motion-ui";
 import { Link } from "@/i18n/navigation";
+import { GrandPrizeShowcaseCard } from "@/components/competition/GrandPrizeShowcaseCard";
 import { HomeGrandPrizeSpotlight } from "@/components/home/HomeGrandPrizeSpotlight";
 import { PreviewTopicIcon } from "@/components/home/PreviewTopicIcons";
 import {
   DRIVE_CHALLENGE_URL,
   GEP_HERO_FLOAT_IMAGES,
-  GOLD_DEEP,
   GRAND_PRIZE_LABEL,
   HOME_HERO_BACKGROUND_SRC,
   HOME_OUTCOMES_SIDE_IMAGES,
@@ -25,6 +29,7 @@ import {
   SPONSOR_SRC,
 } from "@/lib/constants";
 import { ABOUT_US_PAGE, COMPETITION_MENU } from "@/lib/competition-menu";
+import { ui } from "@/lib/ui";
 
 export function SectionDivider({ invert }: { invert?: boolean }) {
   return (
@@ -47,30 +52,28 @@ export function SectionDivider({ invert }: { invert?: boolean }) {
 export function EducatorSection() {
   const t = useTranslations("Educator");
   return (
-    <section className={`bg-white text-[#001F3F] ${sectionY} px-6 md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl">
-        <div className="mb-12 border-l-[8px] border-[#001F3F] pl-6 text-left md:mb-16 md:pl-8">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#B8860B] md:text-sm">
-            {t("kicker")}
-          </p>
-          <h2 className="text-[34px] font-black leading-[1.05] tracking-tight md:text-[45px]">
+    <section className={`${ui.borderSection} bg-white text-[#001F3F] ${sectionY}`}>
+      <ViewIn className={ui.marketingContent}>
+        <div className="mb-10 border-l-4 border-[#001F3F] pl-5 text-left md:mb-12 md:pl-6">
+          <p className={ui.eyebrow}>{t("kicker")}</p>
+          <h2 className={`mt-3 ${ui.displayMd}`}>
             {t("h1a")} <br />
-            <span className="text-[#B8860B]">{t("h1b")}</span>
+            <span className="text-[#001F3F]/90">{t("h1b")}</span>
           </h2>
         </div>
 
         <div className="grid items-start gap-10 md:grid-cols-[1.35fr_0.85fr] md:gap-14">
-          <div>
-            <p className="mb-6 text-lg font-medium text-[#333] md:text-xl">
+          <div className="min-w-0">
+            <p className="mb-6 text-lg font-medium text-slate-800 md:text-xl">
               {t("p1")}
             </p>
-            <p className="mb-6 text-base leading-8 text-[#555] md:text-lg">
+            <p className={`mb-6 text-base md:text-lg ${ui.body}`}>
               {t("p2Lead")}{" "}
-              <strong>{t("p2Hot")}</strong> {t("p2Tail")}
+              <strong className="font-semibold text-slate-800">{t("p2Hot")}</strong> {t("p2Tail")}
             </p>
 
-            <div className="mb-8 rounded-2xl bg-[#F4F4F4] p-7 md:p-8">
-              <p className="text-[15px] italic leading-8 text-[#001F3F] md:text-[17px]">
+            <div className={`mb-8 ${ui.cardMuted}`}>
+              <p className="text-sm italic leading-relaxed text-slate-800 md:text-base md:leading-relaxed">
                 &quot;{t("quote")}&quot;
               </p>
             </div>
@@ -79,9 +82,9 @@ export function EducatorSection() {
               href="https://www.instagram.com/myceo_"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 text-[16px] font-bold text-[#E4405F] hover:underline md:text-[17px]"
+              className="inline-flex min-h-[44px] items-center gap-3 text-sm font-semibold text-slate-700 transition hover:text-[#001F3F] md:text-base"
             >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#E4405F]/10">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
                 <svg
                   width="22"
                   height="22"
@@ -102,29 +105,38 @@ export function EducatorSection() {
             </a>
           </div>
 
-          <div className="rounded-xl bg-[#001F3F] p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:p-10">
-            <h3 className="mb-6 border-b border-[#FFD700]/30 pb-4 text-xl font-extrabold text-[#FFD700] md:text-[22px]">
+          <div className="rounded-xl bg-[#001F3F] p-8 text-white shadow-md md:p-10">
+            <h3 className="mb-6 border-b border-white/15 pb-4 text-lg font-semibold text-white md:text-xl">
               {t("sideTitle")}
             </h3>
-            <ul className="mb-8 space-y-4 text-[15px] md:text-[16px]">
-              <li className="flex items-center gap-3">
-                <span className="text-lg text-[#FFD700]">✔</span> {t("li1")}
+            <ul className="mb-8 space-y-4 text-sm leading-relaxed text-white/90 md:text-[15px]">
+              <li className="flex gap-3">
+                <span className="mt-0.5 text-emerald-300" aria-hidden>
+                  ✓
+                </span>
+                {t("li1")}
               </li>
-              <li className="flex items-center gap-3">
-                <span className="text-lg text-[#FFD700]">✔</span> {t("li2")}
+              <li className="flex gap-3">
+                <span className="mt-0.5 text-emerald-300" aria-hidden>
+                  ✓
+                </span>
+                {t("li2")}
               </li>
-              <li className="flex items-center gap-3">
-                <span className="text-lg text-[#FFD700]">✔</span> {t("li3")}
+              <li className="flex gap-3">
+                <span className="mt-0.5 text-emerald-300" aria-hidden>
+                  ✓
+                </span>
+                {t("li3")}
               </li>
             </ul>
 
             <Link
               href="/competition/registration"
-              className="block rounded-lg bg-[#FFD700] px-6 py-4 text-center font-black uppercase tracking-wider text-[#001F3F] transition hover:brightness-95"
+              className="block w-full rounded-md bg-white px-6 py-3.5 text-center text-sm font-semibold text-[#001F3F] shadow-sm transition hover:bg-slate-100"
             >
               {t("register")}
             </Link>
-            <p className="mt-5 text-center text-xs italic text-white/60">
+            <p className="mt-5 text-center text-xs italic text-white/55">
               {t("footnote")}
             </p>
           </div>
@@ -144,12 +156,12 @@ export function ApaItuSection() {
   ];
   return (
     <section
-      className={`${sectionY} px-6 text-center text-white md:px-10`}
+      className={`${sectionY} text-center text-white`}
       style={{
         background: `linear-gradient(180deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
       }}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className={ui.marketingContent}>
         <motion.div
           variants={item}
           initial="hidden"
@@ -157,13 +169,13 @@ export function ApaItuSection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="mb-6 text-3xl font-black md:text-[44px]">{t("title")}</h2>
-          <p className="mx-auto max-w-3xl text-base font-semibold leading-8 text-white/80 md:text-lg">
+          <h2 className={`mb-5 ${ui.displayMd} text-white md:mb-6`}>{t("title")}</h2>
+          <p className="mx-auto max-w-3xl text-base font-medium leading-relaxed text-white/80 md:text-lg">
             {t("lead")}
           </p>
         </motion.div>
 
-        <div className="mt-12 grid justify-items-center gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+        <div className="mt-12 grid justify-items-stretch gap-5 sm:grid-cols-2 md:mt-14 lg:grid-cols-3 lg:gap-6">
           {cards.map((c, i) => (
             <motion.div
               key={c.title}
@@ -172,30 +184,17 @@ export function ApaItuSection() {
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="w-full max-w-[360px] rounded-3xl border border-white/15 bg-white/5 p-8 text-left transition hover:-translate-y-2 hover:bg-white/10 hover:shadow-[0_28px_70px_rgba(0,0,0,0.35)]"
+              className="flex min-w-0 flex-col rounded-xl border border-white/10 bg-white/[0.06] p-7 text-left shadow-sm transition hover:bg-white/[0.09] md:p-8"
             >
-              <div
-                className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl font-black"
-                style={{
-                  background: "rgba(255,215,0,0.14)",
-                  border: "1px solid rgba(255,215,0,0.22)",
-                  color: GOLD_DEEP,
-                }}
-              >
+              <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white">
                 {i + 1}
               </div>
-              <h3 className="mb-3 text-[18px] font-black tracking-wide text-white md:text-xl">
-                {c.title}
-              </h3>
-              <p className="text-[15px] font-semibold leading-7 text-white/75">
+              <h3 className="mb-3 text-lg font-semibold text-white md:text-xl">{c.title}</h3>
+              <p className="flex-1 text-sm leading-relaxed text-white/75 md:text-[15px] md:leading-relaxed">
                 {c.desc}
               </p>
-              <div
-                aria-hidden
-                className="mt-6 h-px w-full"
-                style={{ background: "rgba(255,255,255,0.14)" }}
-              />
-              <div className="mt-4 text-sm font-black uppercase tracking-[0.20em] text-white/70">
+              <div aria-hidden className="mt-6 h-px w-full bg-white/10" />
+              <div className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-white/60">
                 {tEdu("powered")}
               </div>
             </motion.div>
@@ -207,76 +206,18 @@ export function ApaItuSection() {
 }
 
 export function GrandPrizeSection() {
-  const t = useTranslations("GrandPrize");
+  const tg = useTranslations("GrandPrize");
+  const th = useTranslations("HomeHero");
   return (
-    <section
-      className="relative overflow-hidden py-20 md:py-28"
-      style={{
-        background: `linear-gradient(180deg, #ffffff 0%, #f3f5fb 45%, #ffffff 100%)`,
-      }}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.35), transparent 55%)",
-        }}
-      />
-      <ViewIn className="relative mx-auto max-w-6xl px-6 text-center text-[#141452] md:px-10">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#001F3F]/10 px-6 py-16 shadow-[0_40px_100px_rgba(0,31,63,0.18)] md:px-16 md:py-24">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(135deg, #FFD700 0%, #FFA500 45%, #FFD700 100%)",
-            }}
-          />
-          <motion.div
-            aria-hidden
-            className="absolute inset-y-0 left-[-120%] w-[60%] skew-x-[-25deg] bg-[linear-gradient(120deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.85)_50%,rgba(255,255,255,0)_100%)]"
-            animate={{ x: ["0%", "420%"] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          />
-          <div className="relative z-10">
-            <div className="text-3xl font-black tracking-[0.22em] text-[#001F3F] md:text-[52px]">
-              {t("title")}
-            </div>
-
-            <motion.div
-              animate={{ y: [0, -10] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-              className="mt-4"
-            >
-              <div
-                className="font-black leading-none tracking-[0.06em] text-[72px] sm:text-[100px] md:text-[140px]"
-                style={{
-                  color: GOLD_DEEP,
-                  WebkitTextStroke: "5px #001530",
-                  textShadow:
-                    "2px 2px 0 #001530, 4px 4px 0 #001530, 6px 6px 0 #001530, 8px 8px 0 #001530, 10px 10px 20px rgba(0,0,0,0.5)",
-                  transform: "scaleX(1.15)",
-                }}
-              >
-                {GRAND_PRIZE_LABEL}
-              </div>
-            </motion.div>
-
-            <h3 className="mt-6 text-lg font-extrabold uppercase tracking-[0.12em] text-[#001F3F] md:text-[30px]">
-              {t("cert")}
-            </h3>
-
-            <p className="mt-6 text-base font-semibold leading-8 text-[#001F3F] md:text-[20px]">
-              {t("tagline")} <br />
-              <span className="text-[18px] font-black md:text-[22px]">{t("hashtag")}</span>
-            </p>
-          </div>
-        </div>
+    <section className={`${ui.borderSection} bg-white py-16 md:py-24`}>
+      <ViewIn className={`relative ${ui.marketingContent} max-w-6xl`}>
+        <GrandPrizeShowcaseCard
+          eyebrow={tg("title")}
+          amount={<span className="tabular-nums">{GRAND_PRIZE_LABEL}</span>}
+          subline={th("prizeSub")}
+          benefitCert={th("prizeDetailCerts")}
+          benefitPajsk={th("prizeDetailPajsk")}
+        />
       </ViewIn>
     </section>
   );
@@ -293,13 +234,13 @@ export function ManfaatSekolahSection() {
   ];
   return (
     <section
-      className={`${sectionY} px-6 md:px-10`}
+      className={`${sectionY}`}
       style={{
         background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)`,
       }}
     >
-      <ViewIn className="mx-auto max-w-4xl">
-        <h2 className="mb-12 text-center text-2xl font-black text-white md:text-[40px]">
+      <ViewIn className={`${ui.marketingContent} max-w-4xl`}>
+        <h2 className={`mb-10 text-center ${ui.displayMd} text-white md:mb-12`}>
           {t("title")}
         </h2>
 
@@ -311,16 +252,10 @@ export function ManfaatSekolahSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.08 }}
-              className="rounded-3xl px-7 py-6 transition hover:-translate-y-1.5"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.06) 100%)",
-                border: "1px solid rgba(255,255,255,0.14)",
-                boxShadow: "0 26px 70px rgba(0,0,0,0.28)",
-              }}
+              className="rounded-xl border border-white/10 bg-white/[0.06] px-6 py-5 shadow-sm backdrop-blur-sm transition hover:border-white/15 md:px-7 md:py-6"
             >
-              <div className="font-black text-white">{x.title}</div>
-              <div className="mt-1 text-[15px] leading-7 text-white/75 md:text-[16px]">
+              <div className="text-lg font-semibold text-white md:text-xl">{x.title}</div>
+              <div className="mt-2 text-sm leading-relaxed text-white/75 md:text-[15px] md:leading-relaxed">
                 {x.d}
               </div>
             </motion.div>
@@ -345,11 +280,11 @@ export function ManfaatPelajarSection() {
     { title: t("c5Title"), desc: t("c5Desc") },
   ];
   return (
-    <section className={`bg-white ${sectionY} px-6 text-center md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl text-[#001F3F]">
-        <h2 className="mb-12 text-2xl font-black md:text-[36px]">{t("title")}</h2>
+    <section className={`${ui.borderSection} bg-white ${sectionY}`}>
+      <ViewIn className={`${ui.marketingContent} text-[#001F3F]`}>
+        <h2 className={`mb-10 text-center ${ui.displaySm} md:mb-12 md:text-3xl`}>{t("title")}</h2>
 
-        <div className="grid justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid justify-items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {cards.map((c) => (
             <motion.div
               key={c.title}
@@ -358,14 +293,23 @@ export function ManfaatPelajarSection() {
               whileInView="show"
               viewport={{ once: true, amount: 0.1 }}
               className={[
-                "w-full max-w-[340px] rounded-3xl border border-[#001F3F]/8 p-7 text-left shadow transition",
+                "min-w-0 rounded-xl border p-6 text-left shadow-sm transition md:p-7",
                 c.gold
-                  ? "bg-gradient-to-br from-[#FFD700] to-[#FFEC8B] shadow-[0_14px_34px_rgba(0,0,0,0.18)] hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(0,0,0,0.22)]"
-                  : "bg-white shadow-[0_10px_28px_rgba(0,31,63,0.10)] hover:-translate-y-2 hover:shadow-[0_22px_44px_rgba(0,31,63,0.14)]",
+                  ? "border-[#a67c14]/45 bg-gradient-to-br from-[#fffdf6] via-[#f5ecd4] to-[#e8d9a8]"
+                  : "border-slate-200/90 bg-white hover:border-slate-300/90",
               ].join(" ")}
             >
-              <div className="text-[18px] font-black md:text-[20px]">{c.title}</div>
-              <div className="mt-2 text-[15px] leading-7 text-[#001F3F]/90 md:text-[16px]">
+              <div
+                className={[
+                  "text-base font-semibold md:text-lg",
+                  c.gold
+                    ? "font-[family-name:var(--font-grand-display)] tracking-tight text-[#1A1105]"
+                    : "text-slate-900",
+                ].join(" ")}
+              >
+                {c.title}
+              </div>
+              <div className={`mt-2 ${ui.body} ${c.gold ? "text-[#1A1105]/82" : "text-slate-600"}`}>
                 {c.desc}
               </div>
             </motion.div>
@@ -389,11 +333,11 @@ export function TermaSection() {
     { h: t("i8h"), p: t("i8p") },
   ];
   return (
-    <section className={`bg-[#001F3F] ${sectionY} px-6 text-center text-[#FFD700] md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl">
-        <h2 className="mb-12 text-2xl font-black md:text-[36px]">{t("title")}</h2>
+    <section className={`bg-[#001F3F] ${sectionY} text-center text-amber-100`}>
+      <ViewIn className={ui.marketingContent}>
+        <h2 className={`mb-10 text-white ${ui.displaySm} md:mb-12 md:text-3xl`}>{t("title")}</h2>
 
-        <div className="grid justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {termaItems.map((x, idx) => (
             <motion.div
               key={`${x.h}-${idx}`}
@@ -401,12 +345,12 @@ export function TermaSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.08 }}
-              className="flex h-[240px] w-[240px] flex-col items-center justify-center rounded-full bg-white p-6 text-center text-[#001F3F] shadow-[0_10px_26px_rgba(0,0,0,0.18)] transition hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+              className="flex min-h-[220px] w-full max-w-[240px] flex-col items-center justify-center rounded-full border border-white/10 bg-white p-5 text-center text-[#001F3F] shadow-md sm:min-h-[240px] sm:p-6"
             >
-              <div className={`mb-2 font-black ${idx < 4 ? "text-[18px]" : "text-[16px]"}`}>
+              <div className={`mb-2 font-semibold ${idx < 4 ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
                 {x.h}
               </div>
-              <div className="text-[13px] font-semibold leading-5 text-[#001F3F]/90">
+              <div className="text-xs font-medium leading-snug text-slate-700 md:text-[13px] md:leading-snug">
                 {x.p}
               </div>
             </motion.div>
@@ -426,11 +370,11 @@ export function PenilaianSection() {
     { h: t("s4h"), p: t("s4p"), pct: "35%" },
   ];
   return (
-    <section className={`bg-white ${sectionY} px-6 text-center md:px-10`}>
-      <ViewIn className="mx-auto max-w-5xl text-[#001F3F]">
-        <h2 className="mb-12 text-2xl font-black md:text-[36px]">{t("title")}</h2>
+    <section className={`bg-white ${sectionY}`}>
+      <ViewIn className={`${ui.marketingContent} max-w-5xl text-[#001F3F]`}>
+        <h2 className={`mb-10 text-center ${ui.displaySm} md:mb-12 md:text-3xl`}>{t("title")}</h2>
 
-        <div className="space-y-5 text-left">
+        <div className="space-y-4 text-left md:space-y-5">
           {rows.map((x) => (
             <motion.div
               key={x.h}
@@ -438,15 +382,15 @@ export function PenilaianSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.08 }}
-              className="flex items-center justify-between gap-6 rounded-3xl border border-[#001F3F]/8 bg-white px-7 py-6 shadow-[0_12px_32px_rgba(0,31,63,0.10)] transition hover:-translate-y-1.5 hover:shadow-[0_22px_50px_rgba(0,31,63,0.14)]"
+              className="flex flex-col gap-4 rounded-xl border border-slate-200/90 bg-white px-5 py-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-6"
             >
-              <div>
-                <div className="text-[18px] font-black md:text-[20px]">{x.h}</div>
-                <div className="mt-1 text-[15px] leading-7 text-[#001F3F]/90 md:text-[16px]">
-                  {x.p}
-                </div>
+              <div className="min-w-0">
+                <div className="text-base font-semibold text-slate-900 md:text-lg">{x.h}</div>
+                <div className={`mt-1 ${ui.body}`}>{x.p}</div>
               </div>
-              <div className="shrink-0 text-[20px] font-black md:text-[24px]">{x.pct}</div>
+              <div className="shrink-0 text-xl font-semibold tabular-nums text-[#001F3F] md:text-2xl">
+                {x.pct}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -463,16 +407,16 @@ export function TimelineSection() {
     { when: t("s3when"), title: t("s3title"), desc: t("s3desc") },
   ];
   return (
-    <section className={`bg-[#001F3F] ${sectionY} px-6 md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl text-center">
-        <h2 className="mb-10 text-3xl font-black tracking-wide text-[#FFD700] md:text-[44px]">
+    <section className={`bg-[#001F3F] ${sectionY}`}>
+      <ViewIn className={`${ui.marketingContent} text-center`}>
+        <h2 className={`mb-10 text-amber-100 ${ui.displaySm} md:mb-12 md:text-3xl`}>
           {t("title")}
         </h2>
 
-        <div className="relative grid items-start gap-10 md:grid-cols-3 md:gap-8">
+        <div className="relative grid items-start gap-12 md:grid-cols-3 md:gap-8">
           <div
             aria-hidden
-            className="absolute left-[6%] right-[6%] top-[58px] hidden h-1 rounded bg-[linear-gradient(to_right,rgba(255,215,0,0.35),#FFD700,rgba(255,215,0,0.35))] shadow-[0_0_18px_rgba(255,215,0,0.35)] md:block"
+            className="absolute left-[8%] right-[8%] top-[52px] hidden h-px bg-white/20 md:block"
           />
 
           {timelineStages.map((x) => (
@@ -482,13 +426,13 @@ export function TimelineSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.15 }}
-              className="group text-[#FFD700] transition hover:-translate-y-2"
+              className="text-amber-50/95"
             >
-              <div className="mx-auto mb-6 flex h-[100px] w-[170px] items-center justify-center bg-white text-[22px] font-black text-[#001F3F] shadow-[0_10px_26px_rgba(0,0,0,0.25)] [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)] transition group-hover:scale-110 group-hover:shadow-[0_16px_44px_rgba(255,215,0,0.28)] md:text-[26px]">
+              <div className="mx-auto mb-6 flex h-[92px] w-[160px] items-center justify-center rounded-lg bg-white text-lg font-semibold text-[#001F3F] shadow-md md:h-[100px] md:w-[170px] md:text-xl">
                 {x.when}
               </div>
-              <div className="text-[18px] font-extrabold md:text-[20px]">{x.title}</div>
-              <div className="mx-auto mt-2 max-w-[320px] text-[14px] leading-7 md:text-[15px]">
+              <div className="text-base font-semibold text-white md:text-lg">{x.title}</div>
+              <div className="mx-auto mt-2 max-w-[320px] text-sm leading-relaxed text-white/70 md:text-[15px]">
                 {x.desc}
               </div>
             </motion.div>
@@ -501,7 +445,7 @@ export function TimelineSection() {
 
 export function ImportantDatesSectionWithVisual() {
   return (
-    <section className="relative overflow-hidden bg-[#f4f4f3] px-5 py-14 md:px-8 md:py-20">
+    <section className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 px-4 py-16 sm:px-6 md:px-8 md:py-20 lg:px-8">
       <ViewIn className="relative mx-auto max-w-6xl">
         <HomeGrandPrizeSpotlight />
         <ImportantDatesCard />
@@ -512,19 +456,19 @@ export function ImportantDatesSectionWithVisual() {
 
 const DATE_CARD_THEMES = {
   coral: {
-    border: "border-rose-600",
-    badge: "bg-rose-600 shadow-[0_4px_16px_rgba(225,29,72,0.4)]",
-    month: "text-rose-600",
+    border: "border-slate-200",
+    badge: "bg-slate-700 text-white",
+    month: "text-[#001F3F]",
   },
   navy: {
-    border: "border-[#001F3F]",
-    badge: "bg-[#001F3F] shadow-[0_4px_16px_rgba(0,31,63,0.35)]",
-    month: "text-[#c9a227]",
+    border: "border-slate-200",
+    badge: "bg-[#001F3F] text-white",
+    month: "text-[#001F3F]",
   },
   gold: {
-    border: "border-amber-500",
-    badge: "bg-gradient-to-r from-amber-500 to-amber-600 shadow-[0_4px_16px_rgba(217,119,6,0.35)]",
-    month: "text-amber-800",
+    border: "border-slate-300",
+    badge: "bg-slate-900 text-white",
+    month: "text-[#001F3F]",
   },
 } as const;
 
@@ -558,54 +502,49 @@ export function ImportantDatesCard() {
   return (
     <div className="w-full">
       <header className="mx-auto max-w-3xl text-center">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-rose-600 md:text-xs">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 md:text-[13px]">
           {t("label")}
         </p>
-        <h2 className="mt-3 text-balance text-2xl font-black uppercase tracking-tight text-stone-900 md:text-[1.85rem] md:leading-[1.12]">
+        <h2 className="mt-3 text-balance text-2xl font-semibold leading-snug tracking-tight text-slate-900 md:text-3xl md:leading-tight">
           {t("title")}
         </h2>
-        <span
-          aria-hidden
-          className="mx-auto mt-4 block h-1 w-14 rounded-full bg-rose-600"
-        />
-        <p className="mx-auto mt-5 max-w-2xl text-pretty text-sm leading-relaxed text-stone-600 md:text-base">
+        <span aria-hidden className="mx-auto mt-4 block h-px w-12 bg-slate-300" />
+        <p className="mx-auto mt-5 max-w-2xl text-pretty text-sm leading-relaxed text-slate-600 md:text-base">
           {t("sectionLead")}
         </p>
       </header>
 
-      <ul className="mt-10 grid list-none gap-6 p-0 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+      <ul className="mt-12 grid list-none gap-5 p-0 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {stages.map((x) => {
           const th = DATE_CARD_THEMES[x.tier];
-          const featured = x.tier === "gold";
           return (
             <li
               key={x.when}
               className={[
-                "relative flex min-h-[100%] flex-col rounded-2xl border-2 bg-white px-5 pb-7 pt-10 text-center shadow-[0_14px_40px_rgba(0,0,0,0.06)]",
+                "relative flex min-h-full flex-col rounded-xl border bg-white px-5 pb-6 pt-9 text-center shadow-sm",
                 th.border,
-                featured ? "ring-1 ring-amber-400/25 lg:scale-[1.02]" : "",
               ].join(" ")}
             >
               <div
                 className={[
-                  "absolute -top-3 left-1/2 max-w-[92%] -translate-x-1/2 rounded-md px-3 py-1.5 text-[9px] font-bold uppercase leading-tight tracking-[0.12em] text-white sm:text-[10px]",
+                  "absolute -top-2.5 left-1/2 max-w-[92%] -translate-x-1/2 rounded-md px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] sm:text-[11px]",
                   th.badge,
                 ].join(" ")}
               >
                 {x.badge}
               </div>
-              <h3 className="text-[13px] font-bold uppercase tracking-wide text-stone-900 md:text-sm">
+              <h3 className="text-sm font-semibold text-slate-800 md:text-[15px]">
                 {x.title}
               </h3>
               <p
                 className={[
-                  "mt-5 text-[1.75rem] font-black uppercase leading-none tracking-tight sm:text-4xl md:text-[2.25rem]",
+                  "mt-4 text-3xl font-semibold leading-none tracking-tight sm:text-[2rem] md:text-[2.25rem]",
                   th.month,
                 ].join(" ")}
               >
                 {x.when}
               </p>
-              <p className="mt-4 flex-1 pb-1 text-left text-sm leading-[1.65] text-stone-600 md:text-center md:text-[15px]">
+              <p className="mt-4 flex-1 text-left text-sm leading-relaxed text-slate-600 md:text-center md:text-[15px]">
                 {x.desc}
               </p>
             </li>
@@ -613,7 +552,7 @@ export function ImportantDatesCard() {
         })}
       </ul>
 
-      <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-stone-500 md:text-sm">
+      <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-slate-500 md:text-sm">
         {t("footnote")}
       </p>
     </div>
@@ -640,18 +579,27 @@ function GepFloatTile({
         alt=""
         loading="lazy"
         decoding="async"
-        className="block h-auto w-full rounded-xl shadow-[0_14px_32px_rgba(0,31,63,0.12)] ring-1 ring-[#001F3F]/[0.08]"
+        className="block h-auto w-full rounded-xl border border-slate-200/80 shadow-sm"
       />
     </div>
   );
 }
 
-function GepHeroCtaButton({ cta, className }: { cta: GepCtaTarget; className: string }) {
+function GepHeroCtaButton({
+  cta,
+  className,
+  iconAccent = "orange",
+}: {
+  cta: GepCtaTarget;
+  className: string;
+  iconAccent?: "orange" | "navy";
+}) {
+  const iconClass = iconAccent === "navy" ? "text-[#001F3F]" : "text-[#FF7F32]";
   const inner = (
     <>
       {cta.label}
       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-        <ArrowUpRight className="h-4 w-4 text-[#FF7F32]" aria-hidden />
+        <ArrowUpRight className={["h-4 w-4", iconClass].join(" ")} aria-hidden />
       </span>
     </>
   );
@@ -693,92 +641,205 @@ function GepOutreachHero({
   const t = useTranslations("Registration");
   const gepLeft = GEP_HERO_FLOAT_IMAGES.slice(0, 2);
   const gepRight = GEP_HERO_FLOAT_IMAGES.slice(2);
+  const isHome = variant === "home";
 
   const sectionPad =
     variant === "registration"
       ? "relative isolate overflow-x-clip bg-white px-6 pb-10 pt-[calc(var(--ngc-header-h)+var(--ngc-hero-top-gap)+1.25rem)] md:px-10 md:pb-14 md:pt-[calc(var(--ngc-header-h)+var(--ngc-hero-top-gap)+1.75rem)]"
-      : "relative isolate overflow-x-clip bg-white px-6 py-12 md:px-10 md:py-14";
+      : // Contain rings/floats inside the section; generous vertical rhythm so nothing bleeds into header/footer.
+        "relative isolate -mb-px overflow-hidden border-t border-slate-200/80 bg-white py-20 scroll-mt-[calc(var(--ngc-header-h)+1rem)] md:py-24 lg:py-28";
 
-  const titleCls = [
-    "mt-5 font-black leading-[1.1] tracking-tight sm:text-3xl md:mt-6 md:text-4xl md:leading-[1.08] lg:text-[2.65rem]",
-    titleUppercase ? "text-[1.55rem] uppercase" : "text-[1.65rem] md:text-[2.25rem] lg:text-[2.5rem]",
-  ].join(" ");
+  const titleCls = isHome
+    ? [
+        "mt-5 font-[family-name:var(--font-montserrat)] font-extrabold leading-[1.12] tracking-tight text-balance text-[#001F3F] sm:text-2xl md:mt-7 md:text-3xl md:leading-[1.1] lg:text-[2.45rem] lg:leading-[1.08]",
+        titleUppercase ? "uppercase" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")
+    : [
+        "mt-5 font-black leading-[1.1] tracking-tight sm:text-3xl md:mt-6 md:text-4xl md:leading-[1.08] lg:text-[2.65rem]",
+        titleUppercase ? "text-[1.55rem] uppercase" : "text-[1.65rem] md:text-[2.25rem] lg:text-[2.5rem]",
+      ].join(" ");
+
+  const ctaClass = isHome
+    ? "inline-flex items-center gap-2 rounded-full bg-[#FF7F32] px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:bg-[#e56f28] md:px-10 md:py-4 md:text-[12px] md:tracking-[0.14em]"
+    : "inline-flex items-center gap-3 rounded-full bg-[#FF7F32] px-8 py-3.5 text-[12px] font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#e56f28] md:px-10 md:py-4 md:text-[13px]";
+
+  const ringLayer =
+    variant === "registration" ? (
+      <>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-32 top-1/4 hidden h-[min(420px,55vw)] w-[min(420px,55vw)] rounded-full border-[3px] border-[#FF7F32]/25 md:block"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 top-1/3 hidden h-[min(380px,50vw)] w-[min(380px,50vw)] rounded-full border-[3px] border-[#FF7F32]/22 md:block"
+        />
+      </>
+    ) : (
+      <>
+        {/* Thin peach arcs from the sides (reference: light rings, not heavy strokes). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-[44%] top-[4%] hidden h-[min(95vw,38rem)] w-[min(95vw,38rem)] rounded-full border border-orange-200/80 sm:-left-[40%] md:top-[10%] md:block md:h-[min(88vw,42rem)] md:w-[min(88vw,42rem)] lg:-left-[36%]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-[44%] top-[10%] hidden h-[min(92vw,36rem)] w-[min(92vw,36rem)] rounded-full border border-orange-200/75 sm:-right-[40%] md:top-[16%] md:block md:h-[min(85vw,40rem)] md:w-[min(85vw,40rem)] lg:-right-[34%]"
+        />
+      </>
+    );
+
+  const floatCols = (
+    <>
+      <div
+        aria-hidden
+        className={[
+          "pointer-events-none absolute hidden flex-col gap-4 2xl:gap-5",
+          isHome
+            ? "top-1/2 z-0 max-w-[7.25rem] -translate-y-1/2 sm:left-4 md:left-6 lg:flex lg:left-8 xl:left-10 2xl:left-14"
+            : "left-0 top-2 z-[1] xl:flex",
+        ].join(" ")}
+      >
+        {gepLeft.map((src, i) => (
+          <GepFloatTile
+            key={src}
+            src={src}
+            rotateClass={i % 2 === 0 ? "-rotate-6" : "rotate-3"}
+          />
+        ))}
+      </div>
+      <div
+        aria-hidden
+        className={[
+          "pointer-events-none absolute hidden flex-col gap-4 2xl:gap-5",
+          isHome
+            ? "top-1/2 z-0 max-w-[7.25rem] -translate-y-1/2 sm:right-4 md:right-6 lg:flex lg:right-8 xl:right-10 2xl:right-14"
+            : "right-0 top-6 z-[1] xl:flex",
+        ].join(" ")}
+      >
+        {gepRight.map((src, i) => (
+          <GepFloatTile
+            key={src}
+            src={src}
+            rotateClass={i % 2 === 0 ? "rotate-6" : "-rotate-3"}
+          />
+        ))}
+      </div>
+    </>
+  );
+
+  const copyColumn = (
+    <div
+      className={[
+        "relative z-10 mx-auto px-1 text-center",
+        isHome
+          ? "w-full max-w-2xl lg:max-w-[42rem] xl:max-w-[44rem]"
+          : "max-w-xl md:max-w-2xl xl:max-w-2xl",
+      ].join(" ")}
+    >
+      <span
+        className={[
+          "inline-flex px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] md:text-xs",
+          isHome
+            ? "rounded-full border border-slate-200/90 bg-white text-[#001F3F]"
+            : "rounded-full border border-[#001F3F]/10 bg-[#f8fafc] text-[#001F3F]/80",
+        ].join(" ")}
+      >
+        {pill}
+      </span>
+      {heading === "h1" ? (
+        <h1 className={titleCls}>{title}</h1>
+      ) : (
+        <h2 className={titleCls}>{title}</h2>
+      )}
+      <p
+        className={[
+          "mx-auto mt-5 text-[15px] font-medium leading-relaxed md:mt-6 md:text-lg",
+          isHome
+            ? "max-w-2xl text-slate-600"
+            : "max-w-lg text-[#001F3F]/58 md:max-w-xl",
+        ].join(" ")}
+      >
+        {lead}
+      </p>
+      {footnote ? (
+        <p
+          className={[
+            "mt-3 text-xs italic md:text-sm",
+            isHome ? "text-slate-400" : "text-[#001F3F]/40",
+          ].join(" ")}
+        >
+          {footnote}
+        </p>
+      ) : null}
+      <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-7">
+        <GepHeroCtaButton
+          cta={heroCta}
+          className={ctaClass}
+          iconAccent="orange"
+        />
+      </div>
+      <div
+        className={[
+          "mt-6 flex md:mt-7",
+          isHome
+            ? "flex-row flex-wrap items-center justify-center gap-5 text-[#001F3F]/55 sm:gap-6"
+            : "flex-col items-center gap-3 text-slate-500 sm:flex-row sm:flex-wrap sm:justify-center",
+        ].join(" ")}
+      >
+        <Link
+          href="/competition/terms"
+          className={[
+            "shrink-0 text-sm font-medium underline underline-offset-[6px] transition md:text-[15px]",
+            isHome
+              ? "text-[#001F3F]/60 decoration-slate-300 hover:text-[#001F3F] hover:decoration-[#001F3F]/45"
+              : "text-[#001F3F] decoration-slate-300 hover:decoration-[#001F3F]/50",
+          ].join(" ")}
+        >
+          {termsLinkLabel}
+        </Link>
+        <a
+          href="https://www.instagram.com/myceo_"
+          target="_blank"
+          rel="noreferrer"
+          className={[
+            "shrink-0 text-xs font-medium no-underline transition md:text-sm",
+            isHome
+              ? "text-[#001F3F]/55 hover:text-[#001F3F]"
+              : "text-slate-500 hover:text-[#001F3F]",
+          ].join(" ")}
+        >
+          {t("ig")}
+        </a>
+      </div>
+    </div>
+  );
+
+  if (isHome) {
+    return (
+      <section className={sectionPad}>
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          {ringLayer}
+        </div>
+        <ViewIn
+          viewport={{ once: true, amount: 0.35 }}
+          className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10"
+        >
+          {floatCols}
+          {copyColumn}
+        </ViewIn>
+      </section>
+    );
+  }
 
   return (
     <section className={sectionPad}>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-32 top-1/4 hidden h-[min(420px,55vw)] w-[min(420px,55vw)] rounded-full border-[3px] border-[#FF7F32]/25 md:block"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 top-1/3 hidden h-[min(380px,50vw)] w-[min(380px,50vw)] rounded-full border-[3px] border-[#FF7F32]/22 md:block"
-      />
-      <ViewIn className="relative z-10 mx-auto w-full max-w-7xl md:px-2">
-        {/* Side photos: absolute so tall stacks don’t stretch the section (removes huge gap under copy). */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-2 z-[1] hidden flex-col gap-5 xl:flex 2xl:gap-6"
-        >
-          {gepLeft.map((src, i) => (
-            <GepFloatTile
-              key={src}
-              src={src}
-              rotateClass={i % 2 === 0 ? "-rotate-6" : "rotate-3"}
-            />
-          ))}
-        </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute right-0 top-6 z-[1] hidden flex-col gap-5 xl:flex 2xl:gap-6"
-        >
-          {gepRight.map((src, i) => (
-            <GepFloatTile
-              key={src}
-              src={src}
-              rotateClass={i % 2 === 0 ? "rotate-6" : "-rotate-3"}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-xl px-1 text-center md:max-w-2xl xl:max-w-2xl">
-          <span className="inline-flex rounded-full border border-[#001F3F]/10 bg-[#f8fafc] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#001F3F]/80 md:text-xs">
-            {pill}
-          </span>
-          {heading === "h1" ? (
-            <h1 className={titleCls}>{title}</h1>
-          ) : (
-            <h2 className={titleCls}>{title}</h2>
-          )}
-          <p className="mx-auto mt-5 max-w-lg text-[15px] font-medium leading-relaxed text-[#001F3F]/58 md:mt-6 md:max-w-xl md:text-lg">
-            {lead}
-          </p>
-          {footnote ? (
-            <p className="mt-3 text-xs italic text-[#001F3F]/40 md:text-sm">{footnote}</p>
-          ) : null}
-          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-7">
-            <GepHeroCtaButton
-              cta={heroCta}
-              className="inline-flex items-center gap-3 rounded-full bg-[#FF7F32] px-8 py-3.5 text-[12px] font-black uppercase tracking-[0.14em] text-white shadow-[0_14px_36px_rgba(255,127,50,0.35)] transition hover:brightness-105 md:px-10 md:py-4 md:text-[13px]"
-            />
-          </div>
-          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:mt-7 md:gap-6">
-            <Link
-              href="/competition/terms"
-              className="text-sm font-medium text-[#001F3F]/75 underline decoration-[#001F3F]/25 underline-offset-[6px] transition hover:text-[#001F3F] hover:decoration-[#001F3F]/45 md:text-[15px]"
-            >
-              {termsLinkLabel}
-            </Link>
-            <a
-              href="https://www.instagram.com/myceo_"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-semibold text-[#001F3F]/45 transition hover:text-[#001F3F]/70 md:text-sm"
-            >
-              {t("ig")}
-            </a>
-          </div>
-        </div>
+      {ringLayer}
+      <ViewIn className="relative z-10 mx-auto w-full max-w-7xl pb-14 md:px-2 md:pb-16">
+        {floatCols}
+        {copyColumn}
       </ViewIn>
     </section>
   );
@@ -846,28 +907,18 @@ export function RegistrationSection() {
 export function SponsorStrip() {
   const t = useTranslations("Sponsor");
   return (
-    <section
-      className={`relative overflow-hidden bg-gradient-to-b from-white via-[#f3f6fb] to-[#e8edf5] ${sectionY} px-6 text-center md:px-10`}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.14), transparent 50%)",
-        }}
-      />
-      <ViewIn className="relative mx-auto max-w-6xl text-[#001F3F]">
-        <h2 className="mb-10 text-3xl font-black leading-tight md:text-[40px] md:leading-[1.15]">
+    <section className={`${ui.borderSection} relative bg-slate-50/90 ${sectionY} text-center`}>
+      <ViewIn className={`${ui.marketingContent} text-[#001F3F]`}>
+        <h2 className={`mb-8 ${ui.displayMd} md:mb-10`}>
           {t("title")}
         </h2>
-        <div className="flex justify-center">
+        <div className="flex justify-center px-1">
           <Image
             src={SPONSOR_SRC}
             alt={t("alt")}
             width={1000}
             height={560}
-            className="h-auto w-full max-w-[1000px] rounded-2xl shadow-[0_14px_34px_rgba(0,0,0,0.12)] transition hover:scale-[1.02]"
+            className="h-auto w-full max-w-[1000px] rounded-xl border border-slate-200/80 bg-white shadow-sm"
             sizes="(max-width: 1024px) 100vw, 1000px"
           />
         </div>
@@ -887,13 +938,13 @@ export function HowToParticipateSection() {
     { n: "06", title: t("s6t"), d: t("s6d") },
   ];
   return (
-    <section className={`bg-[#f6f7fb] ${sectionY} px-6 md:px-10`}>
-      <ViewIn className="mx-auto max-w-6xl text-[#001F3F]">
-        <h2 className="mb-4 text-center text-2xl font-black md:text-[36px]">{t("title")}</h2>
-        <p className="mx-auto mb-12 max-w-2xl text-center text-sm font-medium text-[#001F3F]/70 md:text-base">
+    <section className={`bg-slate-50 ${sectionY}`}>
+      <ViewIn className={`${ui.marketingContent} text-[#001F3F]`}>
+        <h2 className={`mb-3 text-center ${ui.displaySm} md:mb-4 md:text-3xl`}>{t("title")}</h2>
+        <p className="mx-auto mb-10 max-w-2xl text-center text-sm text-slate-600 md:mb-12 md:text-base">
           {t("intro")}
         </p>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {steps.map((s) => (
             <motion.div
               key={s.n}
@@ -901,27 +952,21 @@ export function HowToParticipateSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.1 }}
-              className="rounded-3xl border border-[#001F3F]/10 bg-white p-7 shadow-[0_16px_40px_rgba(0,31,63,0.08)] transition hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(0,31,63,0.12)]"
+              className="rounded-xl border border-slate-200/90 bg-white p-6 shadow-sm md:p-7"
             >
-              <div className="text-xs font-black uppercase tracking-[0.22em] text-[#B8860B]">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                 {t("stepLabel")} {s.n}
               </div>
-              <div className="mt-2 text-xl font-black">{s.title}</div>
-              <p className="mt-2 text-sm font-medium leading-7 text-[#001F3F]/75">{s.d}</p>
+              <div className="mt-2 text-lg font-semibold text-slate-900">{s.title}</div>
+              <p className={`mt-2 ${ui.body}`}>{s.d}</p>
             </motion.div>
           ))}
         </div>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/competition/terms"
-            className="rounded-full border-2 border-[#001F3F]/20 px-6 py-3 text-sm font-black uppercase tracking-wider text-[#001F3F] hover:bg-white"
-          >
+        <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:mt-12">
+          <Link href="/competition/terms" className={`${ui.btnSecondary} w-full sm:w-auto`}>
             {t("termsCta")}
           </Link>
-          <Link
-            href="/competition/registration"
-            className="rounded-full bg-gradient-to-br from-[#FFD700] to-amber-100 px-6 py-3 text-sm font-black uppercase tracking-wider text-[#0B0B32]"
-          >
+          <Link href="/competition/registration" className={`${ui.btnPrimary} w-full sm:w-auto`}>
             {t("regCta")}
           </Link>
         </div>
@@ -932,8 +977,7 @@ export function HowToParticipateSection() {
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex max-w-full items-center gap-1.5 border border-white/20 bg-white/[0.06] px-2.5 py-1 text-[10px] font-semibold uppercase leading-snug tracking-[0.16em] text-white/85 backdrop-blur-[2px] md:px-3 md:py-1.5 md:text-[11px] md:tracking-[0.18em]">
-      <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
+    <span className="inline-flex max-w-full items-center rounded-md bg-zinc-900/78 px-3 py-1.5 text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-white backdrop-blur-sm md:text-[11px] md:tracking-[0.15em]">
       {children}
     </span>
   );
@@ -949,7 +993,8 @@ export function HomeHeroBlock() {
   ];
   return (
     <section className="relative flex min-h-[100dvh] min-h-[100svh] w-full max-w-[100vw] flex-col overflow-x-clip">
-      <div className="pointer-events-none absolute inset-0 z-0">        <Image
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
           src={HOME_HERO_BACKGROUND_SRC}
           alt=""
           fill
@@ -959,21 +1004,16 @@ export function HomeHeroBlock() {
           className="ngc-hero-bg object-cover object-[center_32%] md:object-center"
         />
       </div>
-      {/* Wider neutral scrim: busy HUD backgrounds need a deeper read zone on the left. */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: `linear-gradient(102deg, rgba(3,5,14,0.94) 0%, rgba(3,5,14,0.78) 28%, rgba(3,5,14,0.48) 42%, rgba(3,5,14,0.14) 56%, transparent 72%)`,
+          background: `linear-gradient(102deg, rgba(8,7,6,0.92) 0%, rgba(12,10,8,0.78) 24%, rgba(18,14,10,0.45) 42%, rgba(10,9,8,0.2) 58%, rgba(0,0,0,0.06) 72%, transparent 85%)`,
         }}
       />
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-black/22 md:hidden" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-black/12 md:hidden" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] hidden bg-gradient-to-r from-black/25 via-transparent to-transparent md:block"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-black/10 to-transparent"
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-black/12 to-transparent"
       />
 
       {/* Reserve fixed header + gap so hero content lives in exactly the remaining viewport. */}
@@ -996,28 +1036,25 @@ export function HomeHeroBlock() {
             animate="show"
             className="grid w-full min-w-0 items-start gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,1fr)] lg:items-start lg:gap-10 xl:gap-14 2xl:gap-16"
           >
-          <div className="text-white">
+            <div className="text-white">
               <div className="w-full min-w-0 lg:max-w-none xl:pr-2">
                 <motion.div variants={item}>
                   <Badge>{t("badge")}</Badge>
                 </motion.div>
 
-                <motion.div variants={item} className="mt-5 flex gap-3 sm:mt-6 sm:gap-5 md:gap-6">
+                <motion.div variants={item} className="mt-5 flex gap-4 sm:mt-6 sm:gap-5 md:gap-6">
                   <div
                     aria-hidden
-                    className="mt-1 hidden w-[3px] shrink-0 rounded-full bg-gradient-to-b from-[#FFD700] via-[#ffe566] to-[#FFD700]/40 shadow-[0_0_20px_rgba(255,215,0,0.45)] sm:block sm:min-h-[7.5rem] md:mt-1.5 md:min-h-[9rem] lg:min-h-[10.5rem]"
+                    className="mt-1 hidden w-[3px] shrink-0 rounded-full bg-[#facc15] sm:block sm:min-h-[7.75rem] md:mt-1.5 md:min-h-[10rem] lg:min-h-[11.5rem]"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold uppercase tracking-[0.34em] text-white/90 md:text-base md:tracking-[0.38em] [text-shadow:0_2px_20px_rgba(0,0,0,0.92)]">
+                    <p className="text-sm font-semibold uppercase tracking-[0.26em] text-white sm:text-base md:text-lg md:tracking-[0.24em] lg:text-xl">
                       NextGen
                     </p>
-                    <h1 className="mt-1 text-[clamp(3.25rem,11vw,8.5rem)] font-black leading-[0.82] tracking-[-0.045em] [text-shadow:0_4px_36px_rgba(0,0,0,0.95),0_2px_12px_rgba(0,0,0,0.88)] md:mt-0.5">
+                    <h1 className="mt-1.5 text-[clamp(3.35rem,12vw,8.75rem)] font-bold leading-[0.86] tracking-[-0.035em] text-white md:mt-2">
                       CEO
                     </h1>
-                    <p
-                      className="mt-2 text-[clamp(1.2rem,3.8vw,2.35rem)] font-black uppercase tracking-[0.14em] [text-shadow:0_2px_24px_rgba(0,0,0,0.88)] md:mt-3 md:tracking-[0.18em]"
-                      style={{ color: GOLD_DEEP }}
-                    >
+                    <p className="mt-2.5 text-[clamp(1.35rem,4.5vw,2.65rem)] font-bold uppercase tracking-[0.12em] text-[#facc15] md:mt-3.5 md:tracking-[0.14em]">
                       Challenge 2026
                     </p>
                   </div>
@@ -1025,73 +1062,68 @@ export function HomeHeroBlock() {
 
                 <motion.p
                   variants={item}
-                  className="mt-6 max-w-2xl border-l-[3px] border-[#FFD700] pl-4 text-base font-bold tracking-wide text-balance [text-shadow:0_2px_16px_rgba(0,0,0,0.88)] md:mt-7 md:pl-5 md:text-lg lg:max-w-3xl xl:max-w-[40rem]"
-                  style={{ color: GOLD_DEEP }}
+                  className="mt-6 max-w-2xl text-base font-bold leading-snug text-balance md:mt-7 md:text-lg lg:max-w-3xl xl:max-w-[40rem]"
                 >
-                  {t("pitchLine")}
+                  <span className="text-white">| </span>
+                  <span className="text-[#facc15]">{t("pitchLine")}</span>
                 </motion.p>
 
                 <motion.p
                   variants={item}
-                  className="mt-5 max-w-2xl text-sm leading-relaxed text-white/95 md:mt-6 md:text-[15px] md:leading-[1.65] [text-shadow:0_2px_16px_rgba(0,0,0,0.92)] lg:max-w-3xl xl:max-w-[44rem]"
+                  className="mt-5 max-w-2xl text-sm leading-relaxed text-white/90 md:mt-6 md:text-[15px] md:leading-relaxed lg:max-w-3xl xl:max-w-[44rem]"
                 >
                   {t("body")}
                 </motion.p>
 
                 <motion.div
                   variants={item}
-                  className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5 md:mt-9"
+                  className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4 md:mt-10"
                 >
                   <Link
                     href="/competition/registration"
-                    className="inline-flex min-h-[44px] min-w-[180px] items-center justify-center rounded-lg px-6 py-2.5 text-[13px] font-bold uppercase tracking-[0.1em] text-[#0B0B32] transition hover:brightness-105 md:min-h-[46px] md:px-7 md:text-sm"
-                    style={{
-                      background: "linear-gradient(135deg, #FFD700 0%, #e6e600 100%)",
-                      boxShadow:
-                        "0 14px 36px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.12) inset",
-                    }}
+                    className="inline-flex min-h-[44px] min-w-[180px] items-center justify-center rounded-lg bg-[#facc15] px-6 py-3 text-sm font-bold uppercase tracking-wide text-neutral-950 transition hover:bg-[#eab308] md:min-h-[46px]"
                   >
                     {t("ctaRegister")}
                   </Link>
                   <Link
                     href="/competition/terms"
-                    className="text-sm font-medium text-white/90 underline decoration-[#FFD700]/40 underline-offset-[5px] transition hover:text-white hover:decoration-[#FFD700]/70 md:text-[15px] [text-shadow:0_1px_10px_rgba(0,0,0,0.85)]"
+                    className="text-center text-sm font-medium text-white underline decoration-white/45 underline-offset-[6px] transition hover:decoration-white sm:text-left md:text-[15px]"
                   >
                     {t("ctaSecondary")}
                   </Link>
                 </motion.div>
               </div>
-          </div>
+            </div>
 
-          <motion.div
-            variants={item}
-            className="h-full w-full min-w-0 -translate-y-1 rounded-2xl border border-white/[0.14] bg-black/50 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:-translate-y-2 sm:p-5 md:p-6 lg:h-auto lg:-translate-y-6 lg:rounded-3xl lg:border-l lg:border-white/[0.18] lg:bg-black/45 lg:pl-8 lg:shadow-[0_16px_50px_rgba(0,0,0,0.4)] xl:-translate-y-8 xl:pl-10 xl:pr-8"
-          >
-            <div>
-              <Countdown
-                targetIso="2026-09-30T00:00:00+08:00"
-                label={tc("finaleLabel")}
-                embedded
-              />
-            </div>
-            <div className="mt-6 border-t border-white/[0.14] pt-5 md:mt-7 md:pt-6">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60 md:text-[11px] md:tracking-[0.2em] [text-shadow:0_1px_6px_rgba(0,0,0,0.8)]">
-                {t("timelineEyebrow")}
-              </p>
-              <div className="mt-3 flex flex-col gap-2.5 text-[13px] leading-snug text-white/85 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2 md:text-sm [text-shadow:0_1px_8px_rgba(0,0,0,0.85)]">
-                {mini.map((x) => (
-                  <span key={x.k}>
-                    <span className="font-semibold text-white">{x.k}</span>
-                    <span className="text-white/45"> — </span>
-                    {x.v}
-                  </span>
-                ))}
+            <motion.div
+              variants={item}
+              className="h-full w-full min-w-0 rounded-2xl border border-white/18 bg-black/40 p-4 backdrop-blur-xl sm:p-5 md:p-6 lg:h-auto lg:pl-7 lg:pr-6 xl:pl-8"
+            >
+              <div>
+                <Countdown
+                  targetIso="2026-09-30T00:00:00+08:00"
+                  label={tc("finaleLabel")}
+                  embedded
+                />
               </div>
-              <p className="mt-5 font-mono text-[10px] tracking-wide text-[#FFD700]/75 md:mt-6 md:text-xs [text-shadow:0_1px_6px_rgba(0,0,0,0.75)]">
-                {t("hashtag")}
-              </p>
-            </div>
-          </motion.div>
+              <div className="mt-6 border-t border-white/12 pt-5 md:mt-7 md:pt-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/85 md:text-[11px] md:tracking-[0.2em]">
+                  {t("timelineEyebrow")}
+                </p>
+                <div className="mt-3 flex flex-col gap-2.5 text-[13px] leading-snug text-white/85 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2 md:text-sm">
+                  {mini.map((x) => (
+                    <span key={x.k}>
+                      <span className="font-bold text-white">{x.k}</span>
+                      <span className="text-white/45"> — </span>
+                      {x.v}
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-5 font-mono text-[10px] tracking-wide text-[#facc15]/90 md:mt-6 md:text-xs">
+                  {t("hashtag")}
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -1102,7 +1134,7 @@ export function HomeHeroBlock() {
 function HomeVideoAsideCheck() {
   return (
     <span
-      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-sm"
+      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-[#001F3F]"
       aria-hidden
     >
       <svg className="h-3.5 w-3.5" viewBox="0 0 12 10" fill="none">
@@ -1125,11 +1157,11 @@ function HomeMp4TeaserPlayer() {
 
   if (!started) {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#0a1628]">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#141210]">
         <button
           type="button"
           onClick={() => setStarted(true)}
-          className="flex h-full w-full flex-col items-center justify-center gap-4 px-6 py-10 text-center transition hover:bg-[#0d1d35] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFD700]"
+          className="flex h-full w-full flex-col items-center justify-center gap-4 px-6 py-10 text-center transition hover:bg-[#1a1814] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFD700]"
         >
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFD700]/90">
             {t("fallbackOverlayKicker")}
@@ -1181,7 +1213,7 @@ export function HomeVideoTeaser() {
 
   return (
     <section
-      className="bg-white px-6 py-14 font-sans md:px-10 md:py-20"
+      className="border-t border-slate-200/80 bg-white px-4 py-16 font-sans sm:px-6 md:px-8 md:py-20 lg:px-8"
       aria-labelledby="home-video-heading"
     >
       <ViewIn className="mx-auto max-w-7xl">
@@ -1199,7 +1231,10 @@ export function HomeVideoTeaser() {
             viewport={{ once: true, amount: 0.12 }}
             className="min-w-0 lg:col-span-7"
           >
-            <div className="relative aspect-video w-full overflow-hidden bg-black">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#001F3F]/55 md:mb-4 md:text-[13px]">
+              {t("eyebrow")}
+            </p>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-slate-200 bg-black shadow-sm">
               {useYoutube ? (
                 <iframe
                   title={t("youtubeIframeTitle")}
@@ -1215,9 +1250,9 @@ export function HomeVideoTeaser() {
               )}
             </div>
             {useYoutube ? (
-              <p className="mt-3 text-xs text-[#64748b]">{t("videoHintYoutube")}</p>
+              <p className="mt-3 text-xs text-slate-500">{t("videoHintYoutube")}</p>
             ) : (
-              <p className="mt-3 text-xs text-[#64748b]">{t("videoHintMp4")}</p>
+              <p className="mt-3 text-xs text-slate-500">{t("videoHintMp4")}</p>
             )}
           </motion.div>
 
@@ -1229,21 +1264,18 @@ export function HomeVideoTeaser() {
             className="min-w-0 lg:col-span-5 lg:pt-0"
           >
             <div className="text-center lg:text-left">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#B8860B] md:text-xs">
-                {t("eyebrow")}
-              </p>
               <h2
                 id="home-video-heading"
-                className="mt-3 text-balance text-3xl font-black uppercase leading-[1.05] tracking-tight text-[#001B3D] md:text-[38px] md:leading-[1.08]"
+                className="font-[family-name:var(--font-montserrat)] text-balance text-2xl font-extrabold leading-[1.12] tracking-tight text-[#001F3F] md:text-3xl lg:text-[2.05rem] lg:leading-[1.1]"
               >
                 {t("asideHead")}
               </h2>
               <span
                 aria-hidden
-                className="mx-auto mt-4 block h-1 w-14 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] lg:mx-0"
+                className="mx-auto mt-4 block h-px w-12 bg-gradient-to-r from-transparent via-[#d4af37]/70 to-transparent lg:mx-0 lg:from-[#d4af37]/50 lg:via-[#d4af37] lg:to-transparent"
               />
             </div>
-            <p className="mt-5 text-pretty text-[15px] font-normal leading-relaxed text-[#4B5563] md:text-base">
+            <p className="mt-5 text-pretty text-[15px] font-normal leading-relaxed text-slate-600 md:text-base">
               {t("asideIntro")}
             </p>
             <ul className="mt-8 space-y-5">
@@ -1251,10 +1283,10 @@ export function HomeVideoTeaser() {
                 <li key={row.title} className="flex gap-3.5 text-left">
                   <HomeVideoAsideCheck />
                   <div className="min-w-0">
-                    <p className="text-[15px] font-bold leading-snug text-[#334155] md:text-base">
+                    <p className="text-[15px] font-semibold leading-snug text-slate-800 md:text-base">
                       {row.title}
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-[#4B5563]">{row.desc}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{row.desc}</p>
                   </div>
                 </li>
               ))}
@@ -1266,7 +1298,7 @@ export function HomeVideoTeaser() {
   );
 }
 
-/** Muted champagne gold on navy — readable, formal (not neon yellow). */
+/** Muted champagne gold on dark band — readable, formal (not neon yellow). */
 const TRUST_STRIP_GOLD = "#c9b06a";
 
 export function HomeTrustStrip() {
@@ -1279,14 +1311,14 @@ export function HomeTrustStrip() {
   ];
   return (
     <section
-      className="relative border-y border-white/[0.08] px-4 py-5 antialiased md:px-8 md:py-6"
+      className="relative border-y border-white/[0.08] px-4 py-6 antialiased md:px-8 md:py-7"
       style={{
-        background: `radial-gradient(ellipse 100% 140% at 50% 0%, ${NAVY} 0%, ${NAVY_DEEP} 52%, #000818 100%)`,
+        background: `linear-gradient(180deg, #141210 0%, #0c0b09 45%, #070605 100%)`,
       }}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10"
       />
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-4 md:gap-x-0 md:gap-y-0">
         {rows.map((x, i) => (
@@ -1327,13 +1359,13 @@ const PREVIEW_MENU = [
 export function CompetitionQuickLinks() {
   const t = useTranslations("Nav");
   return (
-    <section className="border-b border-slate-200 bg-slate-50/80 px-6 py-8 md:px-10">
-      <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-3">
+    <section className="border-b border-slate-200 bg-slate-50/90 py-8 md:py-10">
+      <div className={`${ui.marketingContent} flex flex-wrap justify-center gap-2 sm:gap-3`}>
         {COMPETITION_MENU.map((l) => (
           <Link
             key={l.href}
             href={l.href}
-            className="rounded-full border border-[#001F3F]/12 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-wider text-[#001F3F] shadow-sm transition hover:border-[#B8860B]/40 hover:bg-amber-50/50 md:text-[11px]"
+            className="rounded-md border border-slate-200/90 bg-white px-3 py-2 text-center text-xs font-semibold text-[#001F3F] shadow-sm transition hover:border-slate-300 hover:bg-slate-50 md:px-4 md:text-[13px]"
           >
             {t(`menu.${l.id}`)}
           </Link>
@@ -1347,58 +1379,43 @@ export function HomeCompetitionPreview() {
   const tn = useTranslations("Nav");
   const tp = useTranslations("HomePreview");
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f9fc] via-white to-[#eef2f9] px-6 py-20 md:px-10 md:py-28">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-[#FFD700]/10 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-[#001F3F]/[0.06] blur-3xl"
-      />
-      <ViewIn className="relative mx-auto max-w-6xl">
-        <div className="mb-14 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#001F3F]/55 md:text-[13px]">
-            {tp("kicker")}
-          </p>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-[#001F3F] md:text-[40px] md:leading-[1.15]">
+    <section className={`${ui.borderSection} relative bg-white ${sectionY}`}>
+      <ViewIn className={`${ui.marketingContent} relative`}>
+        <div className="mb-10 text-center md:mb-12">
+          <p className={ui.eyebrow}>{tp("kicker")}</p>
+          <h2 className={`mt-3 ${ui.displayMd} text-[#001F3F]`}>
             {tp("title")}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base font-normal leading-[1.65] text-[#001F3F]/75 md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg">
             {tp("subtitle")}
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {PREVIEW_MENU.map((l) => (
             <div
               key={l.id}
-              className="rounded-3xl border border-[#001F3F]/[0.1] bg-gradient-to-br from-white via-white to-[#f1f4fa] p-7 text-left shadow-[0_18px_50px_rgba(0,31,63,0.07)] ring-1 ring-[#001F3F]/[0.04] md:p-8"
+              className={`${ui.card} flex min-w-0 flex-col`}
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFF8DC] to-[#FFD700]/40 shadow-inner ring-1 ring-[#001F3F]/10">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
                   <PreviewTopicIcon menuId={l.id} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#B8860B]">
-                    {tp("cardEyebrow")}
-                  </div>
-                  <div className="mt-2 text-xl font-black leading-snug tracking-tight text-[#001F3F]">
+                  <div className={ui.eyebrow}>{tp("cardEyebrow")}</div>
+                  <div className="mt-2 text-lg font-semibold leading-snug text-slate-900">
                     {tn(`menu.${l.id}`)}
                   </div>
                 </div>
               </div>
-              <div className="mt-4 border-t border-[#001F3F]/[0.06] pt-4 text-base font-normal leading-[1.6] text-[#001F3F]/72">
+              <div className="mt-4 border-t border-slate-100 pt-4 text-sm leading-relaxed text-slate-600 md:text-[15px]">
                 {tn(`menuSub.${l.id}`)}
               </div>
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-14 max-w-2xl text-center text-base font-normal leading-[1.65] text-[#001F3F]/68">
+        <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-slate-600 md:mt-12 md:text-base">
           {tp("hubHint")}{" "}
-          <Link
-            href="/#competition-hub"
-            className="font-semibold text-[#001F3F] underline decoration-[#001F3F]/30 underline-offset-[6px] transition hover:text-[#B8860B] hover:decoration-[#B8860B]/45"
-          >
+          <Link href="/#competition-hub" className={ui.linkInline}>
             {tp("hubLink")}
           </Link>
         </p>
@@ -1419,30 +1436,22 @@ export function HomeApaItuTeaser() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-25"
-        style={{
-          background:
-            "radial-gradient(circle at 80% 20%, rgba(255,215,0,0.35), transparent 45%), radial-gradient(circle at 10% 80%, rgba(87,227,255,0.2), transparent 40%)",
-        }}
-      />
-      <div
-        aria-hidden
         className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
         }}
       />
       <ViewIn className="relative mx-auto max-w-3xl text-center">
-        <div className="mx-auto mb-8 flex justify-center">
-          <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.35)] ring-2 ring-[#FFD700]/30 sm:h-24 sm:w-24">
-            <Image
-              src={LOGO_SRC}
-              alt={t("logoAlt")}
-              fill
-              className="object-contain p-1"
-              sizes="96px"
-            />
-          </div>
+        <div className="mx-auto mb-8 flex justify-center px-2">
+          <Image
+            src={LOGO_SRC}
+            alt={t("logoAlt")}
+            width={637}
+            height={350}
+            className="h-28 w-auto max-w-[min(92vw,24rem)] object-contain sm:h-32 md:h-36"
+            sizes="(max-width: 640px) 92vw, 384px"
+            unoptimized
+          />
         </div>
         <h2 className="text-3xl font-black leading-tight md:text-[38px] md:leading-[1.2]">
           {t("title")}
@@ -1484,26 +1493,18 @@ export function HomeOutcomesSection() {
     { title: t("o4t"), desc: t("o4d") },
   ];
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f5f7fc] via-white to-[#eef1f8] px-6 py-20 md:px-10 md:py-28">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.5]"
-        style={{
-          background:
-            "radial-gradient(circle at 12% 20%, rgba(255,215,0,0.14), transparent 45%), radial-gradient(circle at 92% 80%, rgba(0,31,63,0.05), transparent 42%)",
-        }}
-      />
+    <section className="relative overflow-hidden border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 md:px-8 md:py-20 lg:px-8">
       <ViewIn className="relative mx-auto max-w-6xl">
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-14">
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B8860B] md:text-[13px] lg:hidden">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 md:text-[13px] lg:hidden">
               {t("kicker")}
             </p>
             <div className="mt-4 flex flex-col gap-3 sm:gap-4 lg:mt-0">
               {HOME_OUTCOMES_SIDE_IMAGES.map((src, i) => (
                 <div
                   key={src}
-                  className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#001F3F]/10 shadow-[0_20px_50px_rgba(0,31,63,0.1)] sm:aspect-[5/3]"
+                  className="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-200/90 shadow-sm sm:aspect-[5/3]"
                 >
                   <Image
                     src={src}
@@ -1516,7 +1517,7 @@ export function HomeOutcomesSection() {
                   />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#001F3F]/25 to-transparent"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"
                   />
                 </div>
               ))}
@@ -1524,31 +1525,28 @@ export function HomeOutcomesSection() {
           </div>
           <div className="lg:col-span-7">
             <header className="mb-10 text-center lg:mb-12 lg:text-left">
-              <p className="hidden text-xs font-bold uppercase tracking-[0.16em] text-[#B8860B] md:text-[13px] lg:block">
+              <p className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 md:text-[13px] lg:block">
                 {t("kicker")}
               </p>
-              <h2 className="mt-0 text-balance text-3xl font-black uppercase leading-[1.05] tracking-tight text-[#001F3F] lg:mt-3 md:text-[42px] md:leading-[1.08]">
+              <h2 className="mt-0 text-balance text-2xl font-semibold leading-snug tracking-tight text-slate-900 lg:mt-3 md:text-4xl md:leading-tight">
                 {t("title")}
               </h2>
-              <span
-                aria-hidden
-                className="mx-auto mt-4 block h-1 w-14 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] lg:mx-0"
-              />
-              <p className="mt-4 text-base font-normal leading-[1.65] text-[#001F3F]/75 md:text-lg">
+              <span aria-hidden className="mx-auto mt-4 block h-px w-12 bg-slate-300 lg:mx-0" />
+              <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
                 {t("subtitle")}
               </p>
             </header>
-            <div className="grid gap-6 sm:grid-cols-2 sm:gap-6">
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
               {items.map((c) => (
                 <div
                   key={c.title}
-                  className="rounded-2xl border border-[#001F3F]/[0.08] bg-white/90 p-7 shadow-[0_14px_40px_rgba(0,31,63,0.06)] backdrop-blur-sm md:p-8"
+                  className="rounded-xl border border-slate-200/90 bg-slate-50/50 p-6 shadow-sm md:p-7"
                 >
-                  <div className="h-1 w-12 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B]" />
-                  <h3 className="mt-5 text-lg font-black leading-snug text-[#001F3F] md:text-xl">
+                  <div className="h-px w-10 bg-[#001F3F]/80" />
+                  <h3 className="mt-5 text-lg font-semibold leading-snug text-slate-900 md:text-xl">
                     {c.title}
                   </h3>
-                  <p className="mt-3 text-base font-normal leading-[1.65] text-[#001F3F]/78">
+                  <p className="mt-3 text-base leading-relaxed text-slate-600">
                     {c.desc}
                   </p>
                 </div>
@@ -1566,14 +1564,6 @@ export function HomeFaqSection() {
   const ids = [1, 2, 3, 4, 5] as const;
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#d2dae8] via-[#e4eaf4] to-[#dce3ef] px-6 py-20 md:px-10 md:py-28">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.45]"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(255,215,0,0.12), transparent 55%), radial-gradient(circle at 0% 100%, rgba(0,31,63,0.06), transparent 45%)",
-        }}
-      />
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.35]"
@@ -1596,7 +1586,7 @@ export function HomeFaqSection() {
           {ids.map((i) => (
             <details
               key={i}
-              className="group rounded-2xl border border-[#001F3F]/[0.1] bg-white px-6 shadow-[0_8px_28px_rgba(0,31,63,0.04)] open:shadow-[0_14px_40px_rgba(0,31,63,0.08)]"
+              className="group rounded-2xl border border-[#001F3F]/[0.1] bg-white px-6 shadow-sm open:shadow-sm"
             >
               <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-base font-bold leading-snug text-[#001F3F] outline-none ring-[#B8860B] ring-offset-2 ring-offset-white focus-visible:ring-2 [&::-webkit-details-marker]:hidden">
                 <span className="pr-2">{t(`q${i}`)}</span>

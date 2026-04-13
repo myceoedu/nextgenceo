@@ -28,21 +28,26 @@ export const viewIn: Variants = {
   },
 };
 
-export const sectionY = "py-24 md:py-32";
+/** Vertical rhythm aligned with marketing sections (premium, not excessive). */
+export const sectionY = "py-16 md:py-24";
 
 export function ViewIn({
   children,
   className = "",
+  viewport: viewportProp,
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Override when a section needs earlier/larger in-view trigger (e.g. short blocks). */
+  viewport?: { once?: boolean; amount?: number };
 }) {
+  const viewport = viewportProp ?? { once: true, amount: 0.12 };
   return (
     <motion.div
       variants={viewIn}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={viewport}
       className={className}
     >
       {children}

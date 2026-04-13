@@ -42,14 +42,17 @@ function DeckSlideCard({
   imageSrc,
   ariaLabel,
   children,
+  imageAccent = "teal",
 }: {
   imageSrc: string;
   ariaLabel: string;
   children: ReactNode;
+  imageAccent?: "teal" | "gold";
 }) {
+  const accentBar = imageAccent === "gold" ? "bg-amber-600" : "bg-teal-600";
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/95 bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.12)] ring-1 ring-slate-900/[0.03]"
+      className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/95 bg-white shadow-sm"
       role="group"
       aria-roledescription="slide"
       aria-label={ariaLabel}
@@ -66,7 +69,7 @@ function DeckSlideCard({
           className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent"
           aria-hidden
         />
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-600" aria-hidden />
+        <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${accentBar}`} aria-hidden />
       </div>
       <div className="flex flex-col gap-0 px-5 pb-6 pt-5 md:px-7 md:pb-7 md:pt-6">{children}</div>
     </div>
@@ -281,14 +284,16 @@ export function CompetitionHubDeck({
   );
 
   const awardsSlide = (
-    <DeckSlideCard imageSrc={deckImg[3]} ariaLabel={slideLabelsFull[3]}>
-      <CardKicker>{tGrand("title")}</CardKicker>
-      <p className="mt-2 text-xl font-semibold leading-snug text-slate-900 md:text-2xl">
+    <DeckSlideCard imageSrc={deckImg[3]} ariaLabel={slideLabelsFull[3]} imageAccent="gold">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#1A1105]/85 md:text-[11px]">
+        {tGrand("title")}
+      </p>
+      <p className="mt-2 font-[family-name:var(--font-grand-display)] text-xl font-semibold leading-snug text-[#1A1105] md:text-2xl">
         {tManfaat("grandTitle", { amount: GRAND_PRIZE_LABEL })}
       </p>
-      <span className="mt-2.5 inline-block h-0.5 w-11 rounded-full bg-teal-600" aria-hidden />
+      <span className="mt-2.5 inline-block h-0.5 w-14 rounded-full bg-[#9b7e23]" aria-hidden />
       <p className="mt-3 text-base leading-relaxed text-slate-600 md:leading-[1.65]">{tManfaat("grandDesc")}</p>
-      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[15px] leading-relaxed text-slate-700 md:text-base">
+      <div className="mt-4 rounded-xl border border-[#c9a22c]/45 bg-gradient-to-br from-[#fffdf6] to-[#f5ecd4] px-4 py-3 text-[15px] font-medium leading-relaxed text-[#1A1105]/88 shadow-sm md:text-base">
         {tGrand("cert")}
       </div>
       <TextLink href="/competition/awards">
@@ -459,14 +464,6 @@ export function CompetitionHubDeck({
     >
       {darkBand ? (
         <>
-          <div
-            className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-slate-500/15 blur-3xl"
-            aria-hidden
-          />
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.06]"
             style={{

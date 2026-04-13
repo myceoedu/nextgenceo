@@ -19,6 +19,10 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "navMain": "Main",
+    "brandName": "NextGen CEO",
+    "brandSubtitle": "CHALLENGE 2026",
+    "logoAlt": "NextGen CEO Challenge 2026 logo",
+    "languageLabel": "Language",
     "menu": {
       "about": "About",
       "aboutUs": "About us",
@@ -51,7 +55,14 @@
     "linkCompetition": "Competition",
     "linkContact": "Contact",
     "linkSchoolLogin": "School login",
-    "linkSchoolRegister": "Create school account"
+    "linkSchoolRegister": "Create school account",
+    "colQuickLinks": "Quick links",
+    "colProgramme": "Programme",
+    "colConnect": "Connect",
+    "rightsReserved": "All rights reserved.",
+    "socialFacebook": "Facebook",
+    "socialInstagram": "Instagram",
+    "socialTiktok": "TikTok"
   },
   "Contact": {
     "eyebrow": "Contact us",
@@ -140,11 +151,11 @@
     "eyebrow": "NextGen CEO Challenge 2026"
   },
   "HomeHero": {
-    "badge": "Student leadership & entrepreneurship · Malaysia",
+    "badge": "• Student leadership & entrepreneurship • Malaysia",
     "pitchLine": "Pitch. Strategize. Win!",
     "body": "National programme for secondary schools — leadership, entrepreneurship, judged finale.",
     "prizeEyebrow": "Grand prize",
-    "prizeSub": "Cash award · winning team",
+    "prizeSub": "Cash award • Winning team",
     "prizeDetailCerts": "National certificates for participants",
     "prizeDetailPajsk": "PAJSK-aligned school recognition",
     "timelineEyebrow": "Season overview",
@@ -247,7 +258,7 @@
     "a5": "Use “Register your school” to reach the official registration flow. If you need clarification before committing, use the Contact page and we will route you through the organiser’s official channels."
   },
   "HomeFinalCta": {
-    "kicker": "Next step",
+    "kicker": "NEXT STEP",
     "title": "Secure your school’s place on the national stage",
     "body": "Join a cohort of schools investing in leadership, entrepreneurship, and recognised achievement for their students.",
     "cta": "Register your school",
@@ -626,7 +637,7 @@
     "title": "Explore the 2026 programme guide",
     "openNewTab": "Open full brochure in a new tab",
     "embedFallback": "Tap to open the digital brochure",
-    "vendorNote": "Flipbook viewer provided by FlippingBook — similar to premium programme brochures on international camp sites."
+    "mobileSpreadHint": "For a two-page spread like an open book: rotate your phone to landscape, or swipe sideways to see the full width."
   },
   "CompetitionPages": {
     "overviewTitle": "Competition",

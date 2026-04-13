@@ -38,7 +38,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <NextIntlClientProvider messages={messages}>
       <DocumentLang />
       <SiteHeader />
-      <main className="min-h-0 flex-1">{children}</main>
+      <main className="min-h-0 min-w-0 flex-1 overflow-x-clip">{children}</main>
       <SiteFooter />
     </NextIntlClientProvider>
   );

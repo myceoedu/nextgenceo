@@ -3,17 +3,43 @@ export const NAVY_DEEP = "#001F3F";
 export const GOLD = "#e6e600";
 export const GOLD_DEEP = "#FFD700";
 
-export const LOGO_SRC =
-  "/logo.png";
+/**
+ * Wide/wordmark logo (`public/logo-CEO.png`) — footer, dashboard, competition blocks, etc.
+ * Use `unoptimized` on `<Image>` so file swaps are not stuck behind `/_next/image` cache.
+ */
+export const LOGO_SRC = "/logo-CEO.png";
+
+/** Compact shield mark for the fixed top bar (`public/logo.png`). */
+export const SITE_HEADER_LOGO_SRC = "/logo.png";
 export const SPONSOR_SRC =
   "https://lh3.googleusercontent.com/d/11iJgklH9bwv2O2fwhR5uZWpbHfOigii1";
 export const DRIVE_CHALLENGE_URL =
   "https://drive.google.com/file/d/1Ce1UIhh7BD-fK-WcX0I5qFH5dToxzt1o/view?usp=sharing";
 
-/** Base ringgit amount; home hero adds +1 per visit via localStorage. */
+/** Official grand prize cash amount (ringgit). */
 export const GRAND_PRIZE_BASE_RM = 10_000;
 
 export const GRAND_PRIZE_LABEL = `RM ${GRAND_PRIZE_BASE_RM.toLocaleString("en-MY")}`;
+
+/** Metallic gold plaque (warm browns + pale highlight) — grand prize cards. */
+export const GRAND_PRIZE_PLAQUE_BG =
+  "linear-gradient(148deg, #6b4e12 0%, #7a5c18 9%, #8b6b21 16%, #9b7e23 26%, #b89220 38%, #c9a22c 44%, #d4af37 50%, #e6c24a 55%, #fff3a0 58%, #f9e27e 62%, #d4af37 71%, #9b7e23 84%, #5c4010 100%)";
+
+/**
+ * Grand prize showcase card — brushed gold base + diagonal highlight (top-centre toward bottom-right).
+ */
+export const GRAND_PRIZE_CARD_GOLD_BASE =
+  "linear-gradient(158deg, #4a3410 0%, #6b4e14 12%, #8a6820 28%, #b8922e 40%, #9a7a22 52%, #c9a84a 64%, #e6cf8a 72%, #b89430 82%, #5c4212 100%)";
+
+/** Lower band: rich black / deep navy (reference mockup). */
+export const GRAND_PRIZE_CARD_NAVY = "#0A0E1A";
+
+/** High-contrast type on {@link GRAND_PRIZE_PLAQUE_BG}. */
+export const GRAND_PRIZE_PLAQUE_INK = "#1A1105";
+
+/** Ingot strip between plaque and content below. */
+export const GRAND_PRIZE_PLAQUE_BAR =
+  "linear-gradient(180deg, #fff8dc 0%, #f9e27e 16%, #d4af37 38%, #9b7e23 68%, #5c4010 100%)";
 
 /**
  * Home hero full-bleed background (`public/home/background.*`).
